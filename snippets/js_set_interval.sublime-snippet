@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[var ${1:intervalId} = setInterval(function(){
+	$3clearInterval(${1:intervalId});
+},${2:500})$0]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>setInt</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+	<description>setInerval()</description>
+</snippet>

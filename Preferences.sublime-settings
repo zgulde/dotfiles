@@ -1,0 +1,19 @@
+{
+	"color_scheme": "Packages/Colorsublime - Themes/AAMine.tmTheme",
+	"font_face": "Ubuntu Mono",
+	"font_size": 15,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"open_files_in_new_window": false,
+	"rulers":
+	[
+		80
+	],
+	"scroll_past_end": true,
+	"translate_tabs_to_spaces": true,
+	"word_wrap": false
+}

@@ -1,0 +1,7 @@
+<snippet>
+    <content><![CDATA[isset(\$_${1:GET}['${2:key}']) ? \$_${1:GET}['${2:key}'] : ${3:default} ;]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>rset</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>
