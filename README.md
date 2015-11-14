@@ -41,7 +41,9 @@ Briefly, what I am doing is defining a new modifier key (like command, option, o
 ### My Shortcuts
 
 `caps + enter` : `=>`
+
 `caps + u,i,o,p` :  left, up, down and right, respectively
+
 more to come...
 
 I think it is easier to use the arrow keys if your fingers don't have to travel too far from the home row. 
