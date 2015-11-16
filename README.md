@@ -40,13 +40,17 @@ Briefly, what I am doing is defining a new modifier key (like command, option, o
 
 ### My Shortcuts
 
-`caps + enter` : `=>`
+- `caps + enter` : `=>`
 
-`caps + u,i,o,p` :  left, up, down and right, respectively
+- `caps + wasd` : arrow keys
 
-more to come...
+- `caps + qe` : home and end
+
+- `caps + cmd + ws` : caps + cmd + up,down
+    - for moving code lines in sublime
 
 I think it is easier to use the arrow keys if your fingers don't have to travel too far from the home row. 
+
 In my private.xml file there is a block of code commented out for vim style cursor navigation with caps + hjkl that you can use
 
 #### Thanks for reading!
