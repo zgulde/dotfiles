@@ -1,8 +1,13 @@
 <?xml version="1.0"?>
 <root>
+    <!-- caps is mapped to PC_APPLICATION in seil -->
+
     <modifierdef>MY_CAPS</modifierdef>
 
-    <!-- caps is mapped to PC_APPLICATION in seil -->
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_iTerm</name>
+        <url type="file">/Applications/iTerm.app</url>
+    </vkopenurldef>
 
     <item>
         <name>My capslock key settings</name>
@@ -129,5 +134,13 @@
         <!-- caps + delete to delete -->
         <autogen>__KeyToKey__ KeyCode::DELETE, ModifierFlag::MY_CAPS, KeyCode::DELETE, ModifierFlag::FN</autogen>
 
+        <!-- caps + t to open terminal -->
+        <autogen>
+            __KeyToKey__
+            KeyCode::T, ModifierFlag::MY_CAPS,
+            KeyCode::VK_OPEN_URL_APP_iTerm,
+        </autogen>
+
     </item>
+
 </root>
