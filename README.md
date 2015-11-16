@@ -6,7 +6,7 @@ But while I have you here, I figured I'd write up a tutorial on how to rebind yo
 
 ### Why rebind my capslock key?
 
-- it's useless and takes up a ton of real estate on your keyboard.
+- it's (virtually) useless and takes up a ton of real estate on your keyboard.
 - you can increase your productivity by creating more keyboard shortcuts
 - you hit it accidentally far too often
 - all the cool people are doing it
@@ -36,9 +36,11 @@ This tutorial works for OSX, but the same principal can be applied to other OSs.
 
 And you can now use your capslock key for useful things!
 
-Briefly, what I am doing is defining a new modifier key (like command, option, or shift) and binding capslock to that key so that we can create our own shortcuts with capslock + a key.
+Briefly, what I am doing is defining a new modifier key (like command, option, or shift) and binding capslock to that key so that we can create our own shortcuts with capslock + some key.
 
 ### My Shortcuts
+
+The general idea is to not stray from the home row as much as possible. Less movement = more effiency!
 
 - `caps + enter` : `=>`
 
@@ -46,10 +48,11 @@ Briefly, what I am doing is defining a new modifier key (like command, option, o
 
 - `caps + qe` : home and end
 
-- `caps + cmd + ws` : caps + cmd + up,down
-    - for moving code lines in sublime
+- `caps + cmd + ws` : caps + cmd + up,down for moving code lines in sublime
 
-I think it is easier to use the arrow keys if your fingers don't have to travel too far from the home row. 
+- `caps + k` : delete current line in sublime
+
+- `caps + delete` : fn + delete because the fn key is so far away
 
 In my private.xml file there is a block of code commented out for vim style cursor navigation with caps + hjkl that you can use
 
