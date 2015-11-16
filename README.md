@@ -2,7 +2,14 @@
 
 This is a repository to back up all my config files just in case the worst happens.
 
-But while I have you here, I figured I'd write up a tutorial on how to rebind your capslock key.
+My Current Setup
+
+- Vagrant with VirtualBox
+- Sublime Text 3
+- Karabiner and Seil for key rebinding
+- iTerm
+
+While I have you here, I figured I'd write up a tutorial on how to rebind your capslock key.
 
 ### Why rebind my capslock key?
 
