@@ -10,9 +10,6 @@
         <!-- Map capslock to modifier MY_CAPS -->
         <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::VK_MODIFIER_MY_CAPS</autogen>
 
-        <!-- caps + enter to => -->
-        <autogen>__KeyToKey__ KeyCode::RETURN, ModifierFlag::MY_CAPS, KeyCode::EQUAL, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
-
         <!-- vim cursor movement while holding caps -->
         <!-- <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::MY_CAPS, KeyCode::CURSOR_LEFT</autogen> -->
         <!-- <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::MY_CAPS, KeyCode::CURSOR_DOWN</autogen> -->
@@ -24,14 +21,83 @@
         <!-- <autogen>__KeyToKey__ KeyCode::I, ModifierFlag::MY_CAPS, KeyCode::CURSOR_UP</autogen> -->
         <!-- <autogen>__KeyToKey__ KeyCode::O, ModifierFlag::MY_CAPS, KeyCode::CURSOR_DOWN</autogen> -->
         <!-- <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen> -->
+        
+        <!-- caps + enter to => -->
+        <autogen>__KeyToKey__ KeyCode::RETURN, ModifierFlag::MY_CAPS, KeyCode::EQUAL, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
 
         <!-- w and s to up and down; a and d to left and right; q and e home and end -->
-        <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::MY_CAPS | ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::MY_CAPS | ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
-        <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::MY_CAPS | ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen>
-        <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::MY_CAPS, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::W, ModifierFlag::MY_CAPS | ModifierFlag::NONE,
+            KeyCode::CURSOR_UP
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::S, ModifierFlag::MY_CAPS | ModifierFlag::NONE,
+            KeyCode::CURSOR_DOWN
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::A, ModifierFlag::MY_CAPS | ModifierFlag::NONE,
+            KeyCode::CURSOR_LEFT
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::D, ModifierFlag::MY_CAPS| ModifierFlag::NONE,
+            KeyCode::CURSOR_RIGHT
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::Q, ModifierFlag::MY_CAPS| ModifierFlag::NONE,
+            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::E, ModifierFlag::MY_CAPS| ModifierFlag::NONE,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L
+        </autogen>
+
+        <!-- preserve selection functionality with wasd movement -->
+        <autogen>
+            __KeyToKey__
+            KeyCode::W, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
+            KeyCode::CURSOR_UP, ModifierFlag::SHIFT_R
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::S, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
+            KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_R
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::A, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
+            KeyCode::CURSOR_LEFT, ModifierFlag::SHIFT_R
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::D, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_R
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::Q, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
+            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R
+        </autogen>
+
+        <autogen>
+            __KeyToKey__
+            KeyCode::E, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R
+        </autogen>
 
         <!-- cmd+caps+w, s to cmd+ctrl up and down for moving lines in sublime -->
         <autogen>
@@ -39,6 +105,7 @@
             KeyCode::W, ModifierFlag::MY_CAPS | ModifierFlag::COMMAND_L,
             KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
         </autogen>
+
         <autogen>
             __KeyToKey__ 
             KeyCode::S, ModifierFlag::MY_CAPS | ModifierFlag::COMMAND_L,
@@ -50,6 +117,13 @@
             __KeyToKey__ 
             KeyCode::A, ModifierFlag::MY_CAPS | ModifierFlag::COMMAND_L,
             KeyCode::A, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+        </autogen>
+
+        <!-- caps + k to shift+ctrl+k for deleting a line in sublime -->
+        <autogen>
+            __KeyToKey__ 
+            KeyCode::K, ModifierFlag::MY_CAPS | ModifierFlag::NONE,
+            KeyCode::K, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
         </autogen>
 
         <!-- caps + delete to delete -->
