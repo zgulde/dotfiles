@@ -20,9 +20,40 @@
         <!-- <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen> -->
 
         <!-- uiop to left up down right -->
-        <autogen>__KeyToKey__ KeyCode::U, ModifierFlag::MY_CAPS, KeyCode::CURSOR_LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::I, ModifierFlag::MY_CAPS, KeyCode::CURSOR_UP</autogen>
-        <autogen>__KeyToKey__ KeyCode::O, ModifierFlag::MY_CAPS, KeyCode::CURSOR_DOWN</autogen>
-        <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen>
+        <!-- <autogen>__KeyToKey__ KeyCode::U, ModifierFlag::MY_CAPS, KeyCode::CURSOR_LEFT</autogen> -->
+        <!-- <autogen>__KeyToKey__ KeyCode::I, ModifierFlag::MY_CAPS, KeyCode::CURSOR_UP</autogen> -->
+        <!-- <autogen>__KeyToKey__ KeyCode::O, ModifierFlag::MY_CAPS, KeyCode::CURSOR_DOWN</autogen> -->
+        <!-- <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen> -->
+
+        <!-- w and s to up and down; a and d to left and right; q and e home and end -->
+        <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::MY_CAPS | ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::MY_CAPS | ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::MY_CAPS | ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::MY_CAPS, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+
+        <!-- cmd+caps+w, s to cmd+ctrl up and down for moving lines in sublime -->
+        <autogen>
+            __KeyToKey__ 
+            KeyCode::W, ModifierFlag::MY_CAPS | ModifierFlag::COMMAND_L,
+            KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+        </autogen>
+        <autogen>
+            __KeyToKey__ 
+            KeyCode::S, ModifierFlag::MY_CAPS | ModifierFlag::COMMAND_L,
+            KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+        </autogen>
+
+        <!-- caps + cmd + a to ctrl + cmd + a for alignment in sublime -->
+        <autogen>
+            __KeyToKey__ 
+            KeyCode::A, ModifierFlag::MY_CAPS | ModifierFlag::COMMAND_L,
+            KeyCode::A, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+        </autogen>
+
+        <!-- caps + delete to delete -->
+        <autogen>__KeyToKey__ KeyCode::DELETE, ModifierFlag::MY_CAPS, KeyCode::DELETE, ModifierFlag::FN</autogen>
+
     </item>
 </root>
