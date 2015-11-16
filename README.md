@@ -49,6 +49,8 @@ Briefly, what I am doing is defining a new modifier key (like command, option, o
 
 The general idea is to not stray from the home row as much as possible. Less movement = more effiency!
 
+- `caps + t` : open the terminal
+
 - `caps + enter` : `=>`
 
 - `caps + wasd` : arrow keys
