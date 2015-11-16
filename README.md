@@ -48,7 +48,7 @@ The general idea is to not stray from the home row as much as possible. Less mov
 
 - `caps + qe` : home and end
 
-- `caps + cmd + ws` : caps + cmd + up,down for moving code lines in sublime
+- `caps + cmd + ws` : cntrl + cmd + up, down for moving code lines in sublime
 
 - `caps + k` : delete current line in sublime
 
