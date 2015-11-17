@@ -1,7 +1,6 @@
 <snippet>
+    <description>Link to the jQuery CDN</description>
 	<content><![CDATA[<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<tabTrigger>jquery</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>text.html</scope>
 </snippet>
