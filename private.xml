@@ -27,8 +27,11 @@
         <!-- <autogen>__KeyToKey__ KeyCode::O, ModifierFlag::MY_CAPS, KeyCode::CURSOR_DOWN</autogen> -->
         <!-- <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen> -->
         
-        <!-- caps + enter to => -->
-        <autogen>__KeyToKey__ KeyCode::RETURN, ModifierFlag::MY_CAPS, KeyCode::EQUAL, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
+        <!-- caps + r to => -->
+        <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::MY_CAPS, KeyCode::EQUAL, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
+
+        <!-- caps + f to -> -->
+        <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::MY_CAPS, KeyCode::MINUS, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
 
         <!-- w and s to up and down; a and d to left and right; q and e home and end -->
         <autogen>
@@ -141,6 +144,15 @@
             KeyCode::VK_OPEN_URL_APP_iTerm,
         </autogen>
 
+        <!-- caps + shift + x for docblockr -->
+        <autogen>
+            __KeyToKey__ 
+            KeyCode::X, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
+            KeyCode::SLASH,
+            KeyCode::KEY_8, ModifierFlag::SHIFT_L,
+            KeyCode::KEY_8, ModifierFlag::SHIFT_L,
+            KeyCode::TAB
+        </autogen>
     </item>
 
 </root>

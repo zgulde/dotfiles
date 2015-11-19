@@ -1,6 +1,6 @@
 <snippet>
-	<content><![CDATA[echo PHP_EOL;$0]]></content>
+	<content><![CDATA[PHP_EOL$0]]></content>
 	<tabTrigger>nl</tabTrigger>
 	<scope>source.php</scope>
-    <description>echo a PHP_EOL</description>
+    <description>insert PHP_EOL</description>
 </snippet>
