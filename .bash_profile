@@ -50,18 +50,18 @@ alias ...='cd ../..'
 alias cls='clear'
 alias c='clear'
 alias h='cd ~/'
-alias vl='cd ~/vagrant-lamp/sites'
 alias grep='grep --color=auto'
 
 #ls stuff
+alias ls='ls -G'
 alias lf='ls -dG1 */'
 alias laf='ls -aG1 -d .*/ */'
 alias ll='ls -Gp1h'
 alias la='ls -Gplah'
-alias lt='echo "------- Recent --------" && ll -t'
-alias lat='echo "------- Recent --------" && la -t'
-alias ltr='ll -tr && echo "------- Recent --------"'
-alias latr='la -tr && echo "------- Recent --------"'
+alias lt='echo "------- Most Recent --------" && ll -t'
+alias lat='echo "------- Most Recent --------" && la -t'
+alias ltr='ll -tr && echo "------- Most Recent --------"'
+alias latr='la -tr && echo "------- Most Recent --------"'
 
 #confirmation when manipulating files
 alias rm='rm -iv'
@@ -78,10 +78,27 @@ alias ga='git add'
 alias gc='git commit'
 alias push='git push origin master'
 
+#vagrant commands
+alias vs='vagrant status'
+alias vh='vagrant halt'
+alias vu='vagrant up'
+alias vssh='vagrant ssh'
+
+function vl {
+	if [ -z "$1" ]
+	then
+		cd ~/vagrant-lamp/sites/
+		lt
+	else
+		cd ~/vagrant-lamp/sites/$1.dev
+		git status
+	fi
+}
+
+
 alias enterthematrix='cmatrix'
 
-
-# Cow-spoken fortunes every time you open a terminal
+# cowsay with a random cow
 function randcowsay {
   NUMOFCOWS=`cowsay -l | tail -n +2 | wc -w`
   WHICHCOW=$((RANDOM%$NUMOFCOWS+1))

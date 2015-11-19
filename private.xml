@@ -153,6 +153,13 @@
             KeyCode::KEY_8, ModifierFlag::SHIFT_L,
             KeyCode::TAB
         </autogen>
+        
+        <!-- to enable capslock -->
+        <autogen>
+            __KeyToKey__
+            KeyCode::RETURN, ModifierFlag::MY_CAPS,
+            KeyCode::CAPSLOCK
+        </autogen>
     </item>
 
 </root>
