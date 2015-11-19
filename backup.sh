@@ -16,8 +16,9 @@ echo "\n----------------------------------------------------" >> backup.log
 echo "\ncopying sublime snippets...\n" >> backup.log
 cp -v -a ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/snippets/. snippets/ >> backup.log
 echo "\n----------------------------------------------------" >> backup.log
-echo "backing up .bash_profile" >> backup.log
+echo "\nbacking up .bash_profile..." >> backup.log
 cp -v ~/.bash_profile . >> backup.log
+echo "\nDone!\n" >> backup.log
 
-
+git status
 less backup.log
