@@ -16,7 +16,7 @@
         }
     },
     {
-        "keys": ["alt+e"],
+        "keys": ["alt+z"],
         "command": "set_setting",
         "args":
         {
