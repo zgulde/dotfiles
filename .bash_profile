@@ -108,12 +108,24 @@ function randcowsay {
    cowsay -f $THISCOW $1
 }
 
+function echolinebreak {
+	numcolumns=$(tput cols)
+	linebreak=""
+	for (( c=0; c<numcolumns; c++ ))
+	do
+	   linebreak="=$linebreak"
+	done
+		echo $linebreak
+}
+
+
+
 cmatrix -C blue -s
 
-echo "-------------------------------------------------------------"
+echolinebreak
 php ~/php/welcome.php
-echo "-------------------------------------------------------------"
+echolinebreak
 
 fortune -a | randcowsay | lolcat
 
-export PS1="======================================================================\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \`parse_git_branch\`\n > "
+export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \`parse_git_branch\`\n > "
