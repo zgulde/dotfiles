@@ -4,7 +4,7 @@ function parse_git_branch() {
 	if [ ! "${BRANCH}" == "" ]
 	then
 		STAT=`parse_git_dirty`
-		echo "[${BRANCH}${STAT}]"
+		echo "(${BRANCH})${STAT}"
 	else
 		echo ""
 	fi
@@ -51,6 +51,7 @@ alias cls='clear'
 alias c='clear'
 alias h='cd ~/'
 alias grep='grep --color=auto'
+alias subl.='subl .'
 
 #ls stuff
 alias ls='ls -G'
@@ -104,7 +105,6 @@ function randcowsay {
   WHICHCOW=$((RANDOM%$NUMOFCOWS+1))
   THISCOW=`cowsay -l | tail -n +2 | sed -e 's/\ /\'$'\n/g' | sed $WHICHCOW'q;d'`
 
-   #echo "Selected cow: ${THISCOW}, from ${WHICHCOW}"
    cowsay -f $THISCOW $1
 }
 
