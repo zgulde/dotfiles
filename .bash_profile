@@ -4,7 +4,7 @@ function parse_git_branch() {
 	if [ ! "${BRANCH}" == "" ]
 	then
 		STAT=`parse_git_dirty`
-		echo "(${BRANCH})${STAT}"
+		echo "|${BRANCH}|${STAT}"
 	else
 		echo ""
 	fi
@@ -45,6 +45,8 @@ function parse_git_dirty {
 	fi
 }
 
+PATH=$PATH:/Users/zach/scripts
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cls='clear'
@@ -77,7 +79,9 @@ alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'
-alias push='git push origin master'
+alias gb='git brach'
+alias gco='git checkout'
+alias push='git push origin'
 
 #vagrant commands
 alias vs='vagrant status'
@@ -128,4 +132,7 @@ echolinebreak
 
 fortune -a | randcowsay | lolcat
 
-export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \`parse_git_branch\`\n > "
+export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "
+
+source ~/.profile
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
