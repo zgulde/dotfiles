@@ -1,3 +1,6 @@
+
+# these two git functions copied from http://ezprompt.net/
+#
 # get current branch in git repo
 function parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
