@@ -19,6 +19,9 @@ echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .bash_profile..." >> backup.log
 cp -v ~/.bash_profile . >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
+cowsay "backing up .vimrc" >> backup.log
+cp -v ~/.vimrc . >> backup.log
+echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
 
 git status

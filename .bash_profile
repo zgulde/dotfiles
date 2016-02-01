@@ -1,4 +1,3 @@
-
 # these two git functions copied from http://ezprompt.net/
 #
 # get current branch in git repo
@@ -58,6 +57,11 @@ alias h='cd ~/'
 alias grep='grep --color=auto'
 alias subl.='subl .'
 
+alias warpspeed='ssh warpspeed@107.170.204.198'
+alias deploy='git push warpspeed master'
+
+alias ehf='sudo subl /etc/hosts'
+
 #ls stuff
 alias ls='ls -G'
 alias lf='ls -dG1 */'
@@ -82,9 +86,11 @@ alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'
-alias gb='git brach'
+alias gb='git branch'
 alias gco='git checkout'
 alias push='git push origin'
+alias pull="git pull origin master"
+alias pushme='git push origin zach'
 
 #vagrant commands
 alias vs='vagrant status'
@@ -125,7 +131,7 @@ function echolinebreak {
 		echo $linebreak
 }
 
-
+bind '"\t":menu-complete'
 
 cmatrix -C blue -s
 
