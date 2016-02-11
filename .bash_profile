@@ -72,6 +72,7 @@ alias lt='echo "------- Most Recent --------" && ll -t'
 alias lat='echo "------- Most Recent --------" && la -t'
 alias ltr='ll -tr && echo "------- Most Recent --------"'
 alias latr='la -tr && echo "------- Most Recent --------"'
+alias lsd='ls | lolcat'
 
 #confirmation when manipulating files
 alias rm='rm -iv'
@@ -83,8 +84,10 @@ alias f='open -a Finder ./'
 
 #git stuff
 alias gs='git status'
+alias gl='git log'
 alias gd='git diff'
 alias ga='git add'
+alias gap='git addd --patch'
 alias gc='git commit'
 alias gb='git branch'
 alias gco='git checkout'
@@ -96,7 +99,7 @@ alias pushme='git push origin zach'
 alias vs='vagrant status'
 alias vh='vagrant halt'
 alias vu='vagrant up'
-alias vssh='vagrant ssh'
+alias vssh='cd ~/vagrant-lamp && vagrant ssh'
 
 function vl {
 	if [ -z "$1" ]

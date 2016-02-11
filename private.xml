@@ -98,13 +98,13 @@
         <autogen>
             __KeyToKey__
             KeyCode::Q, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
-            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R
+            KeyCode::CURSOR_LEFT, ModifierFlag::SHIFT_R | ModifierFlag::COMMAND_L
         </autogen>
 
         <autogen>
             __KeyToKey__
             KeyCode::E, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
-            KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R
+            KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_R | ModifierFlag::COMMAND_L
         </autogen>
 
         <!-- cmd+caps+w, s to cmd+ctrl up and down for moving lines in sublime -->
