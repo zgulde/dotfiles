@@ -24,7 +24,4 @@ cp -v ~/.vimrc . >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
 
-git commit -am "$(date)"
-
-
 less backup.log
