@@ -1,3 +1,6 @@
+# grab env variables
+source ~/.env
+
 # these two git functions copied from http://ezprompt.net/
 #
 # get current branch in git repo
@@ -45,6 +48,42 @@ function parse_git_dirty {
 	else
 		echo ""
 	fi
+}
+
+# sends an email from my mailgun domain
+# $1 : to
+# $2 : subject
+# $3 : message body
+# $4 : from (optional)
+function sendEmail {
+
+	if [ "$1" == "help" ]
+	then
+		echo ""
+		echo "description"
+		echo "    sends an email from my mailgun domain"
+		echo "usage"
+		echo "    $ sendEmail {to} {subject} {body} [from='Don't Reply']"
+		echo ""
+		return 
+    fi
+
+    TO=$1
+    SUBJECT=$2
+    BODY=$3
+    FROM=$4
+
+    if [ -z FROM ]
+	then
+		FROM="Don't Reply"
+	fi
+
+    curl -s --user "api:$MAILGUN_API_KEY" \
+        https://api.mailgun.net/v3/$MAILGUN_DOMAIN/messages \
+        -F from="$FROM <postmaster@$MAILGUN_DOMAIN>" \
+        -F to="$TO" \
+        -F subject="$SUBJECT" \
+        -F text="$BODY"
 }
 
 PATH=$PATH:/Users/zach/scripts
@@ -111,6 +150,10 @@ function vl {
 		cd ~/vagrant-lamp/sites/$1.dev
 		git status
 	fi
+}
+
+function getStatus {
+	curl -vs $1 2>&1 | grep '< HTTP/1.1'  | sed -e 's/< HTTP\/1\.1\ //g'
 }
 
 
