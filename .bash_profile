@@ -88,8 +88,10 @@ function sendEmail {
 
 PATH=$PATH:/Users/zach/scripts
 
-alias ..='cd ..'
-alias ...='cd ../..'
+alias .='cd ..'
+alias ..='cd ../..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
 alias cls='clear'
 alias c='clear'
 alias h='cd ~/'
