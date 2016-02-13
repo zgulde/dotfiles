@@ -100,6 +100,7 @@ alias vs='vagrant status'
 alias vh='vagrant halt'
 alias vu='vagrant up'
 alias vssh='cd ~/vagrant-lamp && vagrant ssh'
+alias vreset='vagrant halt && vagrant up'
 
 function vl {
 	if [ -z "$1" ]
