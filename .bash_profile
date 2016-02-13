@@ -96,7 +96,7 @@ alias h='cd ~/'
 alias grep='grep --color=auto'
 alias subl.='subl .'
 
-alias warpspeed='ssh warpspeed@107.170.204.198'
+alias warpspeed="ssh warpspeed@$MY_SERVER"
 alias deploy='git push warpspeed master'
 
 alias ehf='sudo subl /etc/hosts'
