@@ -11,6 +11,8 @@ My Current Setup
 
 While I have you here, I figured I'd write up a tutorial on how to rebind your capslock key.
 
+Inspired by [this reddit thread.](https://www.reddit.com/r/webdev/comments/3oh313/what_extra_tools_do_you_use_that_make_web/cvxonub)
+
 ### Why rebind my capslock key?
 
 - it's (virtually) useless and takes up a ton of real estate on your keyboard.
