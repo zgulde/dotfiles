@@ -2,7 +2,8 @@ syntax on
 
 let mapleader = " "
 
-function! NumberToggle()
+" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+function! ToggleLineNumber()
     if(&relativenumber == 1)
         set number
     else
@@ -10,16 +11,34 @@ function! NumberToggle()
     endif
 endfunc
 
+" get rid of highlighted search terms
 map <Leader>c :noh<cr>
+
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
+
+" run the current file
 map <Leader>r :!./%
-map <Leader>n :call NumberToggle()<cr>
 
-map <C-j> :m .+1<cr>
-map <C-k> :m .-2<cr>
+" toggle relative or absolut line numbers
+map <Leader>n :call ToggleLineNumber()<cr>
 
-set number
+" substitution
+map <Leader>S :%s/
+map <Leader>s :s/
+
+" turn off smart and auto indent for pasting code
+map <Leader>p :set ai!<cr> :set si!<cr> :set ai?<cr>
+
+" code commenting
+map <Leader>m :s/.*/\/\/ &/<cr> :noh<cr>
+map <C-m> :s/\/\/\s//<cr>
+
+" page scrolling
+map <C-j> <C-e>
+map <C-k> <C-y>
+
+set relativenumber
 set ruler
 set cmdheight=2
 set hlsearch

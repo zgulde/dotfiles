@@ -26,6 +26,9 @@
         <!-- <autogen>__KeyToKey__ KeyCode::I, ModifierFlag::MY_CAPS, KeyCode::CURSOR_UP</autogen> -->
         <!-- <autogen>__KeyToKey__ KeyCode::O, ModifierFlag::MY_CAPS, KeyCode::CURSOR_DOWN</autogen> -->
         <!-- <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen> -->
+
+        <!-- caps + space to escape -->
+        <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::MY_CAPS, KeyCode::ESCAPE</autogen>
         
         <!-- caps + r to => -->
         <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::MY_CAPS, KeyCode::EQUAL, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>

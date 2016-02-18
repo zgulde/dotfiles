@@ -92,8 +92,10 @@ alias .='cd ..'
 alias ..='cd ../..'
 alias ...='cd ../../..'
 alias ....='cd ../../../..'
+
 alias cls='clear'
 alias c='clear'
+
 alias h='cd ~/'
 alias grep='grep --color=auto'
 alias subl.='subl .'
@@ -102,6 +104,8 @@ alias warpspeed="ssh warpspeed@$MY_SERVER"
 alias deploy='git push warpspeed master'
 
 alias ehf='sudo subl /etc/hosts'
+
+alias reload='source ~/.bash_profile'
 
 #ls stuff
 alias ls='ls -G'
@@ -128,13 +132,18 @@ alias gs='git status'
 alias gl='git log'
 alias gd='git diff'
 alias ga='git add'
-alias gap='git addd --patch'
+alias gap='git add --patch'
 alias gc='git commit'
 alias gb='git branch'
 alias gco='git checkout'
 alias push='git push origin'
 alias pull="git pull origin master"
 alias pushme='git push origin zach'
+
+# do a git diff but just show which files are different
+function gdf {
+    gd $1 | grep ^diff | sed s/diff\ --git\ a//g
+}
 
 #vagrant commands
 alias vs='vagrant status'
