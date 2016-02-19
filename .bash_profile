@@ -97,7 +97,13 @@ alias cls='clear'
 alias c='clear'
 
 alias h='cd ~/'
+
+alias egrep='egrep --color=auto'
 alias grep='grep --color=auto'
+
+alias pbgrep='pbpaste | grep'
+alias pback='pbpaste | ack'
+
 alias subl.='subl .'
 
 alias warpspeed="ssh warpspeed@$MY_SERVER"
@@ -200,6 +206,10 @@ echolinebreak
 fortune -a | randcowsay | lolcat
 
 export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "
+
+# going back and forth from a dp detailed prompt to a mp minimal prompt
+alias mp='export PS1="> "'
+alias dp='export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "'
 
 source ~/.profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

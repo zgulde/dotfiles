@@ -11,6 +11,10 @@ function! ToggleLineNumber()
     endif
 endfunc
 
+" code indentation
+map <Leader>] :s/.*/    &/<cr> :noh<cr>
+map <Leader>[ :s/    //<cr> :noh<cr>
+
 " get rid of highlighted search terms
 map <Leader>c :noh<cr>
 
@@ -38,12 +42,21 @@ map <C-m> :s/\/\/\s//<cr>
 map <C-j> <C-e>
 map <C-k> <C-y>
 
+map Q @q
+
+"
+" -----------------------javascript 'snippets'-----------------------
+"
+command Lcl :s/cl \(.*\)/console.log(\1);
+
+
+
 set relativenumber
 set ruler
 set cmdheight=2
 set hlsearch
 set incsearch
-set background=dark
+set background=light
 set expandtab
 set smarttab
 set tabstop=4
