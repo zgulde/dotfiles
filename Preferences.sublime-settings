@@ -1,9 +1,9 @@
 {
 	"caret_style": "phase",
-	"color_scheme": "Packages/Color Scheme - Default/Solarized (Light).tmTheme",
+	"color_scheme": "Packages/Colorsublime - Themes/AAMine.tmTheme",
 	"draw_white_space": "all",
 	"font_face": "Ubuntu Mono",
-	"font_size": 18,
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
