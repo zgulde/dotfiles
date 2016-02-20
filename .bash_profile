@@ -113,6 +113,11 @@ alias ehf='sudo subl /etc/hosts'
 
 alias reload='source ~/.bash_profile'
 
+# use curl to just get the headers of a response
+function curlh {
+    curl -s -D - $1 -o /dev/null | sed 's/.*/< &/'
+}
+
 #ls stuff
 alias ls='ls -G'
 alias lf='ls -dG1 */'
@@ -208,7 +213,7 @@ fortune -a | randcowsay | lolcat
 export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "
 
 # going back and forth from a dp detailed prompt to a mp minimal prompt
-alias mp='export PS1="> "'
+alias mp='export PS1="\[\e[32m\]>\[\e[m\] "'
 alias dp='export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "'
 
 source ~/.profile

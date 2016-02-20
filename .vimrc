@@ -31,6 +31,9 @@ map <Leader>n :call ToggleLineNumber()<cr>
 map <Leader>S :%s/
 map <Leader>s :s/
 
+" add ; to end of line
+map <Leader>; A;<esc>
+
 " turn off smart and auto indent for pasting code
 map <Leader>p :set ai!<cr> :set si!<cr> :set ai?<cr>
 
