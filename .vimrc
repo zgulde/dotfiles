@@ -1,3 +1,18 @@
+" Vundle Stuff
+" https://github.com/VundleVim/Vundle.vim
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+
+" plugins go here, before vundle#end()
+
+call vundle#end()
+filetype plugin indent on
+" ---------------------------------------------
+
 syntax on
 
 let mapleader = " "
@@ -45,14 +60,11 @@ map <C-m> :s/\/\/\s//<cr>
 map <C-j> <C-e>
 map <C-k> <C-y>
 
+" insert new lines without going into insert mode
+map <Leader>o o<esc>
+map <Leader>O O<esc>
+
 map Q @q
-
-"
-" -----------------------javascript 'snippets'-----------------------
-"
-command Lcl :s/cl \(.*\)/console.log(\1);
-
-
 
 set relativenumber
 set ruler

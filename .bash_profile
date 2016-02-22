@@ -92,6 +92,7 @@ alias .='cd ..'
 alias ..='cd ../..'
 alias ...='cd ../../..'
 alias ....='cd ../../../..'
+alias .....='cd ../../../../..'
 
 alias cls='clear'
 alias c='clear'
@@ -113,10 +114,12 @@ alias ehf='sudo subl /etc/hosts'
 
 alias reload='source ~/.bash_profile'
 
-# use curl to just get the headers of a response
+# use curl to just get the headers of a full response
 function curlh {
     curl -s -D - $1 -o /dev/null | sed 's/.*/< &/'
 }
+
+alias curlput='curl -X PUT'
 
 #ls stuff
 alias ls='ls -G'
