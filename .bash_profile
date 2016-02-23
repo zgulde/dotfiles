@@ -88,6 +88,8 @@ function sendEmail {
 
 PATH=$PATH:/Users/zach/scripts
 
+alias vim='mvim -v'
+
 alias .='cd ..'
 alias ..='cd ../..'
 alias ...='cd ../../..'

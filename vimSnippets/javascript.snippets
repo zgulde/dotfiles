@@ -1,0 +1,39 @@
+snippet if
+if (${1:condition}){
+    ${0:stuff}
+}
+endsnippet
+
+snippet cl "console.log()"
+console.log(${1:'$2'});$0
+endsnippet
+
+snippet inif "wrap text in an if statement"
+if(${1:condition}){
+    ${VISUAL}
+}
+endsnippet
+
+snippet ? "ternary operator"
+(${1:condition}) ? ${2:if_true} : ${3:if_false};
+endsnippet
+
+snippet dp "set default values for function parameter"
+${1:param} = (typeof $1 !== 'undefined') ? $1 : ${2:default};
+endsnippet
+
+snippet iife "immediately invoked function expression"
+(function(){$1})();
+endsnippet
+
+snippet f "function"
+function($1){$2}
+endsnippet
+
+snippet int "set Interval"
+${1:var ${2:intervalId} = }setInterval(${3:function(){$0}},${4:500});
+endsnippet
+
+snippet timeout "set timeout"
+${1:var ${2:intervalId} = }setTimeout(${3:function(){$0}},${4:500});
+endsnippet

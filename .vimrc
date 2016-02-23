@@ -2,18 +2,22 @@
 " https://github.com/VundleVim/Vundle.vim
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-
-" plugins go here, before vundle#end()
-
-call vundle#end()
-filetype plugin indent on
+set runtimepath+=~/.vim/bundle/ultisnips
+set runtimepath+=~/.vim/ftdetect/
 " ---------------------------------------------
 
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"                                            
+let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 syntax on
+
+set foldmethod=indent
+set foldlevel=20
+
+" searching through files in current directory
+set path=.,/usr/include,,**
 
 let mapleader = " "
 
@@ -57,12 +61,22 @@ map <Leader>m :s/.*/\/\/ &/<cr> :noh<cr>
 map <C-m> :s/\/\/\s//<cr>
 
 " page scrolling
-map <C-j> <C-e>
-map <C-k> <C-y>
+map <C-[> <C-e>
+map <C-]> <C-y>
 
-" insert new lines without going into insert mode
-map <Leader>o o<esc>
-map <Leader>O O<esc>
+" moving between windows
+map <Leader>[ <C-w><C-w>
+map <Leader>] <C-w><C-w>
+
+" window resizing
+map <Leader>- :vertical resize -5<cr>
+map <Leader>= :vertical resize +5<cr>
+
+" new tab
+map <Leader>t :tabe .<cr>
+
+" search for file to open
+map <Leader>o :find 
 
 map Q @q
 

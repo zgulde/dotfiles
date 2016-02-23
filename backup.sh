@@ -14,7 +14,9 @@ cowsay "copying sublime keyboard shortcuts..." >> backup.log
 cp -v ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap . >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "copying sublime snippets..." >> backup.log
-cp -v -a ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/snippets/. snippets/ >> backup.log
+cp -v -a ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/snippets/. sublimeSnippets/ >> backup.log
+cowsay "copying vim snippets..." >> backup.log
+cp -v -a ~/.vim/UltiSnips/. vimSnippets/> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .bash_profile..." >> backup.log
 cp -v ~/.bash_profile . >> backup.log
