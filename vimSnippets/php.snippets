@@ -1,0 +1,15 @@
+snippet nl "php end of line"
+PHP_EOL
+endsnippet
+
+snippet ? "ternary"
+(${1:condition}) ? ${2:if_true} : ${3:if_false};
+endsnippet
+
+snippet map "array map"
+array_map(${2:function(\$${3:element}){$0}}, ${1:array})
+endsnippet
+
+snippet filter "array filter"
+array_filter(${1:array}, ${2:function(\$${3:element}){$0}})
+endsnippet
