@@ -4,12 +4,18 @@ set nocompatible
 filetype off
 set runtimepath+=~/.vim/bundle/ultisnips
 set runtimepath+=~/.vim/ftdetect/
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 " ---------------------------------------------
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"                                            
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+inoremap <tab> <C-p>
 
 syntax on
 
@@ -21,19 +27,6 @@ set path=.,/usr/include,,**
 
 let mapleader = " "
 
-" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-function! ToggleLineNumber()
-    if(&relativenumber == 1)
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-
-" code indentation
-map <Leader>] :s/.*/    &/<cr> :noh<cr>
-map <Leader>[ :s/    //<cr> :noh<cr>
-
 " get rid of highlighted search terms
 map <Leader>c :noh<cr>
 
@@ -44,7 +37,7 @@ map <Leader>2 :set background=dark<cr>
 map <Leader>r :!./%
 
 " toggle relative or absolut line numbers
-map <Leader>n :call ToggleLineNumber()<cr>
+map <Leader>n :set number!<cr>
 
 " substitution
 map <Leader>S :%s/
@@ -78,9 +71,13 @@ map <Leader>t :tabe .<cr>
 " search for file to open
 map <Leader>o :find 
 
+" emmet
+map <Leader>, <C-y>,
+
 map Q @q
 
 set relativenumber
+set number
 set ruler
 set cmdheight=2
 set hlsearch

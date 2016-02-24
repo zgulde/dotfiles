@@ -1,5 +1,6 @@
 # grab env variables
 source ~/.env
+source ~/git-completion.bash
 
 # these two git functions copied from http://ezprompt.net/
 #
@@ -87,8 +88,8 @@ function sendEmail {
 }
 
 PATH=$PATH:/Users/zach/scripts
-
-alias vim='mvim -v'
+# add current directory to PATH
+PATH="$PATH:."
 
 alias .='cd ..'
 alias ..='cd ../..'
