@@ -1,7 +1,7 @@
 " Vundle Stuff
 " https://github.com/VundleVim/Vundle.vim
 set nocompatible
-filetype off
+filetype on
 set runtimepath+=~/.vim/bundle/ultisnips
 set runtimepath+=~/.vim/ftdetect/
 
@@ -14,8 +14,6 @@ set omnifunc=syntaxcomplete#Complete
 let g:UltiSnipsExpandTrigger="<tab>"                                            
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-inoremap <tab> <C-p>
 
 syntax on
 
@@ -71,6 +69,10 @@ map <Leader>t :tabe .<cr>
 " search for file to open
 map <Leader>o :find 
 
+" better (for me) navigation to beggining of line
+nnoremap 0 ^
+nnoremap ^ 0
+
 " emmet
 map <Leader>, <C-y>,
 
@@ -94,5 +96,3 @@ set colorcolumn=80,100
 set cursorline
 
 colorscheme solarized
-
-execute pathogen#infect()

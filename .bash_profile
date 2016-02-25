@@ -87,6 +87,11 @@ function sendEmail {
         -F text="$BODY"
 }
 
+# converts a string to escaped ascii codes eg $ toAsciiCodes 'hello, world!'
+function toAsciiCodes {
+    echo $1 | hexdump | sed -e 's/.\{7\}//' -e 's/ /\\x/g' | tr -d '\n' | sed -e 's/\(\\x\)*$//g' -e 's/\\x0a$//' | tr -d '\n'
+}
+
 PATH=$PATH:/Users/zach/scripts
 # add current directory to PATH
 PATH="$PATH:."
@@ -117,7 +122,7 @@ alias ehf='sudo subl /etc/hosts'
 
 alias reload='source ~/.bash_profile'
 
-# use curl to just get the headers of a full response
+# use curl to just get the headers instead of a full response
 function curlh {
     curl -s -D - $1 -o /dev/null | sed 's/.*/< &/'
 }
@@ -180,6 +185,7 @@ function vl {
 	fi
 }
 
+# get the HTTP status code from a site eg getStatus google.com
 function getStatus {
 	curl -vs $1 2>&1 | grep '< HTTP/1.1'  | sed -e 's/< HTTP\/1\.1\ //g'
 }
