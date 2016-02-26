@@ -139,7 +139,7 @@ alias lt='echo "------- Most Recent --------" && ll -t'
 alias lat='echo "------- Most Recent --------" && la -t'
 alias ltr='ll -tr && echo "------- Most Recent --------"'
 alias latr='la -tr && echo "------- Most Recent --------"'
-alias lsd='ls | lolcat'
+alias lsd='la | lolcat'
 
 #confirmation when manipulating files
 alias rm='rm -iv'
@@ -221,6 +221,7 @@ php ~/php/welcome.php
 echolinebreak
 
 fortune -a | randcowsay | lolcat
+
 
 export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "
 

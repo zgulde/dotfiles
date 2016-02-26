@@ -5,7 +5,8 @@ filetype on
 set runtimepath+=~/.vim/bundle/ultisnips
 set runtimepath+=~/.vim/ftdetect/
 
-filetype plugin on
+execute pathogen#infect()
+filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
 " ---------------------------------------------
@@ -76,6 +77,7 @@ nnoremap ^ 0
 " emmet
 map <Leader>, <C-y>,
 
+" execute macro in q
 map Q @q
 
 set relativenumber

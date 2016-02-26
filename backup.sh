@@ -1,5 +1,22 @@
 #!/bin/sh
 
+# plugin list
+echo "-----------Sublime Plugins-------------" > plugins.txt
+ls /Users/zach/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages >> plugins.txt
+echo "" >> plugins.txt
+
+echo "----------Vim Stuff----------" >> plugins.txt
+echo "--- /plugin" >> plugins.txt
+ls ~/.vim/plugin >> plugins.txt
+echo "--- /autoload" >> plugins.txt
+ls ~/.vim/autoload >> plugins.txt
+echo "--- /bundle" >> plugins.txt
+ls ~/.vim/bundle >> plugins.txt
+echo "--- /colors"  >> plugins.txt
+ls ~/.vim/colors >> plugins.txt
+
+# backup data
+
 echo "last back up" > backup.log
 echo $(/bin/date) >> backup.log
 cowsay "Backing up..." >> backup.log
@@ -16,7 +33,7 @@ echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "copying sublime snippets..." >> backup.log
 cp -v -a ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/snippets/. sublimeSnippets/ >> backup.log
 cowsay "copying vim snippets..." >> backup.log
-cp -v -a ~/.vim/UltiSnips/. vimSnippets/> backup.log
+cp -v -a ~/.vim/UltiSnips/. vimSnippets/ >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .bash_profile..." >> backup.log
 cp -v ~/.bash_profile . >> backup.log

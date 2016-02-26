@@ -1,0 +1,35 @@
+-----------Sublime Plugins-------------
+0_package_control_loader.sublime-package
+Alignment.sublime-package
+Better CoffeeScript.sublime-package
+BracketHighlighter.sublime-package
+ColorSchemeEditor.sublime-package
+Colorsublime.sublime-package
+DocBlockr.sublime-package
+Emmet.sublime-package
+HTML Mustache.sublime-package
+Laravel Blade Highlighter.sublime-package
+Markdown Preview.sublime-package
+Neon Color Scheme.sublime-package
+Package Control.sublime-package
+PyV8
+Python 3.sublime-package
+SASS Build.sublime-package
+SideBarEnhancements.sublime-package
+SqlBeautifier.sublime-package
+SublimeOnSaveBuild.sublime-package
+Theme - Soda.sublime-package
+wpseek.com WordPress Developer Assistant.sublime-package
+
+----------Vim Stuff----------
+--- /plugin
+auto-pairs.vim
+--- /autoload
+pathogen.vim
+--- /bundle
+auto-pairs
+supertab
+ultisnips
+vim-fireplace
+--- /colors
+solarized.vim
