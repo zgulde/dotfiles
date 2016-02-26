@@ -1,5 +1,3 @@
-" Vundle Stuff
-" https://github.com/VundleVim/Vundle.vim
 set nocompatible
 filetype on
 set runtimepath+=~/.vim/bundle/ultisnips
@@ -76,6 +74,8 @@ nnoremap ^ 0
 
 " emmet
 map <Leader>, <C-y>,
+
+nmap K :NERDTree<cr>
 
 " execute macro in q
 map Q @q

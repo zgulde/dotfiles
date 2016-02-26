@@ -28,8 +28,10 @@ auto-pairs.vim
 pathogen.vim
 --- /bundle
 auto-pairs
+nerdtree
 supertab
 ultisnips
 vim-fireplace
+vim-surround
 --- /colors
 solarized.vim
