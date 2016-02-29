@@ -31,7 +31,10 @@ auto-pairs
 nerdtree
 supertab
 ultisnips
+vim-commentary
+vim-easy-align
 vim-fireplace
+vim-multiple-cursors
 vim-surround
 --- /colors
 solarized.vim

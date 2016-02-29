@@ -77,6 +77,10 @@ map <Leader>, <C-y>,
 
 nmap K :NERDTree<cr>
 
+" alignment plugin
+nmap ga <Plug>(EasyAlign)
+vmap ga <Plug>(EasyAlign)
+
 " execute macro in q
 map Q @q
 

@@ -112,6 +112,7 @@ alias grep='grep --color=auto'
 
 alias pbgrep='pbpaste | grep'
 alias pback='pbpaste | ack'
+alias pbvim='pbpaste | vim -'
 
 alias subl.='subl .'
 
@@ -224,6 +225,7 @@ fortune -a | randcowsay | lolcat
 
 
 export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "
+export PS2="=> "
 
 # going back and forth from a dp detailed prompt to a mp minimal prompt
 alias mp='export PS1="\[\e[32m\]>\[\e[m\] "'
