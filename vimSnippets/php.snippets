@@ -19,3 +19,17 @@ endsnippet
 snippet filter "array filter"
 array_filter(${1:array}, ${2:function(\$${3:element}){$0}})
 endsnippet
+
+snippet do "do while loop"
+do {
+	$0
+} while (${1:condition});
+endsnippet
+
+snippet set "set a variable based on whether an array key is set"
+$${1:var} = isset($${3:array}['$2']) ? $$3['$2'] : ${4:default};
+endsnippet
+
+snippet throw "throw an exception"
+throw new $1Exception(${3:"$2"});
+endsnippet

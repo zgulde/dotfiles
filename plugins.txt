@@ -29,11 +29,11 @@ pathogen.vim
 --- /bundle
 auto-pairs
 nerdtree
-supertab
 ultisnips
 vim-commentary
 vim-easy-align
 vim-fireplace
+vim-hackernews
 vim-multiple-cursors
 vim-surround
 --- /colors

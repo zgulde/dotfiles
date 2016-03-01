@@ -1,6 +1,5 @@
 # grab env variables
 source ~/.env
-source ~/git-completion.bash
 
 # these two git functions copied from http://ezprompt.net/
 #

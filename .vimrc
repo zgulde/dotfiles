@@ -15,6 +15,8 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 syntax on
+set wildmenu
+set wildmode=list:longest,full
 
 set foldmethod=indent
 set foldlevel=20
@@ -34,7 +36,7 @@ map <Leader>2 :set background=dark<cr>
 map <Leader>r :!./%
 
 " toggle relative or absolut line numbers
-map <Leader>n :set number!<cr>
+map <Leader>n :set relativenumber!<cr>
 
 " substitution
 map <Leader>S :%s/
