@@ -33,3 +33,17 @@ endsnippet
 snippet throw "throw an exception"
 throw new $1Exception(${3:"$2"});
 endsnippet
+
+snippet try "try catch block"
+try{
+	${VISUAL}$1
+} catch ($2Exception $e){
+	$3
+}
+endsnippet
+
+snippet if "if statement"
+if ($1) {
+	${VISUAL}$2
+}
+endsnippet

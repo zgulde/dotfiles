@@ -1,3 +1,15 @@
-snippet ( "surround in parens"
-(${0:${VISUAL}})
+
+snippet date
+`date`
+endsnippet
+
+snippet pythontest "python test"
+`!p 
+from subprocess import call
+snip.rv = call('ls')`
+endsnippet
+
+snippet ex "execute code in the shell in the visual selection"
+`!p import subprocess
+snip.rv = subprocess.check_output(['weather', snip.v.text])`
 endsnippet

@@ -91,9 +91,10 @@ function toAsciiCodes {
     echo $1 | hexdump | sed -e 's/.\{7\}//' -e 's/ /\\x/g' | tr -d '\n' | sed -e 's/\(\\x\)*$//g' -e 's/\\x0a$//' | tr -d '\n'
 }
 
-PATH=$PATH:/Users/zach/scripts
-# add current directory to PATH
-PATH="$PATH:."
+PATH="$PATH:/Users/zach/scripts"
+PATH="$PATH:." # add current directory to PATH
+PATH="$PATH:/usr/local/share/scala/bin" # scala
+
 
 alias .='cd ..'
 alias ..='cd ../..'

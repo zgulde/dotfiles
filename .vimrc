@@ -57,12 +57,10 @@ map <C-[> <C-e>
 map <C-]> <C-y>
 
 " moving between windows
-map <Leader>[ <C-w><C-w>
-map <Leader>] <C-w><C-w>
-
-" window resizing
-map <Leader>- :vertical resize -5<cr>
-map <Leader>= :vertical resize +5<cr>
+nmap <C-h> <C-w>h<C-w>\|
+nmap <C-j> <C-w>j<C-w>_
+nmap <C-k> <C-w>k<C-w>_
+nmap <C-l> <C-w>l<C-w>\|
 
 " new tab
 map <Leader>t :tabe .<cr>
@@ -83,6 +81,9 @@ nmap K :NERDTree<cr>
 nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
 
+" multi-cursor stuff
+let g:multi_cursor_exit_from_insert_mode=0
+
 " execute macro in q
 map Q @q
 
@@ -102,5 +103,8 @@ set ai
 set si
 set colorcolumn=80,100
 set cursorline
+" more natural splits
+set splitbelow
+set splitright
 
 colorscheme solarized

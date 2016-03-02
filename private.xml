@@ -16,10 +16,10 @@
         <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::VK_MODIFIER_MY_CAPS</autogen>
 
         <!-- vim cursor movement while holding caps -->
-        <!-- <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::MY_CAPS, KeyCode::CURSOR_LEFT</autogen> -->
-        <!-- <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::MY_CAPS, KeyCode::CURSOR_DOWN</autogen> -->
-        <!-- <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::MY_CAPS, KeyCode::CURSOR_UP</autogen> -->
-        <!-- <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen> -->
+        <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::MY_CAPS, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::MY_CAPS, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::MY_CAPS, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::MY_CAPS, KeyCode::CURSOR_RIGHT</autogen>
 
         <!-- uiop to left up down right -->
         <!-- <autogen>__KeyToKey__ KeyCode::U, ModifierFlag::MY_CAPS, KeyCode::CURSOR_LEFT</autogen> -->
@@ -33,9 +33,21 @@
         <!-- caps + r to => -->
         <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::MY_CAPS, KeyCode::EQUAL, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
 
-        <!-- caps + f to -> -->
-        <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::MY_CAPS, KeyCode::MINUS, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
+        <!-- caps + f to -> caps + F to <- -->
+        <autogen>
+            __KeyToKey__
+            KeyCode::F, ModifierFlag::MY_CAPS | ModifierFlag::NONE,
+            KeyCode::MINUS,
+            KeyCode::DOT, ModifierFlag::SHIFT_L
+        </autogen>
 
+        <autogen>
+            __KeyToKey__
+            KeyCode::F, ModifierFlag::MY_CAPS | ModifierFlag::SHIFT_R,
+            KeyCode::COMMA, ModifierFlag::SHIFT_L,
+            KeyCode::MINUS
+        </autogen>
+        
         <!-- w and s to up and down; a and d to left and right; q and e home and end -->
         <autogen>
             __KeyToKey__
