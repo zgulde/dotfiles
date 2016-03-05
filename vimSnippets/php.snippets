@@ -20,6 +20,10 @@ snippet filter "array filter"
 array_filter(${1:array}, ${2:function(\$${3:element}){$0}})
 endsnippet
 
+snippet reduce "array reduce"
+array_reduce(${1:array}, ${4:function($${5:acc}, $${6:item})}{$0}${2:, ${3:initial}})
+endsnippet
+
 snippet do "do while loop"
 do {
 	$0

@@ -14,6 +14,10 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" youcompleteme stuff
+let g:ycm_add_preview_to_completeopt = 0
+set completeopt-=preview
+
 syntax on
 set wildmenu
 set wildmode=list:longest,full
@@ -33,7 +37,7 @@ map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
 
 " run the current file
-map <Leader>r :!./%
+map <Leader>r :execute '!' . &ft . ' ' . @%<cr>
 
 " toggle relative or absolut line numbers
 map <Leader>n :set relativenumber!<cr>
@@ -48,9 +52,10 @@ map <Leader>; A;<esc>
 " turn off smart and auto indent for pasting code
 map <Leader>p :set ai!<cr> :set si!<cr> :set ai?<cr>
 
-" code commenting
-map <Leader>m :s/.*/\/\/ &/<cr> :noh<cr>
-map <C-m> :s/\/\/\s//<cr>
+map <Leader>h <C-w>h
+map <Leader>j <C-w>j
+map <Leader>k <C-w>k
+map <Leader>l <C-w>l
 
 " page scrolling
 map <C-[> <C-e>
@@ -93,18 +98,19 @@ set ruler
 set cmdheight=2
 set hlsearch
 set incsearch
-set background=light
+set background=dark
 set expandtab
 set smarttab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set ai
-set si
+set autoindent
+set smartindent
 set colorcolumn=80,100
 set cursorline
-" more natural splits
-set splitbelow
-set splitright
+set splitbelow    " more natural splits
+set splitright    " more natural splits
+set noequalalways " don't resize windows when I split
+set nowrap
 
 colorscheme solarized

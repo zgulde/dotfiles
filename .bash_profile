@@ -129,6 +129,8 @@ function curlh {
 }
 
 alias curlput='curl -X PUT'
+alias curlget='curl -X GET'
+alias curlpost='curl -X POST'
 
 #ls stuff
 alias ls='ls -G'
@@ -165,7 +167,7 @@ alias pushme='git push origin zach'
 
 # do a git diff but just show which files are different
 function gdf {
-    gd $1 | grep ^diff | sed s/diff\ --git\ a//g
+    gd $1 | grep ^diff | sed s/diff\ --git\ a/-\>\ \ /g
 }
 
 #vagrant commands

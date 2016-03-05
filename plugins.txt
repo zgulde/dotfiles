@@ -35,6 +35,7 @@ vim-easy-align
 vim-fireplace
 vim-hackernews
 vim-multiple-cursors
+vim-scala
 vim-surround
 --- /colors
 solarized.vim
