@@ -156,6 +156,7 @@ alias f='open -a Finder ./'
 alias gs='git status'
 alias gl='git log'
 alias gd='git diff'
+alias gdp='git diff HEAD^ HEAD' # show the difference with the previous commit
 alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'

@@ -44,3 +44,4 @@ echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
 
 git commit -am "$(date)"
+git diff HEAD^ HEAD
