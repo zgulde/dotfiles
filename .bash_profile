@@ -133,10 +133,11 @@ alias curlget='curl -X GET'
 alias curlpost='curl -X POST'
 
 #ls stuff
+alias l='ls -Gp1h'
 alias ls='ls -G'
 alias lf='ls -dG1 */'
 alias laf='ls -aG1 -d .*/ */'
-alias ll='ls -Gp1h'
+alias ll='ls -Gplh'
 alias la='ls -Gplah'
 alias lt='echo "------- Most Recent --------" && ll -t'
 alias lat='echo "------- Most Recent --------" && la -t'
