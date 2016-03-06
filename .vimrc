@@ -14,10 +14,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" youcompleteme stuff
-let g:ycm_add_preview_to_completeopt = 0
-set completeopt-=preview
-
 syntax on
 set wildmenu
 set wildmode=list:longest,full
@@ -36,8 +32,9 @@ map <Leader>c :noh<cr>
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
 
-" run the current file
-map <Leader>r :execute '!' . &ft . ' ' . @%<cr>
+" run the current file, read in the output to the end of the file, comment it
+" out, and visually select all the output
+map <Leader>r Go:r !php %'[VGogcgvk
 
 " toggle relative or absolut line numbers
 map <Leader>n :set relativenumber!<cr>
