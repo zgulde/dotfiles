@@ -1,17 +1,11 @@
 snippet if
 if (${1:condition}){
-    ${0:stuff}
+    $0${VISUAL}
 }
 endsnippet
 
 snippet cl "console.log()"
 console.log(${1:'$2'});$0
-endsnippet
-
-snippet inif "wrap text in an if statement"
-if(${1:condition}){
-    ${VISUAL}
-}
 endsnippet
 
 snippet ? "ternary operator"

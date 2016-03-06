@@ -64,6 +64,9 @@ nmap <C-j> <C-w>j<C-w>_
 nmap <C-k> <C-w>k<C-w>_
 nmap <C-l> <C-w>l<C-w>\|
 
+nnoremap <tab> %
+map <Leader><tab> <C-w>w
+
 " new tab
 map <Leader>t :tabe .<cr>
 
