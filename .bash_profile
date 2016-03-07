@@ -150,7 +150,7 @@ alias rm='rm -iv'
 alias mv='mv -iv'
 alias cp='cp -iv'
 
-#open finder in current directory
+#open finder in pwd
 alias f='open -a Finder ./' 
 
 #git stuff
