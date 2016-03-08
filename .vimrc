@@ -36,7 +36,8 @@ map <Leader>2 :set background=dark<cr>
 
 " run the current file, read in the output to the end of the file, comment it
 " out, and visually select all the output
-map <Leader>r Go:r !node %'[VGogcgvk
+" map <Leader>r Go:r !php %'[VGogcgvk
+map <Leader>r :!ruby %
 
 " toggle relative or absolut line numbers
 map <Leader>n :set relativenumber!<cr>
