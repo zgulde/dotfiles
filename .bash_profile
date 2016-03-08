@@ -1,5 +1,6 @@
 # grab env variables
 source ~/.env
+source ~/.emojis
 
 # these two git functions copied from http://ezprompt.net/
 #
@@ -95,6 +96,9 @@ PATH="$PATH:/Users/zach/scripts"
 PATH="$PATH:." # add current directory to PATH
 PATH="$PATH:/usr/local/share/scala/bin" # scala
 
+function emoji {
+    grep -i $1 ~/.emojis | sed 's/=.*#//'
+}
 
 alias .='cd ..'
 alias ..='cd ../..'
