@@ -2,7 +2,7 @@
 source ~/.env
 source ~/.emojis
 
-# these two git functions copied from http://ezprompt.net/
+# parse_git_branch and parse_git_dirty copied from http://ezprompt.net/
 #
 # get current branch in git repo
 function parse_git_branch() {
@@ -11,6 +11,17 @@ function parse_git_branch() {
 	then
 		STAT=`parse_git_dirty`
 		echo "|${BRANCH}|${STAT}"
+	else
+		echo ""
+	fi
+}
+
+function minimal_git_status() {
+BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | head -c 1`
+	if [ ! "${BRANCH}" == "" ]
+	then
+		STAT=`parse_git_dirty`
+		echo "${BRANCH}${STAT}"
 	else
 		echo ""
 	fi
@@ -238,8 +249,8 @@ export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[3
 export PS2="=> "
 
 # going back and forth from a (dp) detailed prompt to a (mp) minimal prompt
-alias mp='export PS1="\[\e[32m\]>\[\e[m\] "'
-alias dp='export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "'
+alias mp='export PS1="\`minimal_git_status\`\[\e[32m\]>\[\e[m\] "'
+alias dp='export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n\`echo -e \"$HOT_BEVERAGE\"\`  "'
 
 source ~/.profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
