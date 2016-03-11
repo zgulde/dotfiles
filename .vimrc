@@ -10,11 +10,21 @@ set omnifunc=syntaxcomplete#Complete
 " ---------------------------------------------
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"                                            
+let g:UltiSnipsExpandTrigger="<C-p>"                                            
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 xnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvs
 xnoremap <tab> %
+
+" supertab
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabDefaultCompletionType = "context"
+autocmd CompleteDone * pclose
+" have supertab fall back to keyword completion if omnifunc doesn't have anything
+autocmd FileType *
+\ if &omnifunc != '' |
+\   call SuperTabChain(&omnifunc, "<c-x><c-p>") |
+\ endif
 
 syntax on
 set wildmenu
@@ -28,6 +38,9 @@ set path=.,/usr/include,,**
 
 let mapleader = " "
 
+" turn cursor column on and off
+map <Leader>cc :set cursorcolumn!<cr>
+
 " get rid of highlighted search terms
 map <Leader>c :noh<cr>
 
@@ -37,7 +50,7 @@ map <Leader>2 :set background=dark<cr>
 " run the current file, read in the output to the end of the file, comment it
 " out, and visually select all the output
 " map <Leader>r Go:r !php %'[VGogcgvk
-map <Leader>r :!ruby %
+map <Leader>r :!./%
 
 " toggle relative or absolut line numbers
 map <Leader>n :set relativenumber!<cr>
@@ -58,8 +71,12 @@ map <Leader>k <C-w>k
 map <Leader>l <C-w>l
 
 " page scrolling
-map <C-[> <C-e>
-map <C-]> <C-y>
+nnoremap <C-[> <C-e>
+nnoremap <C-]> <C-y>
+
+nnoremap <Leader>[ <C-[>
+nnoremap <Leader>] <C-]>
+
 
 " moving between windows
 nmap <C-h> <C-w>h<C-w>\|
@@ -67,6 +84,7 @@ nmap <C-j> <C-w>j<C-w>_
 nmap <C-k> <C-w>k<C-w>_
 nmap <C-l> <C-w>l<C-w>\|
 
+" what to do with <tab> in normal mode?
 nnoremap <tab> %
 map <Leader><tab> <C-w>w
 
@@ -80,8 +98,13 @@ map <Leader>o :find
 nnoremap 0 ^
 nnoremap ^ 0
 
+" see where I am in nested parens
+nmap <Leader>, va(
+xmap <Leader>, a(
+xmap <Leader>. v`'
+
 " emmet
-map <Leader>, <C-y>,
+let g:user_emmet_leader_key=','
 
 nmap K :NERDTree<cr>
 
@@ -90,7 +113,7 @@ nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
 
 " multi-cursor stuff
-let g:multi_cursor_exit_from_insert_mode=0
+let g:multi_cursor_exit_from_insert_mode=1
 
 " execute macro in q
 map Q @q

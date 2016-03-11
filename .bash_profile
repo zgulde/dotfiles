@@ -75,7 +75,7 @@ function sendEmail {
 		echo "description"
 		echo "    sends an email from my mailgun domain"
 		echo "usage"
-		echo "    $ sendEmail {to} {subject} {body} [from='Don't Reply']"
+		echo "    $ sendEmail <to> <subject> <body> [from='Don't Reply']"
 		echo ""
 		return 
     fi
@@ -108,7 +108,7 @@ PATH="$PATH:." # add current directory to PATH
 PATH="$PATH:/usr/local/share/scala/bin" # scala
 
 function emoji {
-    grep -i $1 ~/.emojis | sed 's/=.*#//'
+grep -i $1 ~/.emojis | sed 's/\(.*\)=\(.*\)#\(.*\)/\3 \1 \2/'
 }
 
 alias .='cd ..'
@@ -244,13 +244,13 @@ echolinebreak
 
 fortune -a | randcowsay | lolcat
 
-
-export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n > "
 export PS2="=> "
 
 # going back and forth from a (dp) detailed prompt to a (mp) minimal prompt
-alias mp='export PS1="\`minimal_git_status\`\[\e[32m\]>\[\e[m\] "'
+alias mp='export PS1="\[\e[33m\]\`minimal_git_status\`\[\e[m\]\[\e[32m\]>\[\e[m\] "'
 alias dp='export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n\`echo -e \"$HOT_BEVERAGE\"\`  "'
+
+dp
 
 source ~/.profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

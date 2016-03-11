@@ -28,7 +28,9 @@ auto-pairs.vim
 pathogen.vim
 --- /bundle
 auto-pairs
+emmet-vim
 nerdtree
+supertab
 ultisnips
 vim-commentary
 vim-easy-align

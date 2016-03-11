@@ -31,3 +31,7 @@ endsnippet
 snippet timeout "set timeout"
 ${1:var ${2:intervalId} = }setTimeout(${3:function(){$0}},${4:500});
 endsnippet
+
+snippet def "define a property on an object"
+Object.defineProperty(${1:obj}, '${2:property}', ${4:{$3}});
+endsnippet
