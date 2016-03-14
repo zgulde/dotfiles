@@ -40,7 +40,10 @@ cowsay "backing up .bash_profile..." >> backup.log
 cp -v ~/.bash_profile . >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up alias file..." >> backup.log
-cp -v ~/.aliases . >> backup.log
+cp -v ~/.bash_aliases . >> backup.log
+echo "\n----------------------------------------------------\n" >> backup.log
+cowsay "backing up functions file..." >> backup.log
+cp -v ~/.bash_functions . >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .vimrc" >> backup.log
 cp -v ~/.vimrc . >> backup.log
