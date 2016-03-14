@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo "last back up" >> backup.log
+echo $(/bin/date) >> backup.log
+cowsay "Backing up..." >> backup.log
+
 # plugin list
 echo "-----------Sublime Plugins-------------" > plugins.txt
 ls /Users/zach/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages >> plugins.txt
@@ -17,9 +21,6 @@ ls ~/.vim/colors >> plugins.txt
 
 # backup data
 
-echo "last back up" > backup.log
-echo $(/bin/date) >> backup.log
-cowsay "Backing up..." >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "copying private.xml..." >> backup.log
 cp -v ~/Library/Application\ Support/Karabiner/private.xml . >> backup.log
@@ -38,10 +39,11 @@ echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .bash_profile..." >> backup.log
 cp -v ~/.bash_profile . >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
+cowsay "backing up alias file..." >> backup.log
+cp -v ~/.aliases . >> backup.log
+echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .vimrc" >> backup.log
 cp -v ~/.vimrc . >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
 
-git diff | less -R
-git commit -a

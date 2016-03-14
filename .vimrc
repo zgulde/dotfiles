@@ -14,7 +14,6 @@ let g:UltiSnipsExpandTrigger="<C-p>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 xnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvs
-xnoremap <tab> %
 
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
@@ -59,6 +58,8 @@ map <Leader>n :set relativenumber!<cr>
 map <Leader>S :%s/
 map <Leader>s :s/
 
+map <Leader>w :w<cr>
+
 " add ; to end of line
 map <Leader>; A;<esc>
 
@@ -84,9 +85,11 @@ nmap <C-j> <C-w>j<C-w>_
 nmap <C-k> <C-w>k<C-w>_
 nmap <C-l> <C-w>l<C-w>\|
 
-" what to do with <tab> in normal mode?
+" what to do with <tab> in normal and visual mode?
 nnoremap <tab> %
-map <Leader><tab> <C-w>w
+xnoremap <tab> %
+
+
 
 " new tab
 map <Leader>t :tabe .<cr>
@@ -124,7 +127,9 @@ set ruler
 set cmdheight=2
 set hlsearch
 set incsearch
-set background=dark
+set ignorecase
+set smartcase
+set background=light
 set expandtab
 set smarttab
 set tabstop=4
@@ -132,11 +137,14 @@ set shiftwidth=4
 set softtabstop=4
 set autoindent
 set smartindent
+set breakindent
 set colorcolumn=80,100
 set cursorline
 set splitbelow    " more natural splits
 set splitright    " more natural splits
 set noequalalways " don't resize windows when I split
 set nowrap
+
+" hi Search cterm=underline term=underline
 
 colorscheme solarized
