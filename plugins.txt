@@ -41,4 +41,9 @@ vim-multiple-cursors
 vim-scala
 vim-surround
 --- /colors
+moonshine.vim
+oceandeep.vim
+pencil.vim
 solarized.vim
+stonewashed.vim
+zenburn.vim

@@ -64,13 +64,13 @@ alias lsd='la | lolcat'
 # |                     git stuff                           |
 # +---------------------------------------------------------+
 
-alias gs='git status'
+alias gs='git status -s' 
 alias gl="git log --graph --pretty='<%Cred%H%Creset> %Cgreen%an%Creset %Cblue(%cr)%Creset%n%s%n%n%b'"
 alias gd='git diff'
 alias gdp='git diff HEAD^ HEAD' # show the difference with the previous commit
 alias ga='git add'
 alias gap='git add --patch'
-alias gc='git commit'
+alias gc='git commit' -v
 alias gcm='git commit -m'
 alias gb='git branch'
 alias gco='git checkout'

@@ -46,6 +46,14 @@ map <Leader>c :noh<cr>
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
 
+map <Leader>3 :colo solarized<cr>
+map <Leader>4 :colo zenburn<cr>
+map <Leader>5 :colo pencil<cr>
+map <Leader>6 :colo moonshine<cr>
+map <Leader>7 :colo stonewashed<cr>
+map <Leader>8 :colo oceandeep<cr>
+
+
 " run the current file, read in the output to the end of the file, comment it
 " out, and visually select all the output
 " map <Leader>r Go:r !php %'[VGogcgvk
@@ -129,7 +137,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set background=light
+set background=dark
 set expandtab
 set smarttab
 set tabstop=4
