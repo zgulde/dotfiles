@@ -1,6 +1,7 @@
 source ~/.env
 source ~/.bash_aliases
 source ~/.bash_functions
+source ~/.bashrc
 source ~/.emojis
 source ~/.profile
 source ~/.rvm/scripts/rvm # Load RVM into a shell session *as a function*

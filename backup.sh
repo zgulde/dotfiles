@@ -48,5 +48,8 @@ echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .vimrc" >> backup.log
 cp -v ~/.vimrc . >> backup.log
 echo "\n----------------------------------------------------\n" >> backup.log
+cowsay "backing up my vim color scheme" >> backup.log
+cp -v ~/.vim/colors/mine.vim . >> backup.log
+echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
 

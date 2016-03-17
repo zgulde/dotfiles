@@ -34,7 +34,7 @@ alias curlpost='curl -X POST'
 # |              preferable implementation                |
 # +-------------------------------------------------------+
 
-alias vim='mvim -v'
+alias vim='/usr/local/Cellar/macvim/7.4-88/MacVim.app/Contents/MacOS/Vim'
 
 # confirmation and verbosity when manipulating files
 alias rm='rm -iv'
@@ -65,12 +65,12 @@ alias lsd='la | lolcat'
 # +---------------------------------------------------------+
 
 alias gs='git status -s' 
-alias gl="git log --graph --pretty='<%Cred%H%Creset> %Cgreen%an%Creset %Cblue(%cr)%Creset%n%s%n%n%b'"
+alias gl="git log --graph --pretty='%Cgreen%an%Creset %Cblue(%cr)%Creset <%Cred%H%Creset>%n%s%n%n%b'"
 alias gd='git diff'
 alias gdp='git diff HEAD^ HEAD' # show the difference with the previous commit
 alias ga='git add'
 alias gap='git add --patch'
-alias gc='git commit' -v
+alias gc='git commit -v'
 alias gcm='git commit -m'
 alias gb='git branch'
 alias gco='git checkout'

@@ -6,24 +6,15 @@ set runtimepath+=~/.vim/ftdetect/
 execute pathogen#infect()
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
+runtime macros/matchit.vim
 
 " ---------------------------------------------
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<C-p>"                                            
+let g:UltiSnipsExpandTrigger="<tab>"                                            
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 xnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvs
-
-" supertab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-" let g:SuperTabDefaultCompletionType = "context"
-autocmd CompleteDone * pclose
-" have supertab fall back to keyword completion if omnifunc doesn't have anything
-autocmd FileType *
-\ if &omnifunc != '' |
-\   call SuperTabChain(&omnifunc, "<c-x><c-p>") |
-\ endif
 
 syntax on
 set wildmenu
@@ -52,12 +43,13 @@ map <Leader>5 :colo pencil<cr>
 map <Leader>6 :colo moonshine<cr>
 map <Leader>7 :colo stonewashed<cr>
 map <Leader>8 :colo oceandeep<cr>
+map <Leader>z :colo mine<cr>
 
 
 " run the current file, read in the output to the end of the file, comment it
 " out, and visually select all the output
-" map <Leader>r Go:r !php %'[VGogcgvk
-map <Leader>r :!./%
+map <Leader>r Go:r !./%'[VGogcgvk
+" map <Leader>r :!./%
 
 " toggle relative or absolut line numbers
 map <Leader>n :set relativenumber!<cr>
@@ -78,6 +70,8 @@ map <Leader>h <C-w>h
 map <Leader>j <C-w>j
 map <Leader>k <C-w>k
 map <Leader>l <C-w>l
+
+map<Leader><Leader> :call SyntaxAttr()<CR>
 
 " page scrolling
 nnoremap <C-[> <C-e>
@@ -126,6 +120,8 @@ vmap ga <Plug>(EasyAlign)
 " multi-cursor stuff
 let g:multi_cursor_exit_from_insert_mode=1
 
+let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html']
+
 " execute macro in q
 map Q @q
 
@@ -155,4 +151,25 @@ set nowrap
 
 " hi Search cterm=underline term=underline
 
-colorscheme solarized
+colorscheme mine
+
+" remove cursor line, relative numbers when leaving window
+augroup highlight_follows_focus
+  autocmd!
+  autocmd WinEnter * set cursorline
+  autocmd WinLeave * set nocursorline
+augroup END
+
+augroup active_relative_number
+  au!
+  au BufEnter * :setlocal number relativenumber
+  au WinEnter * :setlocal number relativenumber
+  au BufLeave * :setlocal nonumber norelativenumber
+  au WinLeave * :setlocal nonumber norelativenumber
+augroup END
+
+" augroup remove_cursorline_on_leaving_insert
+"   autocmd!
+"   autocmd InsertEnter * set cursorline
+"   autocmd Insertleave * set nocursorline
+" augroup END

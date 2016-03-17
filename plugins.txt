@@ -25,12 +25,14 @@ wpseek.com WordPress Developer Assistant.sublime-package
 --- /plugin
 auto-pairs.vim
 --- /autoload
+SyntaxAttr.vim
+matchit.vim
 pathogen.vim
+ruby-matchit.vim
 --- /bundle
 auto-pairs
 emmet-vim
 nerdtree
-supertab
 ultisnips
 vim-blade
 vim-commentary
@@ -40,10 +42,13 @@ vim-hackernews
 vim-multiple-cursors
 vim-scala
 vim-surround
+xterm-color-table.vim
 --- /colors
+mine.vim
 moonshine.vim
 oceandeep.vim
 pencil.vim
 solarized.vim
+stonewashed.bak
 stonewashed.vim
 zenburn.vim
