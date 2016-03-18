@@ -34,6 +34,7 @@ map <Leader>cc :set cursorcolumn!<cr>
 " get rid of highlighted search terms
 map <Leader>c :noh<cr>
 
+" playing with colorschemes
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
 
@@ -43,12 +44,23 @@ map <Leader>5 :colo pencil<cr>
 map <Leader>6 :colo moonshine<cr>
 map <Leader>7 :colo stonewashed<cr>
 map <Leader>8 :colo oceandeep<cr>
+map <Leader>9 :colo pyte<cr>
+
 map <Leader>z :colo mine<cr>
+
+map <Leader>11 :colo colorsbox-faff<cr>
+map <Leader>12 :colo colorsbox-greenish<cr>
+map <Leader>13 :colo colorsbox-material<cr>
+map <Leader>14 :colo colorsbox-stblue<cr>
+map <Leader>15 :colo colorsbox-stbright<cr>
+map <Leader>16 :colo colorsbox-steighties<cr>
+map <Leader>17 :colo colorsbox-stnight<cr>
+
 
 
 " run the current file, read in the output to the end of the file, comment it
 " out, and visually select all the output
-map <Leader>r Go:r !./%'[VGogcgvk
+map <Leader>r Go:r !%'[VGogcgvk
 " map <Leader>r :!./%
 
 " toggle relative or absolut line numbers
@@ -71,7 +83,7 @@ map <Leader>j <C-w>j
 map <Leader>k <C-w>k
 map <Leader>l <C-w>l
 
-map<Leader><Leader> :call SyntaxAttr()<CR>
+map <Leader><Leader> :call SyntaxAttr()<CR>
 
 " page scrolling
 nnoremap <C-[> <C-e>
@@ -151,9 +163,10 @@ set nowrap
 
 " hi Search cterm=underline term=underline
 
-colorscheme mine
+colorscheme solarized
 
 " remove cursor line, relative numbers when leaving window
+" https://www.reddit.com/r/vim/comments/4aab93/weekly_vim_tips_and_tricks_thread_1/
 augroup highlight_follows_focus
   autocmd!
   autocmd WinEnter * set cursorline
@@ -168,8 +181,7 @@ augroup active_relative_number
   au WinLeave * :setlocal nonumber norelativenumber
 augroup END
 
-" augroup remove_cursorline_on_leaving_insert
-"   autocmd!
-"   autocmd InsertEnter * set cursorline
-"   autocmd Insertleave * set nocursorline
-" augroup END
+" gui stuff
+set guioptions-=L
+set guioptions-=r
+set guifont=Ubuntu\ Mono:h16

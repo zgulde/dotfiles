@@ -26,6 +26,7 @@ wpseek.com WordPress Developer Assistant.sublime-package
 auto-pairs.vim
 --- /autoload
 SyntaxAttr.vim
+colorsbox.vim
 matchit.vim
 pathogen.vim
 ruby-matchit.vim
@@ -44,10 +45,18 @@ vim-scala
 vim-surround
 xterm-color-table.vim
 --- /colors
+colorsbox-faff.vim
+colorsbox-greenish.vim
+colorsbox-material.vim
+colorsbox-stblue.vim
+colorsbox-stbright.vim
+colorsbox-steighties.vim
+colorsbox-stnight.vim
 mine.vim
 moonshine.vim
 oceandeep.vim
 pencil.vim
+pyte.vim
 solarized.vim
 stonewashed.bak
 stonewashed.vim
