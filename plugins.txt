@@ -52,6 +52,7 @@ colorsbox-stblue.vim
 colorsbox-stbright.vim
 colorsbox-steighties.vim
 colorsbox-stnight.vim
+hybrid.vim
 mine.vim
 moonshine.vim
 oceandeep.vim

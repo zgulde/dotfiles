@@ -16,7 +16,7 @@ function getStatus {
 	curl -vs $1 2>&1 | grep '< HTTP/1.1'  | sed -e 's/< HTTP\/1\.1\ //g'
 }
 
-function mkdircd {
+function mcd {
     mkdir $1; cd $1;
 }
 

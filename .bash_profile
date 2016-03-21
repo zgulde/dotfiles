@@ -10,6 +10,8 @@ PATH="$PATH:/Users/zach/scripts"
 PATH="$PATH:." # add current directory to PATH
 PATH="$PATH:/usr/local/share/scala/bin" # scala
 
+bind '"\t":menu-complete'
+
 # prompt
 export PS2="=> "
 alias mp='export PS1="\[\e[33m\]\`minimal_git_status\`\[\e[m\]\[\e[32m\]>\[\e[m\] "'
