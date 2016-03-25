@@ -7,8 +7,8 @@ set ruler
 set cmdheight=2
 set hlsearch
 set incsearch
-set ignorecase
-set smartcase
+set ignorecase "case insensitive search
+set smartcase  "unless there is a capital letter
 set background=dark
 set expandtab
 set smarttab
@@ -17,7 +17,7 @@ set shiftwidth=4
 set softtabstop=4
 set autoindent
 set smartindent
-set breakindent
+set breakindent "word wrap won't screw up formatting
 set colorcolumn=80,100
 set cursorline
 set splitbelow    " more natural splits
@@ -31,8 +31,9 @@ set foldmethod=indent
 set foldlevel=20
 set path=.,/usr/include,,** " searching through files in current directory
 " gui stuff
-set guioptions-=L
+set guioptions-=L "get rid of scrollbars
 set guioptions-=r
+set guioptions-=e "get rid of gui tabs
 set guifont=Ubuntu\ Mono:h16
 
 syntax on
@@ -57,7 +58,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 xnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvs
 
 " emmet
-let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key='<C-m>'
 
 nmap K :NERDTree<cr>
 
@@ -72,6 +73,7 @@ let g:multi_cursor_exit_from_insert_mode=1
 " |                       Leader Mappings                        |
 " +--------------------------------------------------------------+
 
+" spacebar as leader
 let mapleader = " "
 
 " turn cursor column on and off
@@ -83,10 +85,10 @@ map <Leader>c :noh<cr>
 " run the current file, read in the output to the end of the file, comment it
 " out, and visually select all the output
 map <Leader>r Go:r !%'[VGogcgvk
-" map <Leader>r :!./%
 
 " toggle relative or absolut line numbers
 map <Leader>n :set relativenumber!<cr>
+map <Leader>nn :set norelativenumber<cr> :set nonumber<cr>
 
 " substitution
 map <Leader>S :%s/
@@ -158,6 +160,9 @@ nmap <C-j> <C-w>j<C-w>_
 nmap <C-k> <C-w>k<C-w>_
 nmap <C-l> <C-w>l<C-w>\|
 
+" emacs style beginning and end of line
+imap <c-e> <c-o>$
+imap <c-a> <c-o>0
 
 " +--------------------------------------------------------------+
 " |                       Other Mappings                         |
@@ -167,16 +172,28 @@ nmap <C-l> <C-w>l<C-w>\|
 nnoremap <tab> %
 xnoremap <tab> %
 
-" better (for me) navigation to beggining of line
+" better navigation to beggining of line
 nnoremap 0 ^
 nnoremap ^ 0
 xnoremap 0 ^
 xnoremap ^ 0
 
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" better yanking
+nmap Y y$
+
 " execute macro in q
 map Q @q
 
 let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html']
+
+
+" +--------------------------------------------------------------+
+" |                        Autocommands                          |
+" +--------------------------------------------------------------+
 
 " remove cursor line, relative numbers when leaving window
 " https://www.reddit.com/r/vim/comments/4aab93/weekly_vim_tips_and_tricks_thread_1/
@@ -194,3 +211,6 @@ augroup active_relative_number
   au WinLeave * :setlocal nonumber norelativenumber
 augroup END
 
+" close autocompletion preview window automatically
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
