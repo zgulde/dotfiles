@@ -151,3 +151,8 @@ function minimal_git_status() {
 		echo ""
 	fi
 }
+
+function rgrep() {
+    grep -iRn $1 ./
+}
+alias grepr='rgrep'

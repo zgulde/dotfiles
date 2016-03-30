@@ -2,6 +2,8 @@
 # |              general utility                          |
 # +-------------------------------------------------------+
 
+alias pbbl='pebble build && pebble install --emulator aplite && pebble logs'
+
 alias .='cd ..'
 alias ..='cd ../..'
 alias ...='cd ../../..'

@@ -32,7 +32,9 @@ pathogen.vim
 ruby-matchit.vim
 --- /bundle
 auto-pairs
+base16-vim
 emmet-vim
+jshint.vim
 nerdtree
 ultisnips
 vim-blade
@@ -45,6 +47,9 @@ vim-scala
 vim-surround
 xterm-color-table.vim
 --- /colors
+cake16.vim
+cascadia.vim
+cleanroom.vim
 colorsbox-faff.vim
 colorsbox-greenish.vim
 colorsbox-material.vim
@@ -53,12 +58,20 @@ colorsbox-stbright.vim
 colorsbox-steighties.vim
 colorsbox-stnight.vim
 hybrid.vim
+laederon.vim
+lucius.vim
+materialbox.vim
 mine.vim
 moonshine.vim
 oceandeep.vim
+off.vim
 pencil.vim
+proton.vim
 pyte.vim
+rakr.vim
+soda.vim
 solarized.vim
+stonewashed-gui.vim
 stonewashed.bak
 stonewashed.vim
 zenburn.vim
