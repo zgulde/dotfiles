@@ -5,7 +5,7 @@ if (${1:condition}){
 endsnippet
 
 snippet cl "console.log()"
-console.log(${1:'$2'});$0
+console.log(${1:${VISUAL}});$0
 endsnippet
 
 snippet ? "ternary operator"
@@ -34,4 +34,12 @@ endsnippet
 
 snippet def "define a property on an object"
 Object.defineProperty(${1:obj}, '${2:property}', ${4:{$3}});
+endsnippet
+
+snippet desc "mocha describe"
+describe("${1:description}", function(){$0});
+endsnippet
+
+snippet it "mocha it"
+it("${1:description}", function(){$0});
 endsnippet

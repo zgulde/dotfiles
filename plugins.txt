@@ -34,8 +34,8 @@ ruby-matchit.vim
 auto-pairs
 base16-vim
 emmet-vim
-jshint.vim
 nerdtree
+tern_for_vim
 ultisnips
 vim-blade
 vim-commentary
@@ -61,6 +61,7 @@ hybrid.vim
 laederon.vim
 lucius.vim
 materialbox.vim
+me.vim
 mine.vim
 moonshine.vim
 oceandeep.vim

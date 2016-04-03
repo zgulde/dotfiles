@@ -72,6 +72,9 @@ vmap ga <Plug>(EasyAlign)
 " multi-cursor stuff
 let g:multi_cursor_exit_from_insert_mode=1
 
+" tern js
+let g:tern_show_signature_in_pum=1
+
 " +--------------------------------------------------------------+
 " |                       Leader Mappings                        |
 " +--------------------------------------------------------------+
@@ -275,5 +278,5 @@ augroup active_relative_number
 augroup END
 
 " close autocompletion preview window automatically
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
