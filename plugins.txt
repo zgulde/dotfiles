@@ -19,11 +19,13 @@ SideBarEnhancements.sublime-package
 SqlBeautifier.sublime-package
 SublimeOnSaveBuild.sublime-package
 Theme - Soda.sublime-package
+Vintageous.sublime-package
 wpseek.com WordPress Developer Assistant.sublime-package
 
 ----------Vim Stuff----------
 --- /plugin
 auto-pairs.vim
+hlnext.vim.bak
 --- /autoload
 SyntaxAttr.vim
 colorsbox.vim
@@ -34,7 +36,6 @@ ruby-matchit.vim
 auto-pairs
 base16-vim
 emmet-vim
-nerdtree
 tern_for_vim
 ultisnips
 vim-blade
@@ -42,6 +43,7 @@ vim-commentary
 vim-easy-align
 vim-fireplace
 vim-hackernews
+vim-lion
 vim-multiple-cursors
 vim-scala
 vim-surround

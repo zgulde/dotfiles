@@ -15,7 +15,7 @@ bind '"\t":menu-complete'
 # prompt
 export PS2="=> "
 alias mp='export PS1="\[\e[33m\]\`minimal_git_status\`\[\e[m\]\[\e[32m\]>\[\e[m\] "'
-alias dp='export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n\`echo -e \"$HOT_BEVERAGE\"\`  "'
+alias dp='export PS1="\`echolinebreak\`\n\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n\`echo -e \"$HOT_BEVERAGE\"\` "'
 dp
 
 # stuff that happens on new session

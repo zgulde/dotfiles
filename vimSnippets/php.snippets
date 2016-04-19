@@ -55,3 +55,15 @@ if ($1) {
 	${VISUAL}$2
 }
 endsnippet
+
+snippet for "for loop"
+for (\$$1 = ${2:0}; \$$1 < ${3:count($4)}; \$$1++) {
+    $0
+}
+endsnippet
+
+snippet fore "foreach loop"
+foreach (\$${1:array} as \$${2:key}${3: => \$${4:value}}) {
+    $0
+}
+endsnippet

@@ -21,7 +21,13 @@ snippet iife "immediately invoked function expression"
 endsnippet
 
 snippet f "function"
-function($1){$2}
+function($1){$0}
+endsnippet
+
+snippet fun "function"
+function ${1:name} ($2) {
+	${VISUAL}$0
+}
 endsnippet
 
 snippet int "set Interval"
@@ -42,4 +48,8 @@ endsnippet
 
 snippet it "mocha it"
 it("${1:description}", function(){$0});
+endsnippet
+
+snippet req "require"
+var $1 = require('$1');
 endsnippet

@@ -18,7 +18,7 @@ set softtabstop=4
 set autoindent
 set smartindent
 set breakindent "word wrap won't screw up formatting
-set colorcolumn=80,100
+set colorcolumn=80,100,120
 set cursorline
 set splitbelow    " more natural splits
 set splitright    " more natural splits
@@ -37,7 +37,8 @@ set completeopt=menuone
 set guioptions-=L "get rid of scrollbars
 set guioptions-=r
 set guioptions-=e "get rid of gui tabs
-set guifont=Ubuntu\ Mono:h16
+" set guifont=Ubuntu\ Mono:h16
+set guifont=Monaco:h13
 
 syntax on
 
@@ -58,12 +59,13 @@ runtime macros/matchit.vim
 let g:UltiSnipsExpandTrigger="<tab>"                                            
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-xnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvs
+xnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
+vnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
 
 " emmet
 let g:user_emmet_leader_key='<C-m>'
 
-nmap K :NERDTree<cr>
+let g:netrw_liststyle=3
 
 " alignment plugin
 nmap ga <Plug>(EasyAlign)
@@ -82,11 +84,18 @@ let g:tern_show_signature_in_pum=1
 " spacebar as leader
 let mapleader = " "
 
+" filter the current buffer through external command
+map <Leader>f :%!
+map <Leader>e :w !
+
+" duplicate line
+map <Leader>d yyp
+
 " turn cursor column on and off
 map <Leader>cc :set cursorcolumn!<cr>
 
 " get rid of highlighted search terms
-map <Leader>c :noh<cr>
+map <Leader>sc :noh<cr>
 
 " run the current file, read in the output to the end of the file, comment it
 " out, and visually select all the output
@@ -130,6 +139,18 @@ xmap <Leader>. v`'
 nnoremap <Leader>[ <C-[>
 nnoremap <Leader>] <C-]>
 
+" All the fonts
+map <Leader>f1 :set guifont=Ubuntu\ Mono:h16<cr>
+map <Leader>f2 :set guifont=Monaco:h13<cr>
+map <Leader>f3 :set guifont=Menlo:h14<cr>
+map <Leader>f4 :set guifont=monofur:h16<cr>
+map <Leader>f5 :set guifont=Inconsolata:h16<cr>
+map <Leader>f6 :set guifont=Hack:h13<cr>
+" map <Leader>f7 :set guifont=Source\ Code\ Pro:h13<cr>
+" map <Leader>f8 :set guifont=Consolas:h13<cr>
+" map <Leader>f9 :set guifont=Fira\ Code:h13<cr>
+" map <Leader>f0 :set guifont=BPmono:h16<cr>
+
 " playing with colorschemes
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
@@ -142,8 +163,6 @@ map <Leader>6 :colo materialbox<cr>
 map <Leader>7 :colo rakr<cr>
 
 map <Leader>0 :colo off<cr>
-
-
 
 " light color schemes
 map <Leader>11 :colo pyte<cr>
@@ -232,7 +251,11 @@ imap <c-a> <c-o>0
 
 " what to do with <tab> in normal and visual mode?
 nnoremap <tab> %
-xnoremap <tab> %
+vnoremap <tab> %
+
+" improved surround.vim bindings
+vmap s S
+nmap s ys
 
 " better navigation to beggining of line
 xnoremap 0 ^
@@ -244,6 +267,10 @@ xnoremap ^ 0
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+vnoremap H dhPgvhoho
+vnoremap L dpgvlolo
+
+
 " Don't cancel visual selection when changing indent
 xnoremap <  <gv
 xnoremap >  >gv
@@ -254,7 +281,7 @@ nmap Y y$
 " execute macro in q
 map Q @q
 
-let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html']
+let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html', 'php']
 
 
 " +--------------------------------------------------------------+
