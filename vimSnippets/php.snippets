@@ -5,7 +5,7 @@ PHP_EOL
 endsnippet
 
 snippet php "php tags"
-<?php $0${1: ?>}
+<?php $0 ?>
 endsnippet
 
 snippet ? "ternary"
@@ -66,4 +66,12 @@ snippet fore "foreach loop"
 foreach (\$${1:array} as \$${2:key}${3: => \$${4:value}}) {
     $0
 }
+endsnippet
+
+snippet def "define a constant"
+define('$1', $0);
+endsnippet
+
+snippet req "require"
+require${1:_once} '$2';
 endsnippet

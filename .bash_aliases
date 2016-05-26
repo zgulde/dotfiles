@@ -2,6 +2,13 @@
 # |              general utility                          |
 # +-------------------------------------------------------+
 
+alias pyserver='python -m SimpleHTTPServer'
+
+alias todo='gvim -p --remote-tab-silent ~/Dropbox/todo.txt'
+
+alias :q='exit'
+alias :e='vim'
+
 alias pbbl='pebble build && pebble install --emulator aplite && pebble logs'
 
 alias .='cd ..'
@@ -31,10 +38,13 @@ alias f='open -a Finder ./'
 alias curlput='curl -X PUT'
 alias curlget='curl -X GET'
 alias curlpost='curl -X POST'
+alias findr='find . -name '
 
 # +-------------------------------------------------------+
 # |              preferable implementation                |
 # +-------------------------------------------------------+
+
+alias scheme="rlwrap -r -c -f /Users/zach/scheme.txt scheme"
 
 alias vim='/usr/local/Cellar/macvim/7.4-88/MacVim.app/Contents/MacOS/Vim'
 
@@ -77,10 +87,13 @@ alias gcm='git commit -m'
 alias gb='git branch'
 alias gco='git checkout'
 alias gcob='git checkout -b'
+alias gres='git reset HEAD'
 alias push='git push origin'
 alias pull="git pull origin master"
-alias pushme='git push origin zach'
 alias deploy='git push warpspeed master'
+alias pushme='git push origin zach'
+alias checkmeout='git checkout zach'
+alias gfi='git commit -am "$(date)"'
 
 # +---------------------------------------------------------+
 # |                 vagrant commands                        |

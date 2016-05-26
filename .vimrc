@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set nocompatible
 set runtimepath+=~/.vim/bundle/ultisnips
 set runtimepath+=~/.vim/ftdetect/
@@ -9,7 +11,7 @@ set hlsearch
 set incsearch
 set ignorecase "case insensitive search
 set smartcase  "unless there is a capital letter
-set background=dark
+set background=light
 set expandtab
 set smarttab
 set tabstop=4
@@ -32,26 +34,26 @@ set foldlevel=20
 set path=.,/usr/include,,** " searching through files in current directory
 set pumheight=10 "max height for completion menu
 set completeopt=menuone
+set backupdir=~/.vim/swp " don't clutter my working directory with swp files
+set t_Co=256
 
 " gui stuff
 set guioptions-=L "get rid of scrollbars
 set guioptions-=r
 set guioptions-=e "get rid of gui tabs
 " set guifont=Ubuntu\ Mono:h16
-set guifont=Monaco:h13
+set guifont=Monaco:h14
 
 syntax on
 
 filetype on
 filetype plugin indent on
 
-colorscheme solarized
+colorscheme lucius
 
 " +--------------------------------------------------------------+
 " |                          Plugins                             |
 " +--------------------------------------------------------------+
-
-execute pathogen#infect()
 
 runtime macros/matchit.vim
 
@@ -64,6 +66,10 @@ vnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
 
 " emmet
 let g:user_emmet_leader_key='<C-m>'
+
+" vim-slime
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
 
 let g:netrw_liststyle=3
 
@@ -103,7 +109,7 @@ map <Leader>r Go:r !%'[VGogcgvk
 
 " toggle relative or absolut line numbers
 map <Leader>n :set relativenumber!<cr>
-map <Leader>nn :set norelativenumber<cr> :set nonumber<cr>
+map <Leader>nn :set nonumber!<cr>
 
 " substitution
 map <Leader>S :%s/
@@ -115,7 +121,9 @@ map <Leader>w :w<cr>
 map <Leader>; A;<esc>
 
 " turn off smart and auto indent for pasting code
-map <Leader>p :set ai!<cr> :set si!<cr> :set ai?<cr>
+" map <Leader>p :set ai!<cr> :set si!<cr> :set ai?<cr>
+
+map <Leader>p :!newlisp %<cr>
 
 map <Leader>h <C-w>h
 map <Leader>j <C-w>j
@@ -151,7 +159,11 @@ map <Leader>f6 :set guifont=Hack:h13<cr>
 " map <Leader>f9 :set guifont=Fira\ Code:h13<cr>
 " map <Leader>f0 :set guifont=BPmono:h16<cr>
 
-" playing with colorschemes
+" ----- playing with colorschemes -----
+"
+" laracasts colorscheme
+map <Leader>cl :colo xoria256<cr>
+
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
 
@@ -245,6 +257,9 @@ nmap <C-l> <C-w>l<C-w>\|
 imap <c-e> <c-o>$
 imap <c-a> <c-o>0
 
+" **| to *|*
+" imap ** **<left>
+
 " +--------------------------------------------------------------+
 " |                       Other Mappings                         |
 " +--------------------------------------------------------------+
@@ -254,8 +269,8 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 " improved surround.vim bindings
-vmap s S
-nmap s ys
+" vmap s S
+" nmap s ys
 
 " better navigation to beggining of line
 xnoremap 0 ^
@@ -270,6 +285,7 @@ vnoremap K :m '<-2<CR>gv=gv
 vnoremap H dhPgvhoho
 vnoremap L dpgvlolo
 
+inoremap jj <esc>
 
 " Don't cancel visual selection when changing indent
 xnoremap <  <gv
@@ -281,7 +297,7 @@ nmap Y y$
 " execute macro in q
 map Q @q
 
-let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html', 'php']
+let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html', 'php', 'sql']
 
 
 " +--------------------------------------------------------------+

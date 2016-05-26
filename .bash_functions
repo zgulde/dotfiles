@@ -34,17 +34,6 @@ function randcowsay {
     cowsay -f $THISCOW $1
 }
 
-# echos enough '=' to fill one line 
-function echolinebreak {
-	numcolumns=$(tput cols)
-	linebreak=""
-	for (( c=0; c<numcolumns; c++ ))
-	do
-	   linebreak="=$linebreak"
-	done
-		echo $linebreak
-}
-
 # sends an email from my mailgun domain
 #   $ sendEmail <to> <subject> <body> [from='Don't Reply']
 function sendEmail {
