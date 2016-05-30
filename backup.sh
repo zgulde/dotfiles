@@ -24,32 +24,45 @@ ls ~/.vim/colors >> plugins.txt
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "copying private.xml..." >> backup.log
 cp -v ~/Library/Application\ Support/Karabiner/private.xml . >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "copying sublime preferences..." >> backup.log
 cp -v ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings . >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "copying sublime keyboard shortcuts..." >> backup.log
 cp -v ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap . >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "copying sublime snippets..." >> backup.log
 cp -v -a ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/snippets/. sublimeSnippets/ >> backup.log
 cowsay "copying vim snippets..." >> backup.log
 cp -v -a ~/.vim/UltiSnips/. vimSnippets/ >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .bash_profile..." >> backup.log
 cp -v ~/.bash_profile . >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up alias file..." >> backup.log
 cp -v ~/.bash_aliases . >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up functions file..." >> backup.log
 cp -v ~/.bash_functions . >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .vimrc" >> backup.log
 cp -v ~/.vimrc . >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up my vim color scheme" >> backup.log
 cp -v ~/.vim/colors/mine.vim . >> backup.log
+
+echo "\n----------------------------------------------------\n" >> backup.log
+cowsay "backing up tmux.conf..." >> backup.log
+cp -v ~/.tmux.conf . >> backup.log
+
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
 

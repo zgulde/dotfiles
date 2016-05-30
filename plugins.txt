@@ -50,7 +50,6 @@ vim-multiple-cursors
 vim-racket
 vim-scala
 vim-slime
-vim-sneak
 vim-surround
 xterm-color-table.vim
 --- /colors

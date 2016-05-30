@@ -49,7 +49,7 @@ syntax on
 filetype on
 filetype plugin indent on
 
-colorscheme lucius
+colorscheme stonewashed
 
 " +--------------------------------------------------------------+
 " |                          Plugins                             |
