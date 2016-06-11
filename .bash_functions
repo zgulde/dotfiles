@@ -145,3 +145,7 @@ function rgrep() {
     grep -iRn $1 ./
 }
 alias grepr='rgrep'
+
+function g() {
+    g++ $1 && ./a.out
+}

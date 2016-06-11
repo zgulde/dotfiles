@@ -91,9 +91,10 @@ alias gres='git reset HEAD'
 alias push='git push origin'
 alias pull="git pull origin master"
 alias deploy='git push warpspeed master'
-alias pushme='git push origin zach'
 alias checkmeout='git checkout zach'
 alias gfi='git commit -am "$(date)"'
+alias current-branch="gb | grep '^*' | sed 's/*\ //'"
+alias pushme='git push origin "$(current-branch)"'
 
 # +---------------------------------------------------------+
 # |                 vagrant commands                        |

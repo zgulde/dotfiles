@@ -92,7 +92,8 @@ let mapleader = " "
 
 " filter the current buffer through external command
 map <Leader>f :%!
-map <Leader>e :w !
+" map <Leader>e :w !
+map <Leader>e :%!python<cr>
 
 " duplicate line
 map <Leader>d yyp
@@ -119,6 +120,7 @@ map <Leader>w :w<cr>
 
 " add ; to end of line
 map <Leader>; A;<esc>
+map <Leader>, A,<esc>
 
 " turn off smart and auto indent for pasting code
 " map <Leader>p :set ai!<cr> :set si!<cr> :set ai?<cr>
@@ -137,11 +139,6 @@ map <Leader>t :tabe .<cr>
 
 " search for file to open
 map <Leader>o :find 
-
-" see where I am in nested parens
-nmap <Leader>, va(
-xmap <Leader>, a(
-xmap <Leader>. v`'
 
 " tags
 nnoremap <Leader>[ <C-[>
@@ -265,7 +262,7 @@ imap <c-a> <c-o>0
 " +--------------------------------------------------------------+
 
 " what to do with <tab> in normal and visual mode?
-nnoremap <tab> %
+nnoremap <tab> zt
 vnoremap <tab> %
 
 " improved surround.vim bindings

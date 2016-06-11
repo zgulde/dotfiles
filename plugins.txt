@@ -75,6 +75,8 @@ pencil.vim
 proton.vim
 pyte.vim
 rakr.vim
+seoul256-light.vim
+seoul256.vim
 soda.vim
 solarized.vim
 stonewashed-gui.vim
