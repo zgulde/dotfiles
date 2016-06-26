@@ -3,6 +3,7 @@
 Alignment.sublime-package
 Better CoffeeScript.sublime-package
 BracketHighlighter.sublime-package
+CSSTidy.sublime-package
 ColorSchemeEditor.sublime-package
 Colorsublime.sublime-package
 DocBlockr.sublime-package
@@ -44,6 +45,8 @@ vim-commentary
 vim-easy-align
 vim-fireplace
 vim-hackernews
+vim-javascript
+vim-jsx
 vim-lion
 vim-lucius
 vim-multiple-cursors
