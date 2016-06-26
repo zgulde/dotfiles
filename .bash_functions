@@ -151,7 +151,7 @@ function g() {
 }
 
 function docker-cleanup() {
-    for img in $(docker ps -aq); do
-        docker rm $img
+    for id in $(docker ps -a | grep 'Exited' | awk '{print $1}'); do
+        docker rm $id
     done
 }
