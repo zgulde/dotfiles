@@ -149,3 +149,9 @@ alias grepr='rgrep'
 function g() {
     g++ $1 && ./a.out
 }
+
+function docker-cleanup() {
+    for img in $(docker ps -aq); do
+        docker rm $img
+    done
+}

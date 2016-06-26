@@ -9,6 +9,9 @@ source ~/.rvm/scripts/rvm # Load RVM into a shell session *as a function*
 PATH="$PATH:/Users/zach/scripts"
 PATH="$PATH:." # add current directory to PATH
 PATH="$PATH:/usr/local/share/scala/bin" # scala
+PATH="$PATH:/usr/local/go/bin" # go-lang
+
+export GOPATH='/Users/zach/go'
 
 bind '"\t":menu-complete'
 

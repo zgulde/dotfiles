@@ -2,6 +2,8 @@
 # |              general utility                          |
 # +-------------------------------------------------------+
 
+alias docker-env="eval $(docker-machine env)"
+
 alias pyserver='python -m SimpleHTTPServer'
 
 alias todo='gvim -p --remote-tab-silent ~/Dropbox/todo.txt'
@@ -103,6 +105,6 @@ alias pushme='git push origin "$(current-branch)"'
 alias vs='vagrant status'
 alias vh='vagrant halt'
 alias vu='vagrant up'
-alias vssh='cd ~/vagrant-lamp && vagrant ssh'
+alias vssh='vagrant ssh'
 alias vreset='vagrant halt && vagrant up'
 alias wssh='cd ~/warpspeed-vagrant/ && vagrant ssh'
