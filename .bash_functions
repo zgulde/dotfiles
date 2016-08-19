@@ -88,7 +88,7 @@ function parse_git_branch() {
 	if [ ! "${BRANCH}" == "" ]
 	then
 		STAT=`parse_git_dirty`
-		echo "|${BRANCH}|${STAT}"
+		echo "<${BRANCH}>${STAT}"
 	else
 		echo ""
 	fi
@@ -153,5 +153,24 @@ function g() {
 function docker-cleanup() {
     for id in $(docker ps -a | grep 'Exited' | awk '{print $1}'); do
         docker rm $id
+    done
+}
+
+function docker-kill-all() {
+    for id in $(docker ps -q)
+    do
+        docker kill $id
+    done
+}
+
+function docker-image-cleanup() {
+    for imgid in $(docker images | grep \<none\> | awk '{print $3}'); do
+        docker rmi $imgid
+    done
+}
+
+push-all(){
+    for remote in $(git remote -v | awk '{print $1}' | uniq); do
+        git push $remote "$@"
     done
 }

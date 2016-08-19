@@ -2,11 +2,12 @@
 # |              general utility                          |
 # +-------------------------------------------------------+
 
-alias docker-env="eval $(docker-machine env)"
+alias blog='cd ~/personal-site/blog/'
+alias my-site='cd ~/personal-site/'
 
 alias pyserver='python -m SimpleHTTPServer'
 
-alias todo='gvim -p --remote-tab-silent ~/Dropbox/todo.txt'
+alias todo='vim ~/Dropbox/todo-work.txt'
 
 alias :q='exit'
 alias :e='vim'
@@ -33,6 +34,7 @@ alias cls='clear'
 alias pbgrep='pbpaste | grep'
 alias pback='pbpaste | ack'
 alias pbvim='pbpaste | vim -'
+alias pbjson='pbpaste | python -m json.tool | pbcopy'
 
 # open a finder here
 alias f='open -a Finder ./' 
@@ -46,6 +48,9 @@ alias findr='find . -name '
 # |              preferable implementation                |
 # +-------------------------------------------------------+
 
+alias composer='docker run --rm -itv $(pwd):/app composer/composer'
+alias php='/usr/local/php5/bin/php'
+
 alias scheme="rlwrap -r -c -f /Users/zach/scheme.txt scheme"
 
 alias vim='/usr/local/Cellar/macvim/7.4-88/MacVim.app/Contents/MacOS/Vim'
@@ -54,6 +59,8 @@ alias vim='/usr/local/Cellar/macvim/7.4-88/MacVim.app/Contents/MacOS/Vim'
 alias rm='rm -iv'
 alias mv='mv -iv'
 alias cp='cp -iv'
+
+alias mkdir='mkdir -p'
 
 alias egrep='egrep --color=auto'
 alias grep='grep --color=auto'
@@ -83,9 +90,11 @@ alias gl="git log --graph --pretty='%Cgreen%an%Creset %Cblue(%cr)%Creset <%Cred%
 alias gd='git diff'
 alias gdp='git diff HEAD^ HEAD' # show the difference with the previous commit
 alias ga='git add'
+alias gaa='git add -A'
 alias gap='git add --patch'
 alias gc='git commit -v'
 alias gcm='git commit -m'
+alias gcam='git commit -am'
 alias gb='git branch'
 alias gco='git checkout'
 alias gcob='git checkout -b'
@@ -107,4 +116,5 @@ alias vh='vagrant halt'
 alias vu='vagrant up'
 alias vssh='vagrant ssh'
 alias vreset='vagrant halt && vagrant up'
-alias wssh='cd ~/warpspeed-vagrant/ && vagrant ssh'
+alias wssh='cd ~/warpspeed-vagrant/ && vagrant ssh || vagrant up && vagrant ssh'
+alias vlssh='cd ~/vagrant-lamp/ && vagrant ssh || vagrant up && vagrant ssh'
