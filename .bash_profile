@@ -10,17 +10,21 @@ PATH="$PATH:/Users/zach/scripts"
 PATH="$PATH:." # add current directory to PATH
 PATH="$PATH:/usr/local/share/scala/bin" # scala
 PATH="$PATH:/usr/local/go/bin" # go-lang
+PATH="$PATH:/usr/local/php5/bin"
+PATH="$PATH:~/anaconda2/bin"
 
+export EDITOR=vim
 export GOPATH='/Users/zach/go'
 
-bind '"\t":menu-complete'
+shopt -s autocd
+bind TAB:menu-complete
+shopt -s autocd
 
 # prompt
 export PS2="=> "
-alias mp='export PS1="\[\e[33m\]\`minimal_git_status\`\[\e[m\]\[\e[32m\]>\[\e[m\] "'
-alias dp='export PS1="\[\e[34m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n \033[0;36m>\033[0m "'
-# alias dp='export PS1="\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n \033[0;36m>\033[0m "'
-dp
-
+export PS1="\[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n $ "
 # stuff that happens on new session
-fortune -a | randcowsay | lolcat
+# fortune -a | randcowsay | lolcat
+
+# added by Anaconda2 4.1.1 installer
+export PATH="/Users/zach/anaconda2/bin:$PATH"
