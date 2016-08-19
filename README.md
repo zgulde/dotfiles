@@ -5,7 +5,7 @@ This is a repository to back up all my config files just in case the worst happe
 My Current Setup
 
 - Vagrant with VirtualBox
-- Sublime Text 3
+- Vim
 - Karabiner and Seil for key rebinding
 - iTerm
 
