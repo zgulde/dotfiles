@@ -29,12 +29,13 @@ set nowrap
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=*.swp,*.zip
 set foldmethod=indent
 set foldlevel=20
 set path=.,/usr/include,,** " searching through files in current directory
 set pumheight=10 "max height for completion menu
 set completeopt=menuone
-set backupdir=~/.vim/swp " don't clutter my working directory with swp files
+set backupdir=/Users/zach/.vim/swp " don't clutter my working directory with swp files
 set t_Co=256
 
 " gui stuff
@@ -45,7 +46,6 @@ set guioptions-=e "get rid of gui tabs
 set guifont=Monaco:h14
 
 syntax on
-
 filetype on
 filetype plugin indent on
 
@@ -66,6 +66,8 @@ vnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
 
 " emmet
 let g:user_emmet_leader_key='<C-m>'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 " vim-slime
 let g:slime_target = "tmux"
@@ -83,12 +85,20 @@ let g:multi_cursor_exit_from_insert_mode=1
 " tern js
 let g:tern_show_signature_in_pum=1
 
+" ctrlp
+let g:ctrlp_custom_ignore = {
+    \ 'dir':'node_modules\|vendor\|\.git'
+    \}
+
 " +--------------------------------------------------------------+
 " |                       Leader Mappings                        |
 " +--------------------------------------------------------------+
 
 " spacebar as leader
 let mapleader = " "
+
+" start git repl
+map <Leader>wg :!with git<cr>
 
 " filter the current buffer through external command
 map <Leader>f :%!
@@ -240,6 +250,9 @@ map <Leader>37 :colo colorsbox-stnight<cr>
 " |                       Control Mappings                       |
 " +--------------------------------------------------------------+
 
+" emacs has nothing on me!
+vmap <C-x><C-e> :!clisp -q -norc<cr>
+
 " page scrolling
 nnoremap <C-[> <C-e>
 nnoremap <C-]> <C-y>
@@ -261,8 +274,13 @@ imap <c-a> <c-o>0
 " |                       Other Mappings                         |
 " +--------------------------------------------------------------+
 
+" :%!clisp -q -norc<cr>
+
+nnoremap ge :%!
+vnoremap ge :!
+
 " what to do with <tab> in normal and visual mode?
-nnoremap <tab> zt
+nnoremap <tab> za
 vnoremap <tab> %
 
 " improved surround.vim bindings
