@@ -1,3 +1,7 @@
+global !p
+import cgi
+endglobal
+
 snippet bootstrap "include bootstrap from cdn"
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -11,3 +15,6 @@ snippet loremp "lorem ipsum wrapped in p tags"
 <p>Elit minus aliquid repudiandae ea omnis similique maiores temporibus ea minima? Dolores voluptatum iste quibusdam quod consequuntur recusandae nulla magni? Dicta sapiente necessitatibus non a maxime debitis molestias deleniti laudantium!</p>
 endsnippet
 
+snippet e "html encode ententies"
+`!p snip.rv = cgi.escape(snip.v.text)`
+endsnippet
