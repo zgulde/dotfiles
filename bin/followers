@@ -1,0 +1,10 @@
+#!/bin/bash
+
+followers=$(curl -LSs https://github.com/zgulde/followers | pup --color 'h3.follow-list-name a attr{href}' | sed 's/^\///g' | sort)
+following=$(curl -LSs https://github.com/zgulde/following | pup --color 'h3.follow-list-name a attr{href}' | sed 's/^\///g' | sort)
+
+echo 'This is a list of people I follow.'
+echo 'People that are following me are highlighted.'
+echo ''
+
+for person in "$followers";  do echo $following | grep --color=auto "$person" || echo $person; done
