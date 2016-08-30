@@ -42,6 +42,7 @@ This tutorial works for OSX, but the same principal can be applied to other OSs.
     - If you copied my file you should see a setting on the top that says 'My capslock key settings'. Make sure this is checked
     - If you modify private.xml, remember you must click the reload xml button in Karabiner for the changes to take place
     - Check out the [Karabiner documentation][3]
+    - [This is a very helpful reference for keycodes][4]
 
 And you can now use your capslock key for useful things!
 
@@ -75,7 +76,7 @@ The general idea is to not stray from the home row as much as possible. Less mov
 
 feel free to email me with any questions, I'd love to get your feedback!
 
-[zachgulde@gmail.com][4]
+[zachgulde@gmail.com][5]
 
 
 
@@ -83,4 +84,5 @@ feel free to email me with any questions, I'd love to get your feedback!
 [1]: https://pqrs.org/osx/karabiner/
 [2]: https://pqrs.org/osx/karabiner/seil.html.en
 [3]: https://pqrs.org/osx/karabiner/xml.html.en
-[4]: mailto:zachgulde@gmail.com
+[4]: https://github.com/tekezo/Karabiner/blob/master/src/bridge/generator/keycode/data/KeyCode.data
+[5]: mailto:zachgulde@gmail.com
