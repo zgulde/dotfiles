@@ -41,11 +41,13 @@ emmet-vim
 rainbow
 tagbar
 tern_for_vim
+typescript-vim
 ultisnips
 vim-blade
 vim-commentary
 vim-easy-align
 vim-fireplace
+vim-flow
 vim-fugitive
 vim-hackernews
 vim-javascript

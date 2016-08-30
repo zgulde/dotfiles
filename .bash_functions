@@ -17,7 +17,8 @@ function getStatus {
 }
 
 function mcd {
-    mkdir $1; cd $1;
+    mkdir -p "$@"
+    cd "$@"
 }
 
 # use curl to just get the reponse headers instead of a full response
@@ -173,4 +174,36 @@ push-all(){
     for remote in $(git remote -v | awk '{print $1}' | uniq); do
         git push $remote "$@"
     done
+}
+
+git-all-status(){
+    current_dir="$(pwd)"
+    for dir in $(find . -name '.git')
+        do echo -e "\n$dir\n\n"
+        cd $dir
+        cd ..
+        git status
+        cd $current_dir
+    done
+}
+
+server(){
+    local PORT=""
+    local TARGET=""
+
+
+    if [ -z "$1" ]; then
+        PORT=8000
+    else
+        PORT="$1"
+    fi
+
+    if [ -z "$2" ]; then
+        TARGET="./"
+    else
+        TARGET="$2"
+    fi
+
+    php -S localhost:$PORT -t $TARGET
+
 }

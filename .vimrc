@@ -67,11 +67,12 @@ vnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
 " emmet
 let g:user_emmet_leader_key='<C-m>'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html EmmetInstall
 
 " vim-slime
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
+let g:slime_python_ipython = 1
 
 let g:netrw_liststyle=3
 
@@ -254,8 +255,8 @@ map <Leader>37 :colo colorsbox-stnight<cr>
 vmap <C-x><C-e> :!clisp -q -norc<cr>
 
 " page scrolling
-nnoremap <C-[> <C-e>
-nnoremap <C-]> <C-y>
+" nnoremap <C-[> <C-e>
+" nnoremap <C-]> <C-y>
 
 " moving between windows
 nmap <C-h> <C-w>h<C-w>\|

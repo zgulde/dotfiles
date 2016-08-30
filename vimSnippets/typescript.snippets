@@ -1,0 +1,101 @@
+snippet if
+if (${1:condition}){
+    $0${VISUAL}
+}
+endsnippet
+
+snippet cl "console.log()"
+console.log(${1:${VISUAL}});$0
+endsnippet
+
+snippet ? "ternary operator"
+(${1:condition}) ? ${2:if_true} : ${3:if_false};
+endsnippet
+
+snippet dp "set default values for function parameter"
+${1:param} = (typeof $1 !== 'undefined') ? $1 : ${2:default}
+endsnippet
+
+snippet iife "immediately invoked function expression"
+(function(){
+	$0${VISUAL}
+})();
+endsnippet
+
+snippet f "function"
+function($1){$0}
+endsnippet
+
+snippet fun "function"
+function ${1:name} ($2) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet int "set Interval"
+${1:var ${2:intervalId} = }setInterval(${3:function(){$0}},${4:500});
+endsnippet
+
+snippet timeout "set timeout"
+${1:var ${2:intervalId} = }setTimeout(${3:function(){$0}},${4:500});
+endsnippet
+
+snippet def "define a property on an object"
+Object.defineProperty(${1:obj}, '${2:property}', ${4:{$3}});
+endsnippet
+
+snippet desc "mocha describe"
+describe("${1:description}", function(){$0});
+endsnippet
+
+snippet it "mocha it"
+it("${1:description}", function(){$0});
+endsnippet
+
+snippet req "require"
+var $1 = require('$1');
+endsnippet
+
+snippet try "try catch block"
+try {
+	${VISUAL}$0
+} catch (${1:e}) {
+	
+}
+endsnippet
+
+snippet ex "exit process in node"
+process.exit($1);$0
+endsnippet
+
+snippet doc "doc block"
+/*
+ * $0
+ */
+endsnippet
+
+snippet for "for loop"
+for (var $1 = ${2:0}; $1 < ${3:${4:array}.length}; $1++) {
+    $0
+}
+endsnippet
+
+snippet proto "object prototype"
+${1:Array}.prototype.${2:property} = $0
+endsnippet
+
+snippet gete "get element by id"
+document.getElementById('$0')
+endsnippet
+
+snippet getc "get elements by class name"
+document.getElementsByClassName('$0')
+endsnippet
+
+snippet gett "get element by id"
+document.getElementsByTagName('$0')
+endsnippet
+
+snippet adde "add event listener" i
+addEventListener('$1', ${2:function(e){$3}})
+endsnippet
