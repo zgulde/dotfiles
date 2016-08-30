@@ -35,9 +35,9 @@ cp -v ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(O
 
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "copying sublime snippets..." >> backup.log
-cp -v -a ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/snippets/. sublimeSnippets/ >> backup.log
+cp -v -a ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/snippets/. sublime-snippets/ >> backup.log
 cowsay "copying vim snippets..." >> backup.log
-cp -v -a ~/.vim/UltiSnips/. vimSnippets/ >> backup.log
+cp -v -a ~/.vim/UltiSnips/. vim-snippets/ >> backup.log
 
 echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "backing up .bash_profile..." >> backup.log
