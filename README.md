@@ -5,9 +5,11 @@ This is a repository to back up all my config files just in case the worst happe
 My Current Setup
 
 - Vagrant with VirtualBox
-- Vim
+- Vim with all sorts of plugins (see plugins.txt)
 - Karabiner and Seil for key rebinding
 - iTerm
+
+--------------------------------------------------------------------------
 
 While I have you here, I figured I'd write up a tutorial on how to rebind your capslock key.
 
@@ -20,12 +22,10 @@ Inspired by [this reddit thread.](https://www.reddit.com/r/webdev/comments/3oh31
 - you hit it accidentally far too often
 - all the cool people are doing it
 
-
 ### Boring Disclaimer
 
 All directions given for navigating through Seil and Karabiner are current as of the time of writing. Use these instructions at your own risk, I am not responsible for you remapping ' to ` .
 This tutorial works for OSX, but the same principal can be applied to other OSs.
-
 
 ### Process
 
@@ -51,21 +51,25 @@ Briefly, what I am doing is defining a new modifier key (like command, option, o
 
 The general idea is to not stray from the home row as much as possible. Less movement = more effiency!
 
-- `caps + t` : open the terminal
+- `caps + t` : open iTerm
 
-- `caps + enter` : `=>`
+- `caps + r` : `=>`
+
+- `caps + f` : `->`
+
+- `caps + F` : `<-`
+
+- `caps + space` : escape key
 
 - `caps + wasd` : arrow keys
 
+- `caps + hjkl` : also arrow keys
+
 - `caps + qe` : home and end
-
-- `caps + cmd + ws` : cntrl + cmd + up, down for moving code lines in sublime
-
-- `caps + k` : delete current line in sublime
 
 - `caps + delete` : fn + delete because the fn key is so far away
 
-In my private.xml file there is a block of code commented out for vim style cursor navigation with caps + hjkl that you can use
+- `caps + enter` : to actually turn on capslock
 
 #### Thanks for reading!
 
