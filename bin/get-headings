@@ -1,0 +1,39 @@
+#!/usr/bin/env newlisp
+
+(define argv (2 (main-args)))
+
+(define help-message
+  (string "description\n"
+          "    shows the markdown headings for a file\n"
+          "usage\n"
+          "    $ get-headings file1.md [file2.md [...]]"))
+
+(define is-heading? (fn
+  (line)
+  (starts-with line {\s?#} 0)))
+
+(define get-lines (fn 
+  (file)
+  (parse (read-file file) "\n")))
+
+(define get-headings (fn
+  (filename)
+  (filter is-heading? (get-lines filename))))
+
+(define format-headings (fn
+  (filename)
+  (if (file? filename)
+    (string filename
+            "\n------\n"
+            (join (get-headings filename) "\n"))
+    (begin
+      (println (string "Error opening file '" filename "'."))
+      (exit 1)))))
+
+(println (if (>= (length argv) 1)
+           (if (= (length argv) 1)
+             (join (get-headings (argv 0)) "\n")
+             (join (map format-headings argv) "\n==========\n"))
+           help-message))
+
+(exit 0)

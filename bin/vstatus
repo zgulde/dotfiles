@@ -1,0 +1,12 @@
+#!/bin/bash
+
+WARPSPEED_STATUS="$(cd ~/warpspeed-vagrant/; vagrant status)"
+HOMESTEAD_STATUS="$(cd ~/vagrant-homestead/; vagrant status)"
+CODEUP_STATUS="$(cd ~/vagrant-lamp/; vagrant status)"
+
+echo '--------------------------- WARPSPEED STATUS ---------------------------'
+echo "$WARPSPEED_STATUS"
+echo '--------------------------- HOMESTEAD STATUS ---------------------------'
+echo "$HOMESTEAD_STATUS"
+echo '--------------------------- CODEUP STATUS ---------------------------'
+echo "$CODEUP_STATUS"

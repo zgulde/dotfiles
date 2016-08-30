@@ -1,0 +1,77 @@
+#!/usr/local/bin/node
+
+function showHelp(){
+    console.log('+--------------------------------------------+');
+    console.log('| > weather [-v] [-f] [-h]                   |');
+    console.log('+--------------------------------------------+');
+    console.log('| -v - verbose                               |');
+    console.log('| -f - forecast, not the current weather     |');
+    console.log('| -h - display help                          |');
+    console.log('+--------------------------------------------+');
+}
+
+function getCurrentWeather(isVerbose){
+    req.get('http://api.wunderground.com/api/f1ce28a6eb208632/conditions/q/autoip.json',function(err, head, body){
+        if (err) console.log(err);
+
+        data = JSON.parse(body);
+
+        data = data.current_observation;
+
+        var msg = 'Currently ' + data.temp_f + '°F, ' + data.weather; 
+
+        if (isVerbose){
+            msg =  'City: ' + data.display_location.full + '\n' + 
+                msg + '\n' + 
+                'Winds ' + data.wind_string + '\n' + 
+                data.relative_humidity + ' humidity' + '\n' +
+                data.observation_time;
+        }
+
+        console.log(msg);
+    });
+}
+
+function getForecast(isVerbose){
+    req.get('http://api.wunderground.com/api/f1ce28a6eb208632/forecast/q/autoip.json',function(err, head,body){
+        if (err) console.log(err);
+
+        var data = JSON.parse(body);
+        var days = null;
+        var msg = '';
+
+        if (isVerbose) {
+            days = data.forecast.txt_forecast.forecastday;
+            days.slice(1).forEach(function(day){
+                msg += `----------------${day.title}--------------------\n`;
+                msg += day.fcttext + '\n';
+            });
+        } else {
+            days = data.forecast.simpleforecast.forecastday;
+            days.slice(1).forEach(function(day){
+                msg += `${day.date.weekday.slice(0,3)} | h:${day.high.fahrenheit} `;
+                msg += `l:${day.low.fahrenheit} - ${day.conditions}\n`;
+            });
+        }
+
+        process.stdout.write(msg);
+    });
+}
+
+var argv = process.argv.slice(2);
+
+if (argv.indexOf('-h') != -1 || argv.indexOf('-help') != -1) {
+    showHelp();
+    process.exit();
+}
+
+var req  = require('request');
+
+var isVerbose  = (argv.indexOf('-v') != -1) ? true : false;
+var isForecast = (argv.indexOf('-f') != -1) ? true : false;
+
+if (isForecast) {
+    getForecast(isVerbose);
+} else {
+    getCurrentWeather(isVerbose);
+}

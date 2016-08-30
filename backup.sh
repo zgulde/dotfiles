@@ -64,5 +64,9 @@ cowsay "backing up tmux.conf..." >> backup.log
 cp -v ~/.tmux.conf . >> backup.log
 
 echo "\n----------------------------------------------------\n" >> backup.log
+cowsay "backing up my scripts..." >> backup.log
+cp -v ~/bin/* ./bin/ >> backup.log
+
+echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
 

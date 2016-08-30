@@ -1,0 +1,74 @@
+#!/usr/local/bin/node
+
+var fs = require('fs');
+var colors = require('colors');
+
+var file = process.argv[2];
+
+var contents = fs.readFileSync(file).toString();
+
+// whitespace is nice
+console.log();
+
+// add line numbers, then grab only lines that are comments or contain public 
+// functions
+contents = contents.split('\n').map(function(line, index){
+    return {
+        "text": line,
+        "lineNumber": index + 1
+    };
+}).filter(function(line){
+    return (line.text.indexOf('public') !== -1 && line.text.indexOf('function') !== -1) 
+        || (line.text.indexOf('*') !== -1);
+});
+
+
+var oneFunction = [];
+var functions = [];
+
+// create functions two-d array one inner array is lines of what could possibly 
+// be a function
+contents.forEach(function(line){
+    if (line.text.indexOf('/*') !== -1) {
+        functions.push(oneFunction);
+        oneFunction = [];
+    }
+    oneFunction.push(line);
+});
+
+// the first line is an emty array, lets get rid of it
+functions.shift();
+
+
+// get rid of the arrays that are just comments
+functions = functions.filter(function(func){
+    var isFunction = false;
+    func.forEach(function(line){
+        if (line.text.indexOf('public') != -1) isFunction = true;
+    });
+    return isFunction;
+
+// replace the inner array with an object with name and description properties
+}).map(function(func){
+    var funcName = func.pop();
+    return {
+        // grab just the function name and if it is static or not
+        "name": funcName.text.replace('public', '').replace
+        ('function', '').replace(/static/, '$&'.cyan).trim(),
+
+        "description": func.map(function(line){
+            // get rid of the leading comment markers and whitespace
+            return line.text.replace(/[\s\/\*]+/, '');
+        }).join("\n"),
+
+        "lineNumber": funcName.lineNumber
+    };
+    
+}).forEach(function(func){
+    console.log(func.name.bold);
+    console.log(func.description);
+    console.log('---');
+    console.log('line ' + func.lineNumber.toString().green);
+    console.log('======================='.yellow);
+});
+
