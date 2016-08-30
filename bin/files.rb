@@ -8,7 +8,7 @@
 # TODO: consolidate the call to `find` and `wc` into one and parse the output
 #       this will greatly speed performance
 
-source_code_extensions = %w(html css js php rb py)
+source_code_extensions = %w(html css js php rb py java)
 ignores = %w(bootstrap jquery qwest vue vendor node_modules)
 
 extensions_with_line_counts = source_code_extensions.map do |extension|
