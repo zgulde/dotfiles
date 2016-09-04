@@ -7,5 +7,6 @@ For those browsing, my `.bash_profile` just sets a few common settings, my
 aliases and functions are in separate files. `plugins.txt` contains all the
 plugins I use for my editors.
 
-There's also a cool tutorial on rebinding your capslock key in the `capslock.md`
-file.
+There's also [a cool tutorial on rebinding your capslock
+key](https://github.com/zgulde/dotfiles/blob/master/capslock.md) in the
+`capslock.md` file.
