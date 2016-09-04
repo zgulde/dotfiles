@@ -99,6 +99,9 @@ capslock key, so instructions might vary according to your device.
     sudo apt-get install autokey-gtk
     ```
 
+    **Note:** if anything goes wrong with autokey, the log file is located by
+    default in `~/.config/autokey/autokey.log`
+
 3. Write autokey snippets
 
     While autokey gives you the power to write full python scripts, all we
@@ -112,7 +115,7 @@ capslock key, so instructions might vary according to your device.
     <up>
     ```
 
-    and bind it to `super + k`, or whatever key combination you want to trigger
+    and bind it to `super + w`, or whatever key combination you want to trigger
     the up key.
 
     A full list of special keys that autokey supports can be found
