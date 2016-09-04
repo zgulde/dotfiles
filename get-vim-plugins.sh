@@ -12,5 +12,6 @@ git clone https://github.com/jonathanfilip/vim-lucius.git
 git clone https://github.com/terryma/vim-multiple-cursors.git
 git clone https://github.com/jpalardy/vim-slime.git
 git clone https://github.com/tpope/vim-surround.git
+git clone https://github.com/justinmk/vim-sneak.git
 
 cd -
