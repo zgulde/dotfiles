@@ -21,6 +21,7 @@ set autoindent
 set smartindent
 set breakindent "word wrap won't screw up formatting
 set colorcolumn=80,100,120
+set textwidth=80
 set cursorline
 set splitbelow    " more natural splits
 set splitright    " more natural splits
@@ -49,7 +50,7 @@ syntax on
 filetype on
 filetype plugin indent on
 
-colorscheme stonewashed
+colorscheme lucius
 
 " +--------------------------------------------------------------+
 " |                          Plugins                             |
@@ -168,84 +169,9 @@ map <Leader>f6 :set guifont=Hack:h13<cr>
 " map <Leader>f0 :set guifont=BPmono:h16<cr>
 
 " ----- playing with colorschemes -----
-"
-" laracasts colorscheme
-map <Leader>cl :colo xoria256<cr>
 
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
-
-" colorschemes with both light and dark variants
-map <Leader>3 :colo solarized<cr>
-map <Leader>4 :colo pencil<cr>
-map <Leader>5 :colo lucius<cr>
-map <Leader>6 :colo materialbox<cr>
-map <Leader>7 :colo rakr<cr>
-
-map <Leader>0 :colo off<cr>
-
-" light color schemes
-map <Leader>11 :colo pyte<cr>
-map <Leader>12 :colo soda<cr>
-map <Leader>13 :colo laederon<cr>
-map <Leader>14 :colo cascadia<cr>
-map <Leader>15 :colo cake16<cr>
-map <Leader>16 :colo proton<cr>
-map <Leader>17 :colo cleanroom<cr>
-
-" dark color schemes
-map <Leader>21 :colo zenburn<cr>
-map <Leader>22 :colo stonewashed-gui<cr>
-map <Leader>23 :colo oceandeep<cr>
-
-map <Leader>z :colo mine<cr>
-
-" base 16
-map <Leader>b1 :colo base16-3024<cr>
-map <Leader>b2 :colo base16-apathy<cr>
-map <Leader>b3 :colo base16-ashes<cr>
-map <Leader>b4 :colo base16-atelierdune<cr>
-map <Leader>b5 :colo base16-atelierforest<cr>
-map <Leader>b6 :colo base16-atelierheath<cr>
-map <Leader>b7 :colo base16-atelierlakeside<cr>
-map <Leader>b8 :colo base16-atelierseaside<cr>
-map <Leader>b9 :colo base16-bespin<cr>
-map <Leader>b11 :colo base16-brewer<cr>
-map <Leader>b12 :colo base16-bright<cr>
-map <Leader>b13 :colo base16-chalk<cr>
-map <Leader>b14 :colo base16-codeschool<cr>
-map <Leader>b15 :colo base16-colors<cr>
-map <Leader>b16 :colo base16-default<cr>
-map <Leader>b17 :colo base16-eighties<cr>
-map <Leader>b18 :colo base16-embers<cr>
-map <Leader>b19 :colo base16-flat<cr>
-map <Leader>b21 :colo base16-google<cr>
-map <Leader>b22 :colo base16-grayscale<cr>
-map <Leader>b23 :colo base16-greenscreen<cr>
-map <Leader>b24 :colo base16-harmonic16<cr>
-map <Leader>b25 :colo base16-isotope<cr>
-map <Leader>b26 :colo base16-londontube<cr>
-map <Leader>b27 :colo base16-marrakesh<cr>
-map <Leader>b28 :colo base16-mocha<cr>
-map <Leader>b29 :colo base16-monokai<cr>
-map <Leader>b22 :colo base16-ocean<cr>
-map <Leader>b31 :colo base16-paraiso<cr>
-map <Leader>b32 :colo base16-pop<cr>
-map <Leader>b33 :colo base16-railscasts<cr>
-map <Leader>b34 :colo base16-shapeshifter<cr>
-map <Leader>b35 :colo base16-solarized<cr>
-map <Leader>b36 :colo base16-summerfruit<cr>
-map <Leader>b37 :colo base16-tomorrow<cr>
-map <Leader>b38 :colo base16-twilight<cr>
-
-" colorsbox colorschemes
-map <Leader>31 :colo colorsbox-faff<cr>
-map <Leader>32 :colo colorsbox-greenish<cr>
-map <Leader>33 :colo colorsbox-material<cr>
-map <Leader>34 :colo colorsbox-stblue<cr>
-map <Leader>35 :colo colorsbox-stbright<cr>
-map <Leader>36 :colo colorsbox-steighties<cr>
-map <Leader>37 :colo colorsbox-stnight<cr>
 
 " +--------------------------------------------------------------+
 " |                       Control Mappings                       |
@@ -274,6 +200,12 @@ imap <c-a> <c-o>0
 " +--------------------------------------------------------------+
 " |                       Other Mappings                         |
 " +--------------------------------------------------------------+
+
+" die typos
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
 
 " :%!clisp -q -norc<cr>
 
