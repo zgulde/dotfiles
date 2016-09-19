@@ -121,8 +121,8 @@ mkdir -p $HOME/.vim/bundle
 $HOME/dotfiles/get-vim-plugins.sh
 
 heading 'vim ftplugins'
-mkdir -p $HOME/.vim/ftplugin/after
-cp -v $HOME/dotfiles/after/* $HOME/.vim/ftplugin/after/
+mkdir -p $HOME/.vim/after/ftplugin
+cp -v $HOME/dotfiles/ftplugin/* $HOME/.vim/after/ftplugin/
 
 heading 'All Done!'
 cd $HOME
