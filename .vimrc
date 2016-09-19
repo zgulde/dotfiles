@@ -177,8 +177,12 @@ map <Leader>2 :set background=dark<cr>
 " |                       Control Mappings                       |
 " +--------------------------------------------------------------+
 
+nmap <cr> :bnext<cr>
+nmap <BS> :bprev<cr>
+
 " emacs has nothing on me!
 vmap <C-x><C-e> :!clisp -q -norc<cr>
+nmap <C-x><C-e> va(:!clisp -q -norc<cr>
 
 " page scrolling
 " nnoremap <C-[> <C-e>
