@@ -39,6 +39,7 @@ install\
     ack-grep\
     tmux\
     fortune\
+    clisp\
     cowsay
 
 # if we're on linux install
