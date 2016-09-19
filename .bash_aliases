@@ -48,6 +48,10 @@ alias findr='find . -name '
 # |              preferable implementation                |
 # +-------------------------------------------------------+
 
+alias pushd='pushd .'
+
+alias df='df -h'
+
 alias composer='docker run --rm -itv $(pwd):/app composer/composer'
 alias php='/usr/local/php5/bin/php'
 
