@@ -1,10 +1,7 @@
 source ~/.env
 source ~/.bash_aliases
 source ~/.bash_functions
-source ~/.bashrc
-source ~/.emojis
 source ~/.profile
-source ~/.rvm/scripts/rvm # Load RVM into a shell session *as a function*
 
 PATH="$PATH:/Users/zach/scripts"
 PATH="$PATH:." # add current directory to PATH
@@ -23,10 +20,8 @@ export HISTFILESIZE=
 
 shopt -s autocd
 bind TAB:menu-complete
-shopt -s autocd
 
 # prompt
 export PS2="=> "
-export PS1="\[\e[34m\]\w/\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n $ "
-# stuff that happens on new session
-# fortune -a | randcowsay | lolcat
+export PS1="\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n\`nonzero_return\` $\[\e[m\] "
+
