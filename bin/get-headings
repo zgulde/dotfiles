@@ -1,5 +1,7 @@
 #!/usr/bin/env newlisp
 
+; will parse the headings out of a markdown file
+
 (define argv (2 (main-args)))
 
 (define help-message
