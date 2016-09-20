@@ -128,3 +128,7 @@ cp -v $HOME/dotfiles/ftplugin/* $HOME/.vim/after/ftplugin/
 
 heading 'All Done!'
 cd $HOME
+
+if [[ $(uname -s) == 'Linux' ]]; then
+    sed -i 's/alias vim.*//' ~/.bash_aliases
+fi
