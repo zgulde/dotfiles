@@ -23,5 +23,5 @@ bind TAB:menu-complete
 
 # prompt
 export PS2="=> "
-export PS1="\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n\`nonzero_return\` $\[\e[m\] "
+export PS1="\[\e[32m\]\t\[\e[m\] \[\e[34m\]\w\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\]\n $\[\e[m\] "
 
