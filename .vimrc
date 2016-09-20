@@ -36,7 +36,7 @@ set foldlevel=20
 set path=.,/usr/include,,** " searching through files in current directory
 set pumheight=10 "max height for completion menu
 set completeopt=menuone
-set backupdir=/Users/zach/.vim/swp " don't clutter my working directory with swp files
+set backupdir=$HOME/.vim/swp " don't clutter my working directory with swp files
 set t_Co=256
 
 " gui stuff
