@@ -105,6 +105,8 @@ cp -v $HOME/dotfiles/.tmux.conf $HOME/.tmux.conf
 
 # Vim Stuff
 
+mkdir -p $HOME/.vim/swp
+
 heading '.vimrc'
 cp -v $HOME/dotfiles/.vimrc $HOME/.vimrc
 
