@@ -7,6 +7,8 @@
 #   - docker?
 #   - vagrant and virtualbox?
 #   - do i need stuff from individual package managers, eg npm, pip, gem?
+#     - lolcat gem filewatch gem
+#   - fzf - on mac it's just `brew install...`
 
 echo 'We are going to get this machine all set up!'
 echo
