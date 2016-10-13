@@ -1,0 +1,4 @@
+- cmd: function git_current_branch\ngit branch\nend
+  when: 1476320313
+- cmd: function git_current_branch\ngit branch | sed -n '/\\* /s///p'\nend
+  when: 1476320530
