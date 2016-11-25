@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TOUCHPAD_ID="$(xinput list | grep -F 'Elan Touchpad' | perl -pe 's/.*id=(\d+).*/\1/')"
+ENABLED="$(xinput list-props $TOUCHPAD_ID | grep -Fi device\ enabled | grep -oP '\d$')"
+
+if [ $ENABLED -eq 1 ]; then 
+    xinput disable $TOUCHPAD_ID
+    echo 'Touchpad disabled.'
+else
+    xinput enable $TOUCHPAD_ID
+    # for whatever reason this was screwing up my keybindings
+    xmodmap -e 'keycode 133 = Super_R'
+    echo 'Touchpad enabled.'
+fi

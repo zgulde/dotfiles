@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!/usr/bin/env nodejs
 
 Array.prototype.sample = function(){
     return this[Math.floor(Math.random() * this.length)];
@@ -16,7 +16,7 @@ function shuffle(o){
 
 var args = process.argv.slice(2);
 var fs = require('fs');
-var words = shuffle(fs.readFileSync('/Users/zach/words').toString().split('\n').filter(word => word.length > 3));
+var words = shuffle(fs.readFileSync('/home/zach/words').toString().split('\n').filter(word => word.length > 3));
 var password = [];
 var numWords = 4;
 

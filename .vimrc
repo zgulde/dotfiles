@@ -1,10 +1,16 @@
 execute pathogen#infect()
+Helptags
 
 set nocompatible
+
 set runtimepath+=~/.vim/bundle/ultisnips
 set runtimepath+=~/.vim/ftdetect/
-set relativenumber
-set number
+set runtimepath+=~/.fzf
+
+let g:phpcomplete_parse_docblock_comments = 1
+
+" set relativenumber
+" set number
 set ruler
 set cmdheight=1
 set hlsearch
@@ -35,8 +41,8 @@ set foldmethod=indent
 set foldlevel=20
 set path=.,/usr/include,,** " searching through files in current directory
 set pumheight=10 "max height for completion menu
-set completeopt=menuone
-set backupdir=$HOME/.vim/swp " don't clutter my working directory with swp files
+set completeopt=menuone,preview
+set backupdir=/home/zach/.vim/swp " don't clutter my working directory with swp files
 set t_Co=256
 
 " gui stuff
@@ -69,6 +75,7 @@ vnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
 let g:user_emmet_leader_key='<C-m>'
 let g:user_emmet_install_global = 0
 autocmd FileType html EmmetInstall
+autocmd FileType eruby EmmetInstall
 
 " vim-slime
 let g:slime_target = "tmux"
@@ -91,6 +98,19 @@ let g:tern_show_signature_in_pum=1
 let g:ctrlp_custom_ignore = {
     \ 'dir':'node_modules\|vendor\|\.git'
     \}
+
+" jedi -- why would you override _my_ leader mappings by default?
+let g:jedi#goto_command = ""
+let g:jedi#goto_assignments_command = ""
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = ""
+let g:jedi#usages_command = ""
+let g:jedi#completions_command = ""
+let g:jedi#rename_command = ""
+
+" supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " +--------------------------------------------------------------+
 " |                       Leader Mappings                        |
@@ -118,31 +138,35 @@ map <Leader>sc :noh<cr>
 
 " run the current file, read in the output to the end of the file, comment it
 " out, and visually select all the output
-map <Leader>r Go:r !%'[VGogcgvk
+map <Leader>r Go:r !python %'[VGogcgvk
 
 " toggle relative or absolut line numbers
 map <Leader>n :set relativenumber!<cr>
 map <Leader>nn :set nonumber!<cr>
 
-" substitution
-map <Leader>S :%s/
-map <Leader>s :s/
 
-map <Leader>w :w<cr>
 
-" add ; to end of line
-map <Leader>; A;<esc>
-map <Leader>, A,<esc>
+
+" commentarry
+map <Leader>; gc
 
 " turn off smart and auto indent for pasting code
 " map <Leader>p :set ai!<cr> :set si!<cr> :set ai?<cr>
 
 map <Leader>p :!newlisp %<cr>
 
-map <Leader>h <C-w>h
-map <Leader>j <C-w>j
-map <Leader>k <C-w>k
-map <Leader>l <C-w>l
+map <Leader>wh <C-w>h
+map <Leader>wj <C-w>j
+map <Leader>wk <C-w>k
+map <Leader>wl <C-w>l
+map <Leader>wo :only<cr>
+
+map <Leader>or cor
+map <Leader>ow cow
+map <Leader>on con
+
+map <Leader>bp :bp<cr>
+map <Leader>bs :Buffers<cr>
 
 map <Leader><Leader> :call SyntaxAttr()<CR>
 
@@ -177,12 +201,8 @@ map <Leader>2 :set background=dark<cr>
 " |                       Control Mappings                       |
 " +--------------------------------------------------------------+
 
-nmap <cr> :bnext<cr>
-nmap <BS> :bprev<cr>
-
 " emacs has nothing on me!
 vmap <C-x><C-e> :!clisp -q -norc<cr>
-nmap <C-x><C-e> va(:!clisp -q -norc<cr>
 
 " page scrolling
 " nnoremap <C-[> <C-e>
@@ -237,7 +257,7 @@ vnoremap K :m '<-2<CR>gv=gv
 vnoremap H dhPgvhoho
 vnoremap L dpgvlolo
 
-inoremap jj <esc>
+inoremap jk <esc>
 
 " Don't cancel visual selection when changing indent
 xnoremap <  <gv
@@ -264,13 +284,13 @@ augroup highlight_follows_focus
   autocmd WinLeave * set nocursorline
 augroup END
 
-augroup active_relative_number
-  au!
-  au BufEnter * :setlocal number relativenumber
-  au WinEnter * :setlocal number relativenumber
-  au BufLeave * :setlocal nonumber norelativenumber
-  au WinLeave * :setlocal nonumber norelativenumber
-augroup END
+" augroup active_relative_number
+"   au!
+"   au BufEnter * :setlocal number relativenumber
+"   au WinEnter * :setlocal number relativenumber
+"   au BufLeave * :setlocal nonumber norelativenumber
+"   au WinLeave * :setlocal nonumber norelativenumber
+" augroup END
 
 " close autocompletion preview window automatically
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif

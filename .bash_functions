@@ -204,6 +204,6 @@ server(){
         TARGET="$2"
     fi
 
-    php -S localhost:$PORT -t $TARGET
+    /usr/bin/php -S localhost:$PORT -t $TARGET
 
 }

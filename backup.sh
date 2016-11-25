@@ -72,5 +72,10 @@ cowsay "backing up my scripts..." >> backup.log
 cp -v ~/bin/* ./bin/ >> backup.log
 
 echo "\n----------------------------------------------------\n" >> backup.log
+cowsay "backing up fish stuff..." >> backup.log
+cp -rv ~/.config/fish/* ./fish/
+
+echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
+
 

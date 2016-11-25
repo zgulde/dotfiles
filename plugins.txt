@@ -1,95 +1,39 @@
 -----------Sublime Plugins-------------
-0_package_control_loader.sublime-package
-Alignment.sublime-package
-Better CoffeeScript.sublime-package
-BracketHighlighter.sublime-package
-CSSTidy.sublime-package
-ColorSchemeEditor.sublime-package
-Colorsublime.sublime-package
-DocBlockr.sublime-package
-Emmet.sublime-package
-HTML Mustache.sublime-package
-Laravel Blade Highlighter.sublime-package
-Markdown Preview.sublime-package
-Neon Color Scheme.sublime-package
-Package Control.sublime-package
-PyV8
-Python 3.sublime-package
-SASS Build.sublime-package
-SideBarEnhancements.sublime-package
-SqlBeautifier.sublime-package
-SublimeOnSaveBuild.sublime-package
-Theme - Soda.sublime-package
-wpseek.com WordPress Developer Assistant.sublime-package
 
 ----------Vim Stuff----------
 --- /plugin
-auto-pairs.vim
-hlnext.vim.bak
-rainbow.vim
 --- /autoload
-SyntaxAttr.vim
-colorsbox.vim
-matchit.vim
 pathogen.vim
-ruby-matchit.vim
 --- /bundle
 auto-pairs
-base16-vim
 ctrlp.vim
+editorconfig-vim
 emmet-vim
-rainbow
+fzf.vim
+jedi-vim
+phpcomplete.vim
+supertab
 tagbar
-tern_for_vim
 typescript-vim
 ultisnips
+update.sh
 vim-blade
 vim-commentary
+vim-dispatch
 vim-easy-align
-vim-fireplace
-vim-flow
+vim-endwise
+vim-eslint-compiler
+vim-exchange
+vim-fish
 vim-fugitive
-vim-hackernews
-vim-javascript
+Vim-Jinja2-Syntax
 vim-jsx
-vim-lion
 vim-lucius
 vim-multiple-cursors
-vim-racket
-vim-scala
 vim-slime
 vim-sneak
 vim-surround
-xterm-color-table.vim
+vim-textobj-rubyblock
+vim-textobj-user
+vim-unimpaired
 --- /colors
-cake16.vim
-cascadia.vim
-cleanroom.vim
-colorsbox-faff.vim
-colorsbox-greenish.vim
-colorsbox-material.vim
-colorsbox-stblue.vim
-colorsbox-stbright.vim
-colorsbox-steighties.vim
-colorsbox-stnight.vim
-hybrid.vim
-laederon.vim
-materialbox.vim
-me.vim
-mine.vim
-moonshine.vim
-oceandeep.vim
-off.vim
-pencil.vim
-proton.vim
-pyte.vim
-rakr.vim
-seoul256-light.vim
-seoul256.vim
-soda.vim
-solarized.vim
-stonewashed-gui.vim
-stonewashed.bak
-stonewashed.vim
-xoria256.vim
-zenburn.vim

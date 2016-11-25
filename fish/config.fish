@@ -1,5 +1,6 @@
 # sources
 source ~/.config/fish/aliases.fish
+source ~/.config/fish/env.fish
 source ~/.fzf/shell/key-bindings.fish
 
 # env vars
@@ -7,6 +8,7 @@ set -x FZF_DEFAULT_OPTS '--reverse'
 
 # PATH
 set -x PATH $PATH ~/.fzf/bin/
+set -x PATH $PATH ~/bin/
 
 # git prompt
 set __fish_git_prompt_showdirtystate 'yes'
