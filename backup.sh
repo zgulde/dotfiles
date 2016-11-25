@@ -76,6 +76,10 @@ cowsay "backing up fish stuff..." >> backup.log
 cp -rv ~/.config/fish/* ./fish/
 
 echo "\n----------------------------------------------------\n" >> backup.log
+cowsay "backing up .emacs" >> backup.log
+cp -v ~/.emacs ./.emacs >> backup.log
+
+echo "\n----------------------------------------------------\n" >> backup.log
 cowsay "Done!" >> backup.log
 
 
