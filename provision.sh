@@ -64,7 +64,11 @@ install\
     tmux\
     fortune\
     clisp\
-    cowsay
+    cowsay\
+    python3-pip
+
+pip3 install --upgrade pip
+pip3 install jedi virtualenv
 
 # if we're on linux install
 #   - xsel and setup pb alias
@@ -85,7 +89,7 @@ fi
 heading 'Cloning my dotfiles repo'
 git clone https://github.com/zgulde/dotfiles $HOME/dotfiles
 
-heading 'Copying over my script to ~/bin'
+heading 'Copying over my scripts to ~/bin'
 mkdir -p $HOME/bin
 cp -v $HOME/dotfiles/bin/* $HOME/bin
 
