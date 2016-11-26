@@ -9,11 +9,14 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# https://n00bsys0p.wordpress.com/2011/07/26/reverse-xorg-scrolling-in-linux-natural-scrolling/
+exec xmodmap set-button-map 11 1 2 3 5 4
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 9
+font pango:Roboto 11
 # font pango:Monaco 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -33,65 +36,74 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# kill focused window
-bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# vim keys instead of i3 defaults
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+g split h
+# the next few paragraphs are pretty custom, i.e. off the beaten i3 path
+bindsym $mod+Mod1+f fullscreen toggle
 
-# split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+backslash split h
+bindsym $mod+Shift+minus     split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+semicolon exec dmenu_run
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+comma  layout stacking
+bindsym $mod+period layout tabbed
+bindsym $mod+slash  layout toggle split
+
+bindsym $mod+bracketleft  focus parent
+bindsym $mod+bracketright focus child
+
+# kill focused window or containers
+bindsym $mod+Shift+x kill
+
+# capslock goodness
+bindsym --release $mod+w exec --no-startup-id xdotool key Up
+bindsym --release $mod+Shift+w exec --no-startup-id xdotool key Up+Shift
+bindsym --release $mod+a exec --no-startup-id xdotool key Left
+bindsym --release $mod+Shift+a exec --no-startup-id xdotool key Left+Shift
+bindsym --release $mod+s exec --no-startup-id xdotool key Down
+bindsym --release $mod+Shift+s exec --no-startup-id xdotool key Down+Shift
+bindsym --release $mod+d exec --no-startup-id xdotool key Right
+bindsym --release $mod+Shift+d exec --no-startup-id xdotool key Right+Shift
+bindsym --release $mod+q exec --no-startup-id xdotool key Home
+bindsym --release $mod+Shift+q exec --no-startup-id xdotool key Home+Shift
+bindsym --release $mod+e exec --no-startup-id xdotool key End
+bindsym --release $mod+Shift+e exec --no-startup-id xdotool key End+Shift
+
+bindsym --release $mod+r exec --no-startup-id xdotool key equal greater
+bindsym --release $mod+f exec --no-startup-id xdotool key minus greater
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-bindsym $mod+c focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -122,7 +134,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -149,7 +161,7 @@ mode "resize" {
         bindsym q mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+Mod1+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
