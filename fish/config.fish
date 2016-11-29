@@ -10,6 +10,8 @@ set -x FZF_DEFAULT_OPTS '--reverse'
 set -x PATH $PATH ~/.fzf/bin/
 set -x PATH $PATH ~/bin/
 
+set -x EDITOR vim
+
 # git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showuntrackedfiles 'yes'
