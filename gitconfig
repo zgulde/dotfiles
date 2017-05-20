@@ -1,0 +1,30 @@
+[user]
+    name = Zach Gulde
+    email = zachgulde@gmail.com
+[core]
+    editor = nvim
+    ; editor = subl -nw
+    excludesfile = /Users/zach/.gitignore_global
+[alias]
+    a       = add
+    aa      = add -A
+    ammend  = commit --amend
+    b       = branch
+    bm      = branch -m
+    c       = commit -v
+    cm      = commit -m
+    co      = checkout
+    cob     = checkout -b
+    fo      = fetch origin
+    l       = log --oneline --decorate --graph
+    pom     = pull origin master
+    rbi     = rebase -i
+    s       = status
+    ss      = status -s
+    undo    = reset HEAD~
+    unstage = reset HEAD
+    wip     = !git add -A && git commit -m WIP
+[merge]
+	conflictstyle = diff3
+[diff]
+	tool = diff

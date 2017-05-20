@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: php end of line
+# key: nl
+# --
+PHP_EOL

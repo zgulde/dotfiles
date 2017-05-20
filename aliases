@@ -2,15 +2,17 @@
 # |              general utility                          |
 # +-------------------------------------------------------+
 
-alias blog='cd ~/personal-site/blog/'
-alias my-site='cd ~/personal-site/'
+alias emc=emacsclient
+
+alias t=task
+alias tw=task
+
+alias 123='echo -e "one\ntwo\nthree"'
 
 alias pyserver='python -m SimpleHTTPServer'
 
-alias todo='vim ~/Dropbox/todo-work.txt'
-
-alias :q='exit'
-alias :e='vim'
+alias :q=exit
+alias :e=vim
 
 alias pbbl='pebble build && pebble install --emulator aplite && pebble logs'
 
@@ -20,51 +22,41 @@ alias ...='cd ../../..'
 alias ....='cd ../../../..'
 alias .....='cd ../../../../..'
 
+alias gti=git
 alias subl.='subl .'
 
-alias warpspeed="ssh warpspeed@$MY_SERVER"
-
-alias ehf='sudo vim /etc/hosts'
+alias ehf='sudo nvim /etc/hosts'
 
 # I edit this stuff way too much
-alias reload='source ~/.bash_profile; source ~/.bash_aliases; source ~/.bash_functions'
+alias reload='source ~/.bashrc'
 
 alias cls='clear'
 
-alias pbgrep='pbpaste | grep'
-alias pback='pbpaste | ack'
-alias pbvim='pbpaste | vim -'
+alias pbgrep='pbpaste | egrep'
+alias pbvim='pbpaste | vipe | pbcopy'
 alias pbjson='pbpaste | python -m json.tool | pbcopy'
 
 # open a finder here
 alias f='open -a Finder ./' 
 
-alias curlput='curl -X PUT'
-alias curlget='curl -X GET'
-alias curlpost='curl -X POST'
-alias findr='find . -name '
-
 # +-------------------------------------------------------+
 # |              preferable implementation                |
 # +-------------------------------------------------------+
 
-alias pushd='pushd .'
+# /sigh
+alias ansible-playbook='ANSIBLE_NOCOWS=1 ansible-playbook'
+
+alias vim='nvim'
 
 alias df='df -h'
-
-alias composer='docker run --rm -itv $(pwd):/app composer/composer'
-alias php='/usr/local/php5/bin/php'
-
 alias scheme="rlwrap -r -c -f /Users/zach/scheme.txt scheme"
-
-alias vim='/usr/local/Cellar/macvim/7.4-88/MacVim.app/Contents/MacOS/Vim'
 
 # confirmation and verbosity when manipulating files
 alias rm='rm -iv'
 alias mv='mv -iv'
 alias cp='cp -iv'
 
-alias mkdir='mkdir -p'
+alias mkdir='mkdir -p' # create subdirectories if they don't exist
 
 alias egrep='egrep --color=auto'
 alias grep='grep --color=auto'
@@ -74,7 +66,7 @@ alias grep='grep --color=auto'
 # +-------------------------------------------------------+
 
 alias l='ls -Gp1h'
-alias ls='ls -G'
+alias ls='ls --color=auto'
 alias lf='ls -dG1 */'
 alias laf='ls -aG1 -d .*/ */'
 alias ll='ls -Gplh'
@@ -89,7 +81,7 @@ alias lsd='la | lolcat'
 # |                     git stuff                           |
 # +---------------------------------------------------------+
 
-alias gs='git status -s' 
+alias gs='git status' 
 alias gl="git log --graph --pretty='%Cgreen%an%Creset %Cblue(%cr)%Creset <%Cred%H%Creset>%n%s%n%n%b'"
 alias gd='git diff'
 alias gdp='git diff HEAD^ HEAD' # show the difference with the previous commit

@@ -1,0 +1,30 @@
+snippet f "insert fenced code block"
+\`\`\`${1:language}
+${VISUAL}$0
+\`\`\`
+endsnippet
+
+snippet b "make something bold"
+**${VISUAL}$0**
+endsnippet
+
+snippet i "italics"
+*${VISUAL}$0*
+endsnippet
+
+snippet ts "insert the current timestamp"
+`date +%Y-%m-%d\ %H:%M:%S`$0
+endsnippet
+
+snippet lorem "insert some lorem"
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.$0
+endsnippet
+
+snippet sout "System.out.println"
+System.out.println(${VISUAL}$0);
+endsnippet

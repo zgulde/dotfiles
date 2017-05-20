@@ -1,16 +1,38 @@
+# vim: set ft=sh:
 # goes to ~/vagrant-lamp/sites if no arguments are passed, otherwise
 # goes to $1.dev
 function vl {
-	if [ -z "$1" ]
-	then
-		cd ~/vagrant-lamp/sites/
-		lt
-	else
-		cd ~/vagrant-lamp/sites/$1.dev
-		git status
-	fi
+    if [[ $# -eq 0 ]]; then
+        cd ~/vagrant-lamp
+    else
+        ( cd ~/vagrant-lamp && vagrant $* )
+    fi
 }
 
+function warpspeed() {
+    if [[ $# -eq 0 ]]; then
+        cd ~/Sites
+    else
+        ( cd ~/warpspeed-vagrant && vagrant $* )
+    fi
+}
+
+function homestead() {
+    if [[ $# -eq 0 ]]; then
+        cd ~/Code
+    elif [[ $1 == "cfg" ]]; then
+        vim ~/.homestead/Homestead.yaml
+    else
+        ( cd ~/Homestead && vagrant $* )
+    fi
+}
+
+get_status() {
+    local url=$1
+    curl --silent --head $url |\
+        head -n 1 |\
+        egrep -o '\b\d{3}\b' 
+}
 # get the HTTP status code from a site eg getStatus google.com
 function getStatus {
 	curl -vs $1 2>&1 | grep '< HTTP/1.1'  | sed -e 's/< HTTP\/1\.1\ //g'
@@ -187,23 +209,25 @@ git-all-status(){
     done
 }
 
-server(){
-    local PORT=""
-    local TARGET=""
+# start nginx with the cwd as the webroot
+server() {
+    port=8888
+    echo "Starting server on localhost:$port..."
+    docker run -it --rm -p $port:80 -v $(pwd)/:/usr/share/nginx/html nginx
+}
 
+# render a .dot file and open it
+graphv() {
+    dot -Tpng -O $1; open $1.png
+}
 
-    if [ -z "$1" ]; then
-        PORT=8000
-    else
-        PORT="$1"
+# wrapper around taskwarrior wait functionality
+snooze() {
+    task $1 mod wait:$2
+}
+
+todo() {
+    if [[ -z $1 ]]; then
+        $EDITOR ~/todo.txt
     fi
-
-    if [ -z "$2" ]; then
-        TARGET="./"
-    else
-        TARGET="$2"
-    fi
-
-    /usr/bin/php -S localhost:$PORT -t $TARGET
-
 }

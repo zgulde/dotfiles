@@ -1,30 +1,16 @@
 #!/bin/bash
 
-[[ $(uname -s) == Darwin ]] && cp -v ~/Library/Application\ Support/Karabiner/private.xml ./
+cp -v $HOME/.bashrc ./bashrc
+cp -v $HOME/.bash_profile ./bash_profile
+cp -v $HOME/.aliases ./aliases
+cp -v $HOME/.bash_functions ./bash_functions
 
-cp -v ~/.bashrc ./
-cp -v ~/.bash_profile ./
-cp -v ~/.bash_aliases ./
-cp -v ~/.bash_functions ./
+cp -v $HOME/.gitconfig ./gitconfig
 
-cp -v ~/.vimrc ./
-cp -v ~/.vim/after/ftplugin/* ./ftplugin/
-cp -v -a ~/.vim/UltiSnips/. ./vim-snippets/
+cp -v $HOME/.config/nvim/init.vim ./vimrc
+cp -v $HOME/.config/nvim/UltiSnips/* ./snippets/vim
 
-cp -v ~/.tmux.conf ./
+cp -v $HOME/.tmux.conf ./tmux.conf
 
-cp -v ~/bin/* ./bin/
-
-cp -rv ~/.config/fish/* ./fish/
-
-cp -v ~/.emacs ./.emacs
-
-cp -v ~/.config/i3/config ./i3/
-cp -v ~/.i3status.conf ./i3/
-
-# grab all the remote urls of my vim plugins
-dotfiles_dir="$(pwd)"
-for dir in $(ls ~/.vim/bundle/); do
-    cd "$HOME/.vim/bundle/$dir"
-    git config --get remote.origin.url
-done > "$dotfiles_dir/vim-plugin-urls.txt"
+cp -v $HOME/.emacs ./emacs
+cp -v -r $HOME/.emacs.d/snippets/* ./snippets/emacs

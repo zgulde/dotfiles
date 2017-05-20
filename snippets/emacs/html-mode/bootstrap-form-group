@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: bootrstrap form group
+# key: fg
+# --
+<div class="form-group">
+     <label for="$1">$2</label>
+     <input id="$1" name="$1" class="form-control" type="${3:text}" />
+</div>

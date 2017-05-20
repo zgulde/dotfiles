@@ -1,0 +1,57 @@
+#!/bin/bash
+
+dotfiles_dir="$HOME/dotfiles"
+
+heading(){
+    echo '---------------------------------------------------------------------'
+    echo "-> $@"
+    echo '---------------------------------------------------------------------'
+}
+
+if [[ $(uname -s) == "Darwin" ]]; then
+	heading 'Installing Brew'
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew install neovim/neovim/neovim
+	install_command=brew
+elif [[ $(uname -s) == "Linux" ]]; then
+	heading 'Updating Apt'
+	sudo apt-get update
+	install_command='sudo apt-get install -y'
+fi
+
+$install_command\
+    curl\
+    git\
+    vim\
+    ruby\
+    nodejs\
+    tree\
+    htop\
+    ack-grep\
+    tmux\
+    fortune\
+    clisp\
+    cowsay\
+    python3-pip
+
+pip3 install --upgrade pip
+pip3 install virtualenv jedi
+
+# clone the dotfiles repo and link up config files
+if [[ ! -d $HOME/dotfiles ]]; then
+    git clone https://github.com/zgulde/dotfiles.git ~/dotfiles
+fi
+
+ln -s $dotfiles_dir/vimrc $HOME/.vimrc
+ln -s $dotfiles_dir/emacs $HOME/.emacs
+ln -s $dotfiles_dir/bashrc $HOME/.bashrc
+ln -s $dotfiles_dir/aliases $HOME/.aliases
+ln -s $dotfiles_dir/bash_functions $HOME/.bash_functions
+ln -s $dotfiles_dir/gitconfig $HOME/.gitconfig
+ln -s $dotfiles_dir/gitignore $HOME/.gitignore
+
+# neovim
+mkdir -p $HOME/.config/nvim
+ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

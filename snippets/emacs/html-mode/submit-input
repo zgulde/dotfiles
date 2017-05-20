@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bootstrap submit input
+# key: is
+# --
+<input type="submit" class="btn btn-block btn-primary" />$0
