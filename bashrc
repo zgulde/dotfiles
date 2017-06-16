@@ -2,13 +2,16 @@ source ~/.env
 source ~/.aliases
 source ~/.bash_functions
 
-PATH="$PATH:/usr/local/bin"
-PATH="$PATH:/Users/zach/scripts"
-PATH="$PATH:/Users/zach/bin"
-PATH="$PATH:node_modules/.bin"
+PATH=/bin
+PATH=/sbin:$PATH
+PATH=/usr/bin:$PATH
+PATH=/usr/sbin:$PATH
+PATH=/usr/local/bin:$PATH
+PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+PATH=/Users/zach/scripts:$PATH
+PATH=/Users/zach/bin:$PATH
+PATH=node_modules/.bin:$PATH
 
-# use modern coreutils, not the outdated ones from macOS
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export PATH
