@@ -16,6 +16,12 @@ call plug#begin('~/.local/share/nvim/plugged/')
 " language specific
 """""""""""""""""""
 
+Plug 'https://github.com/ryanss/vim-hackernews.git'
+
+Plug 'https://github.com/msprev/vim-markdown-folding'
+
+Plug 'https://github.com/mxw/vim-jsx'
+
 " language enhancements
 Plug 'https://github.com/tpope/vim-fireplace'          " clojure integration
 Plug 'https://github.com/mzlogin/vim-markdown-toc.git' " generate markdown toc
@@ -33,6 +39,7 @@ Plug 'https://github.com/dag/vim-fish.git'
 Plug 'https://github.com/mxw/vim-jsx.git'
 
 " editor enhancements
+Plug 'https://github.com/jpalardy/vim-slime'
 Plug 'https://github.com/tpope/vim-repeat'
 Plug 'https://github.com/ervandew/supertab.git'
 Plug 'https://github.com/tpope/vim-vinegar.git'
@@ -195,6 +202,7 @@ map <Leader>wv <C-w>v
 map <Leader>ws <C-w>s
 map <Leader>wo :only<cr>
 map <Leader>wc <C-w>c
+map <Leader>w= <C-w>=
 
 map <Leader>or cor
 map <Leader>ow cow
@@ -205,6 +213,9 @@ map <Leader>fs :w<cr>
 map <Leader>fe :e ~/.config/nvim/init.vim<cr>
 
 map <Leader>te :term<cr>
+
+map <Leader>bp :bp<cr>
+map <Leader>bn :bn<cr>
 
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
@@ -225,14 +236,18 @@ nmap <C-k> <C-w>k<C-w>_
 nmap <C-l> <C-w>l<C-w>\|
 
 " emacsish
-imap <c-e> <c-o>$
-imap <c-a> <c-o>0
-imap <c-f> <right>
-imap <c-b> <left>
-imap <c-k> <c-o>D
-imap <c-l> <c-o>zz
-inoremap <c-p> <up> " use supertab for completion so we can override c-p + c-n
-inoremap <c-n> <down> " or just fall back to the c-x prefix
+imap <C-e> <C-o>$
+imap <C-a> <C-o>0
+imap <C-f> <right>
+imap <C-b> <left>
+imap <C-k> <C-o>D
+imap <C-l> <C-o>zz
+imap <C-d> <C-o>dl
+
+" use supertab for completion so we can override c-p + c-n
+" or just fall back to the c-x prefix
+inoremap <C-p> <up>
+inoremap <C-n> <down>
 
 " Other Mappings
 """"""""""""""""
