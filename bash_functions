@@ -1,6 +1,10 @@
 # vim: set ft=sh:
-# goes to ~/vagrant-lamp/sites if no arguments are passed, otherwise
-# goes to $1.dev
+
+# google (duckduckgo) something
+function g {
+    ruby -r cgi -e '`open http://duckduckgo.com/?q=#{CGI.escape(ARGV.join(" "))}`' $@
+}
+
 function vl {
     if [[ $# -eq 0 ]]; then
         cd ~/vagrant-lamp
@@ -169,9 +173,9 @@ function rgrep() {
 }
 alias grepr='rgrep'
 
-function g() {
-    g++ $1 && ./a.out
-}
+# function g() {
+#     g++ $1 && ./a.out
+# }
 
 function docker-cleanup() {
     for id in $(docker ps -a | grep 'Exited' | awk '{print $1}'); do
