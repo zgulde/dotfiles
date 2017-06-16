@@ -48,6 +48,7 @@
     magit
     markdown-mode
     markdown-preview-mode
+	markdown-toc
     php-mode
     projectile
     robe
@@ -486,7 +487,7 @@ create the repl if it does not exist"
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-	(spacemacs-theme god-mode yaml-mode web-mode ag helm-projectile projectile git-timemachine which-key markdown-preview-mode company-jedi solarized-theme anti-zenburn-theme zenburn-theme silkworm-theme xpm alect-themes linum-relative labburn-theme flycheck fish-mode markdown-mode php-mode yasnippet key-chord helm evil-surround evil-leader evil-commentary emmet-mode company)))
+	(markdown-toc spacemacs-theme god-mode yaml-mode web-mode ag helm-projectile projectile git-timemachine which-key markdown-preview-mode company-jedi solarized-theme anti-zenburn-theme zenburn-theme silkworm-theme xpm alect-themes linum-relative labburn-theme flycheck fish-mode markdown-mode php-mode yasnippet key-chord helm evil-surround evil-leader evil-commentary emmet-mode company)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(projectile-mode t nil (projectile))
  '(rainbow-identifiers-choose-face-function (quote rainbow-identifiers-cie-l*a*b*-choose-face))

@@ -2,6 +2,8 @@
 # |              general utility                          |
 # +-------------------------------------------------------+
 
+alias wtf-mysql='mysql -u root -pcodeup -e "show engine innodb status\G" | grep -C10 -i latest'
+
 alias emc=emacsclient
 
 alias t=task
@@ -82,7 +84,8 @@ alias lsd='la | lolcat'
 # +---------------------------------------------------------+
 
 alias gs='git status' 
-alias gl="git log --graph --pretty='%Cgreen%an%Creset %Cblue(%cr)%Creset <%Cred%H%Creset>%n%s%n%n%b'"
+alias gl="git log --graph --pretty='%Cgreen%an%Creset %Cblue(%cr)%Creset <%Cred%h%Creset>%d%n%s%n%n%b'"
+alias gls="git log --graph --pretty='%s %Cblue%cr%Creset <%Cred%h%Creset>%d'"
 alias gd='git diff'
 alias gdp='git diff HEAD^ HEAD' # show the difference with the previous commit
 alias ga='git add'

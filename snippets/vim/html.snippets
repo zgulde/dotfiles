@@ -8,3 +8,17 @@ snippet jq "include jquery from cdn"
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 endsnippet
 
+snippet fg "bootstrap form group"
+<div class="form-group">
+	<label for="$1">$2</label>
+	<input class="form-control" type="${3:text}" id="$1" name="$1" />
+</div>
+endsnippet
+
+snippet is "bootstrap submit input"
+<input class="btn btn-block btn-${2:primary}" type="submit" value="${1:Submit}" />$0
+endsnippet
+
+snippet mvp "meta viewport tag"
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">$0
+endsnippet

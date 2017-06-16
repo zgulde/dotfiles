@@ -25,11 +25,12 @@ ln -s $DOTFILES/tmux.conf $HOME/.tmux.conf
 # neovim
 mkdir -p $HOME/.config/nvim
 ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
+ln -s $DOTFILES/snippets/vim $HOME/.config/nvim/UltiSnips # snippets
+ln -s $DOTFILES/after $HOME/.config/nvim/after # filetype config
+# install vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# snippets
-ln -s $DOTFILES/snippets/vim $HOME/.config/nvim/UltiSnips
 
 mkdir -p $HOME/.emacs.d
 ln -s $DOTFILES/snippets/emacs $HOME/.emacs.d/snippets
