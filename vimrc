@@ -16,11 +16,20 @@ call plug#begin('~/.local/share/nvim/plugged/')
 " language specific
 """""""""""""""""""
 
+Plug 'https://github.com/neovim/node-host'
+
+Plug 'https://github.com/wlangstroth/vim-racket.git'
+
 Plug 'https://github.com/ryanss/vim-hackernews.git'
 
 Plug 'https://github.com/msprev/vim-markdown-folding'
 
+Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/mxw/vim-jsx'
+
+Plug 'https://github.com/vim-scripts/SyntaxAttr.vim'
+
+Plug 'https://github.com/jremmen/vim-ripgrep'
 
 " language enhancements
 Plug 'https://github.com/tpope/vim-fireplace'          " clojure integration
@@ -69,6 +78,14 @@ call plug#end()
 " |                       Plugin Config                          |
 " +--------------------------------------------------------------+
 
+" " ocaml merlin support, technically not a plugin, but it feels like this config
+" " belongs here
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" " https://github.com/ocaml/merlin/wiki/vim-from-scratch
+" " execute "helptags " . substitute(system('opam config var share'),'\n$','','''') .  "/merlin/vim/doc"
+
+
 " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -78,8 +95,8 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:ycm_python_binary_path = 'python'
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"                                            
-let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 xnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
 vnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
@@ -110,6 +127,12 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':'node_modules\|vendor\|\.git'
     \}
 
+" enable jsx syntax package without the .jsx file extension
+let g:jsx_ext_required = 0
+
+" vim-ripgrep config
+let g:rg_highlight = 1
+
 " +--------------------------------------------------------------+
 " |                       Editor Settings                        |
 " +--------------------------------------------------------------+
@@ -121,17 +144,19 @@ set cmdheight=1
 set background=light
 set colorcolumn=80,100,120
 set cursorline " highlight the current line
-set foldmethod=indent 
+set foldmethod=indent
 set foldlevel=20
 set pumheight=10 "max height for completion menu
 set inccommand=split " live preview substitutions
 set t_Co=256
 
-" gui stuff
-set guioptions-=L " get rid of scrollbars
-set guioptions-=r
-set guioptions-=e " get rid of gui tabs
-set guifont=Monaco:h14
+" vim gui stuff
+if has('gui')
+    set guioptions-=L " get rid of scrollbars
+    set guioptions-=r
+    set guioptions-=e " get rid of gui tabs
+    set guifont=Monaco:h14
+endif
 
 " behavior
 """"""""""
@@ -184,7 +209,7 @@ map <Leader>; A;<esc>
 
 " language specific (these tend to change)
 map <Leader>t :!npm test<cr>
-map <Leader>l :!lein 
+map <Leader>l :!lein
 
 " get rid of highlighted search terms
 map <Leader>sc :noh<cr>
@@ -208,20 +233,28 @@ map <Leader>or cor
 map <Leader>ow cow
 map <Leader>on con
 
-map <Leader>ff :e 
+map <Leader>ff :e
 map <Leader>fs :w<cr>
 map <Leader>fe :e ~/.config/nvim/init.vim<cr>
+map <Leader>fp :e ~/.config/nvim/UltiSnips<cr>
+map <Leader>fb :e ~/.bashrc<cr>
 
 map <Leader>te :term<cr>
+map <Leader>gs :Gstatus<cr>
 
 map <Leader>bp :bp<cr>
 map <Leader>bn :bn<cr>
+map <Leader>bl :CtrlPBuffer<cr>
 
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
 
 map <Leader>;; gcc
 map <Leader>; gc
+
+map <Leader>wq :wq<cr>
+
+map <Leader><Leader> :call SyntaxAttr()<cr>
 
 " Control Mappings
 """"""""""""""""""
@@ -304,14 +337,17 @@ map Q @q
 
 colorscheme lucius
 
+" make comments italic in *all* languages
+hi Comment cterm=italic
+
 " status line
-set statusline=%h%r%w%F%m\ (%y)%=%c,\ %l/%L\ %p%%\ 
+set statusline=%h%r%w%F%m\ (%y)%=%c,\ %l/%L\ %p%%\
 
 let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html', 'php', 'sql']
 
 " neovim specifics
 if has('nvim')
-    " https://github.com/neovim/neovim/issues/2048 
+    " https://github.com/neovim/neovim/issues/2048
     " nmap <BS> <C-W>h<C-W>\|
     " terminal mode mappings
     tnoremap <Esc> <C-\><C-n>
@@ -341,3 +377,36 @@ augroup END
 " close autocompletion preview window automatically
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+" ## end of OPAM user-setup addition for vim / base ## keep this line
