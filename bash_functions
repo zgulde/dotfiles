@@ -1,5 +1,13 @@
 # vim: set ft=sh:
 
+function note {
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] $@" >> ~/codeup/notes.md
+}
+
+function phpman {
+    open "http://php.net/manual-lookup.php?pattern=$1&scope=quickref"
+}
+
 # google (duckduckgo) something
 function g {
     ruby -r cgi -e '`open http://duckduckgo.com/?q=#{CGI.escape(ARGV.join(" "))}`' $@
@@ -35,7 +43,7 @@ get_status() {
     local url=$1
     curl --silent --head $url |\
         head -n 1 |\
-        egrep -o '\b\d{3}\b' 
+        egrep -o '\b\d{3}\b'
 }
 # get the HTTP status code from a site eg getStatus google.com
 function getStatus {
@@ -73,7 +81,7 @@ function sendEmail {
 		echo "usage"
 		echo "    $ sendEmail <to> <subject> <body> [from='Don't Reply']"
 		echo ""
-		return 
+		return
     fi
 
     TO=$1
