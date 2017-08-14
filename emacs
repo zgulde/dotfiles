@@ -132,7 +132,8 @@
   "wm" 'maximize-window "maximize"
   "wn" 'minimize-window "minimize"
   "w-" 'decrease-window-size "decrease size"
-  "w+" 'increase-window-size "increase size")
+  "w+" 'increase-window-size "increase size"
+  "wq" 'evil-save-and-close "write and quit")
 
 (evil-leader-bind-and-document-prefix "h" "Help"
   "hk" 'describe-key "key"
@@ -294,6 +295,9 @@
        ;; default colorscheme
        (load-theme 'leuven t))))
 
+;; (set-face-attribute 'default nil :family "Input" :height 130)
+;; (set-face-attribute 'default nil :family "Operator Mono" :height 130)
+;; (set-face-attribute 'default nil :family "Trebuchet MS" :height 140)
 ;; (set-face-attribute 'default nil :family "Inconsolata" :height 140)
 ;; (set-face-attribute 'default nil :family "Monaco" :height 120)
 
@@ -458,7 +462,7 @@ create the repl if it does not exist"
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "83faf27892c7119f6016e3609f346d3dae3516dede8fd8a5940373d98f615b4e" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "5cd0afd0ca01648e1fff95a7a7f8abec925bd654915153fb39ee8e72a8b56a1f" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "b747fb36e99bc7f497248eafd6e32b45613ee086da74d1d92a8da59d37b9a829" "12b7ed9b0e990f6d41827c343467d2a6c464094cbcc6d0844df32837b50655f9" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "110bb04298a575bc9b0dc3ee2c885e3bdd11137d0b9c48c89e155d7552359826" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "3a69621a68c2d3550a4c777ffc000e1ea66f5bc2f61112814c591e1bda3f5704" "7f5837a7dbf54c2b7c41d94f5eb1373cf63274847d1971037faa24d7f2231eea" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+	("bc4b650c41b16b98166b35da94b366c6a9e1e7883bbf4937c897fb7bd05aa619" "a0dc0c1805398db495ecda1994c744ad1a91a9455f2a17b59b716f72d3585dde" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "83faf27892c7119f6016e3609f346d3dae3516dede8fd8a5940373d98f615b4e" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "5cd0afd0ca01648e1fff95a7a7f8abec925bd654915153fb39ee8e72a8b56a1f" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "b747fb36e99bc7f497248eafd6e32b45613ee086da74d1d92a8da59d37b9a829" "12b7ed9b0e990f6d41827c343467d2a6c464094cbcc6d0844df32837b50655f9" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "110bb04298a575bc9b0dc3ee2c885e3bdd11137d0b9c48c89e155d7552359826" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "3a69621a68c2d3550a4c777ffc000e1ea66f5bc2f61112814c591e1bda3f5704" "7f5837a7dbf54c2b7c41d94f5eb1373cf63274847d1971037faa24d7f2231eea" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(exec-path
    (quote
 	("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin" nil)))
@@ -484,7 +488,7 @@ create the repl if it does not exist"
 	 ("\\.x?html?\\'" . default)
 	 ("\\.pdf\\'" . default)
 	 (directory . emacs))))
- '(org-startup-indented t)
+ '(org-startup-indented t t)
  '(package-selected-packages
    (quote
 	(markdown-toc spacemacs-theme god-mode yaml-mode web-mode ag helm-projectile projectile git-timemachine which-key markdown-preview-mode company-jedi solarized-theme anti-zenburn-theme zenburn-theme silkworm-theme xpm alect-themes linum-relative labburn-theme flycheck fish-mode markdown-mode php-mode yasnippet key-chord helm evil-surround evil-leader evil-commentary emmet-mode company)))
@@ -506,3 +510,6 @@ create the repl if it does not exist"
 ;; Local Variables:
 ;; eval: (flycheck-mode -1)
 ;; End:
+;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
+(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;; ## end of OPAM user-setup addition for emacs / base ## keep this line

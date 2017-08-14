@@ -10,7 +10,10 @@ PATH=/usr/local/bin:$PATH
 PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 PATH=$HOME/scripts:$PATH
 PATH=$HOME/bin:$PATH
+PATH=$HOME/opt/bin:$PATH
 PATH=node_modules/.bin:$PATH
+PATH=$HOME/.cargo/bin:$PATH
+PATH=$HOME/.opam/system/bin:$PATH
 
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
@@ -61,8 +64,9 @@ __prompt_command() {
 
     # # small prompt
     # PS1="${blue}\W${reset}"
+    # # PS1="$PS1 ${yellow}\`minimal_git_status\`${reset}"
     # if [[ $last_exit_code -ne 0 ]]; then
-    #     PS1="$PS1 ${red}${last_exit_code}"
+    #     PS1="$PS1 ${red}${last_exit_code}${reset}"
     # fi
     # PS1="$PS1 > ${reset}"
 
@@ -78,9 +82,12 @@ __prompt_command() {
         PS1="$PS1 ${red}$last_exit_code"
     fi
     PS1="$PS1${reset} > "
-}
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+}
 
 # pick up where we left off
 [[ -f $HOME/.cwd ]] && cd "$(< $HOME/.cwd)"
+
+# OPAM configuration
+eval `opam config env`
+source /Users/zach/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
