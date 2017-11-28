@@ -5,7 +5,13 @@ if (${1:condition}){
 endsnippet
 
 snippet cl "console.log()"
-console.log(${1:${VISUAL}})$0
+console.log(${0:${VISUAL}})$0
+endsnippet
+
+snippet cg "console.group"
+console.group($1)
+$0
+console.groupEnd($1)
 endsnippet
 
 snippet ? "ternary operator"
@@ -22,6 +28,71 @@ snippet qs "document.querySelector"
 document.querySelector($1)$0
 endsnippet
 
+snippet qsa "document.querySelectorAll"
+document.querySelectorAll($1)$0
+endsnippet
+
 snippet f "function"
-function$1($2) {$0}
+function($1) {$0}
+endsnippet
+
+snippet fn "arrow function"
+() => {$0}
+endsnippet
+
+snippet it "test it"
+it('$1', () => {
+  $0
+})
+endsnippet
+
+snippet g "eslint globals"
+/* globals $0 */
+endsnippet
+
+snippet fg "bootstrap form group"
+<div className="form-group">
+  <label htmlFor="$1">$2</label>
+  <input className="form-control" type="${3:text}" id="$1" name="$1" />
+</div>
+endsnippet
+
+snippet is "bootstrap submit input"
+<input className="btn btn-block btn-${2:primary}" type="submit" value="${1:Submit}" />$0
+endsnippet
+
+snippet h "heading 1"
+<h1>$0</h1>
+endsnippet
+
+snippet hh "heading 2"
+<h2>$0</h2>
+endsnippet
+
+snippet hhh "heading 3"
+<h3>$0</h3>
+endsnippet
+
+snippet hhhh "heading 4"
+<h4>$0</h4>
+endsnippet
+
+snippet rc "react component"
+import React, { Component } from 'react';
+
+class $1 extends Component {
+  render() {
+    return (
+      <div>
+        $0
+      </div>
+    );
+  }
+}
+
+export default $1;
+endsnippet
+
+snippet ir "import react"
+import React from 'react'
 endsnippet

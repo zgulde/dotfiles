@@ -1,5 +1,10 @@
 # vim: set ft=sh:
 
+# stolen from https://github.com/alexch/dotfiles/blob/master/functions.sh
+function whats-on-port {
+  lsof -i TCP:$1
+}
+
 function note {
     echo "[$(date +%Y-%m-%d\ %H:%M:%S)] $@" >> ~/codeup/notes.md
 }
@@ -39,25 +44,17 @@ function homestead() {
     fi
 }
 
-get_status() {
+# get the status code from a url
+get-status() {
     local url=$1
     curl --silent --head $url |\
         head -n 1 |\
         egrep -o '\b\d{3}\b'
 }
-# get the HTTP status code from a site eg getStatus google.com
-function getStatus {
-	curl -vs $1 2>&1 | grep '< HTTP/1.1'  | sed -e 's/< HTTP\/1\.1\ //g'
-}
 
 function mcd {
     mkdir -p "$@"
     cd "$@"
-}
-
-# use curl to just get the reponse headers instead of a full response
-function curlh {
-    curl -s -D - $1 -o /dev/null | sed 's/.*/< &/'
 }
 
 # cowsay with a random cow
@@ -102,28 +99,13 @@ function sendEmail {
         -F text="$BODY"
 }
 
-# converts a string to escaped ascii codes
-function toAsciiCodes {
-    echo $1 | hexdump | sed -e 's/.\{7\}//' -e 's/ /\\x/g' | tr -d '\n' | sed -e 's/\(\\x\)*$//g' -e 's/\\x0a$//' | tr -d '\n'
-}
-
-function emoji {
-    grep -i $1 ~/.emojis | sed 's/\(.*\)=\(.*\)#\(.*\)/\3 \1 \2/'
-}
-
-# do a git diff but just show which files are different
-function gdf {
-    gd $1 | grep ^diff | sed s/diff\ --git\ a/-\>\ \ /g
-}
-
-# parse_git_branch and parse_git_dirty copied from http://ezprompt.net/
+# parse_git_branch and parse_git_dirty adapted from http://ezprompt.net/
 # get current branch in git repo
 function parse_git_branch() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	if [ ! "${BRANCH}" == "" ]
-	then
-		STAT=`parse_git_dirty`
-		echo "<${BRANCH}>${STAT}"
+	local branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! "${branch}" == "" ] ; then
+		local status=`parse_git_dirty`
+		echo "<${branch}>${status}"
 	else
 		echo ""
 	fi
@@ -186,26 +168,25 @@ alias grepr='rgrep'
 # }
 
 function docker-cleanup() {
-    for id in $(docker ps -a | grep 'Exited' | awk '{print $1}'); do
+    for id in $(docker ps -a | grep 'Exited' | awk '{print $1}') ; do
         docker rm $id
     done
 }
 
 function docker-kill-all() {
-    for id in $(docker ps -q)
-    do
+    for id in $(docker ps -q) ; do
         docker kill $id
     done
 }
 
 function docker-image-cleanup() {
-    for imgid in $(docker images | grep \<none\> | awk '{print $3}'); do
+    for imgid in $(docker images | grep \<none\> | awk '{print $3}') ; do
         docker rmi $imgid
     done
 }
 
 push-all(){
-    for remote in $(git remote -v | awk '{print $1}' | uniq); do
+    for remote in $(git remote -v | awk '{print $1}' | uniq) ; do
         git push $remote "$@"
     done
 }
@@ -231,15 +212,4 @@ server() {
 # render a .dot file and open it
 graphv() {
     dot -Tpng -O $1; open $1.png
-}
-
-# wrapper around taskwarrior wait functionality
-snooze() {
-    task $1 mod wait:$2
-}
-
-todo() {
-    if [[ -z $1 ]]; then
-        $EDITOR ~/todo.txt
-    fi
 }

@@ -1,6 +1,21 @@
+snippet html5 "html boilerplate"
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title></title>
+</head>
+<body>
+
+$0
+
+</body>
+</html>
+endsnippet
+
 snippet bs "include bootstrap from cdn"
-<link rel="stylesheet"
-href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 endsnippet
 
@@ -20,9 +35,25 @@ snippet is "bootstrap submit input"
 endsnippet
 
 snippet mvp "meta viewport tag"
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">$0
+<meta name="viewport" content="width=device-width, initial-scale=1">$0
 endsnippet
 
 snippet a "element attribute"
 ${1:}="$0"
+endsnippet
+
+snippet h "heading 1"
+<h1>$0</h1>
+endsnippet
+
+snippet hh "heading 2"
+<h2>$0</h2>
+endsnippet
+
+snippet hhh "heading 3"
+<h3>$0</h3>
+endsnippet
+
+snippet hhhh "heading 4"
+<h4>$0</h4>
 endsnippet

@@ -5,18 +5,16 @@
     editor = nvim
     ; editor = subl -nw
     excludesfile = /Users/zach/.gitignore_global
+    ; autocrlf = true
 [alias]
-    a       = add
     aa      = add -A
-    ammend  = commit --amend
-    b       = branch
-    bm      = branch -m
     c       = commit -v
-    cm      = commit -m
+    cv      = commit -v
+    ca      = commit --amend
     co      = checkout
-    cob     = checkout -b
     fo      = fetch origin
     l       = log --oneline --decorate --graph
+	lg      = log --oneline --graph --decorate
     pom     = pull origin master
     rbi     = rebase -i
     s       = status

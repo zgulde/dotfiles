@@ -1,13 +1,13 @@
 # sources
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/env.fish
-source ~/.fzf/shell/key-bindings.fish
+# source ~/.fzf/shell/key-bindings.fish
 
 # env vars
-set -x FZF_DEFAULT_OPTS '--reverse'
+# set -x FZF_DEFAULT_OPTS '--reverse'
 
 # PATH
-set -x PATH $PATH ~/.fzf/bin/
+# set -x PATH $PATH ~/.fzf/bin/
 set -x PATH $PATH ~/bin/
 
 set -x EDITOR vim

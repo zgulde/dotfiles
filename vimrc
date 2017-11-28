@@ -13,64 +13,67 @@ set rtp+=/usr/local/opt/fzf
 " use plugged for plugins
 call plug#begin('~/.local/share/nvim/plugged/')
 
-" language specific
-"""""""""""""""""""
+" " languages I'm not using (frequently) or just playing around with
+" Plug 'https://github.com/kchmck/vim-coffee-script'
+" Plug 'https://github.com/rust-lang/rust.vim'
+" Plug 'https://github.com/ElmCast/elm-vim'
+" Plug 'https://github.com/elixir-editors/vim-elixir'
+" Plug 'https://github.com/Glench/Vim-Jinja2-Syntax.git'
+" Plug 'https://github.com/dag/vim-fish.git'
+" Plug 'https://github.com/leafgarland/typescript-vim.git'
+" Plug 'https://github.com/wlangstroth/vim-racket.git'
+" Plug 'https://github.com/tpope/vim-fireplace'          " clojure integration
+" Plug 'https://github.com/jceb/vim-orgmode.git'
+" Plug 'https://github.com/vim-scripts/utl.vim.git' " use to open links in vim-org
+" Plug 'https://github.com/mhartington/nvim-typescript.git', { 'do': ':UpdateRemotePlugins' }
+" Plug 'https://github.com/leafgarland/typescript-vim'
 
-Plug 'https://github.com/neovim/node-host'
-
-Plug 'https://github.com/wlangstroth/vim-racket.git'
-
+Plug 'https://github.com/nelstrom/vim-markdown-folding'
 Plug 'https://github.com/ryanss/vim-hackernews.git'
-
-Plug 'https://github.com/msprev/vim-markdown-folding'
-
-Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/mxw/vim-jsx'
-
-Plug 'https://github.com/vim-scripts/SyntaxAttr.vim'
-
-Plug 'https://github.com/jremmen/vim-ripgrep'
+" Plug 'https://github.com/neovim/node-host'
 
 " language enhancements
-Plug 'https://github.com/tpope/vim-fireplace'          " clojure integration
 Plug 'https://github.com/mzlogin/vim-markdown-toc.git' " generate markdown toc
-Plug 'https://github.com/tpope/vim-endwise.git'        " for bash + ruby blocks
-Plug 'https://github.com/salomvary/vim-eslint-compiler'
-Plug 'https://github.com/nelstrom/vim-textobj-rubyblock.git'
 Plug 'https://github.com/mattn/emmet-vim.git'
-" Plug 'https://github.com/davidhalter/jedi-vim.git'
+Plug 'https://github.com/salomvary/vim-eslint-compiler'
+Plug 'https://github.com/zchee/deoplete-jedi'
+Plug 'carlitux/deoplete-ternjs'
+Plug 'https://github.com/ternjs/tern_for_vim'
+Plug 'https://github.com/tpope/vim-endwise.git' " for bash + ruby blocks
 
 " language syntax
-Plug 'https://github.com/Glench/Vim-Jinja2-Syntax.git'
-Plug 'https://github.com/leafgarland/typescript-vim.git'
 Plug 'https://github.com/jwalton512/vim-blade.git'
-Plug 'https://github.com/dag/vim-fish.git'
 Plug 'https://github.com/mxw/vim-jsx.git'
+Plug 'https://github.com/pangloss/vim-javascript'
 
 " editor enhancements
-Plug 'https://github.com/jpalardy/vim-slime'
-Plug 'https://github.com/tpope/vim-repeat'
-Plug 'https://github.com/ervandew/supertab.git'
-Plug 'https://github.com/tpope/vim-vinegar.git'
-Plug 'https://github.com/machakann/vim-highlightedyank.git'
-Plug 'https://github.com/wesQ3/vim-windowswap.git'
-Plug 'https://github.com/junegunn/vim-easy-align.git'
-Plug 'https://github.com/editorconfig/editorconfig-vim.git'
-Plug 'https://github.com/kien/ctrlp.vim.git'
-Plug 'https://github.com/tommcdo/vim-exchange.git'
-Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/tommcdo/vim-lion.git'
-Plug 'https://github.com/terryma/vim-multiple-cursors.git'
-Plug 'https://github.com/kana/vim-textobj-user.git'
-Plug 'https://github.com/tpope/vim-unimpaired'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'https://github.com/Shougo/neco-syntax'
 Plug 'https://github.com/SirVer/ultisnips.git'
-Plug 'https://github.com/tpope/vim-commentary.git'
-Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/editorconfig/editorconfig-vim.git'
+Plug 'https://github.com/ervandew/supertab.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
+Plug 'https://github.com/jpalardy/vim-slime'
+Plug 'https://github.com/jremmen/vim-ripgrep'
+Plug 'https://github.com/junegunn/vim-easy-align.git'
+Plug 'https://github.com/kana/vim-textobj-user.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/machakann/vim-highlightedyank.git'
+Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+Plug 'https://github.com/tommcdo/vim-exchange.git'
+Plug 'https://github.com/tommcdo/vim-lion.git'
+Plug 'https://github.com/tpope/vim-commentary.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/tpope/vim-repeat'
+Plug 'https://github.com/tpope/vim-speeddating'
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/tpope/vim-unimpaired'
+Plug 'https://github.com/tpope/vim-vinegar.git'
+Plug 'https://github.com/vim-scripts/SyntaxAttr.vim'
+Plug 'https://github.com/wesQ3/vim-windowswap.git'
 
 " colorscheme
 Plug 'https://github.com/jonathanfilip/vim-lucius.git'
-Plug 'https://github.com/reedes/vim-colors-pencil.git'
 
 call plug#end()
 
@@ -78,21 +81,24 @@ call plug#end()
 " |                       Plugin Config                          |
 " +--------------------------------------------------------------+
 
-" " ocaml merlin support, technically not a plugin, but it feels like this config
-" " belongs here
-" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-" execute "set rtp+=" . g:opamshare . "/merlin/vim"
-" " https://github.com/ocaml/merlin/wiki/vim-from-scratch
-" " execute "helptags " . substitute(system('opam config var share'),'\n$','','''') .  "/merlin/vim/doc"
+let g:jedi#completions_enabled = 0
 
+" universal text linking
+" open urls
+let g:utl_cfg_hdl_scm_http_system = "silent !open '%u'"
+" let g:utl_cfg_hdl_scm_http_system = "!echo '%u'"
 
-" http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" remove extra spaces when aligning
+let g:lion_squeeze_spaces = 1
+
+" auto completion
+let g:deoplete#enable_at_startup = 1
+
+" deoplete-tern + tern_for_vim compatibility
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
-let g:ycm_python_binary_path = 'python'
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -101,19 +107,23 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 xnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
 vnoremap x :call UltiSnips#SaveLastVisualSelection()<CR>gvc
 
-let g:phpcomplete_parse_docblock_comments = 1
-
 " emmet
-let g:user_emmet_leader_key='<C-m>'
+" let g:user_emmet_leader_key='<C-m>'
 let g:user_emmet_install_global = 0
-autocmd FileType html EmmetInstall
-autocmd FileType jsp EmmetInstall
-autocmd FileType eruby EmmetInstall
+autocmd FileType html,css,javascript.jsx EmmetInstall
+imap <expr> <c-j> emmet#expandAbbrIntelligent("\<c-j>")
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " vim-slime
-let g:slime_target = "tmux"
+let g:slime_target = "tmux" " use tmux split
+" let g:slime_target = "vimterminal" " use native vim terminal
+" let g:slime_target = "neovim" " use neovim terminal
 let g:slime_paste_file = "$HOME/.slime_paste"
-let g:slime_python_ipython = 1
+" let g:slime_python_ipython = 1
 
 " alignment plugin
 nmap ga <Plug>(EasyAlign)
@@ -124,7 +134,7 @@ let g:multi_cursor_exit_from_insert_mode=1
 
 " ctrlp
 let g:ctrlp_custom_ignore = {
-    \ 'dir':'node_modules\|vendor\|\.git'
+    \ 'dir':'node_modules\|vendor\|\.git\|build\|coverage\|env\|__pycache__'
     \}
 
 " enable jsx syntax package without the .jsx file extension
@@ -137,12 +147,14 @@ let g:rg_highlight = 1
 " |                       Editor Settings                        |
 " +--------------------------------------------------------------+
 
+set background=dark
+colorscheme lucius
+
 " appearence
 """"""""""""
 set ruler
 set cmdheight=1
-set background=light
-set colorcolumn=80,100,120
+set colorcolumn=80,100,120,160
 set cursorline " highlight the current line
 set foldmethod=indent
 set foldlevel=20
@@ -194,6 +206,9 @@ set completeopt=menuone,preview " tab cycles completions
 
 set backupdir=/Users/zach/.local/share/nvim/swap " don't clutter my working directory with swp files
 
+" set hidden
+set confirm " prompt to save changes before leaving a modified buffer
+
 " +--------------------------------------------------------------+
 " |                       Key Mappings                           |
 " +--------------------------------------------------------------+
@@ -201,22 +216,25 @@ set backupdir=/Users/zach/.local/share/nvim/swap " don't clutter my working dire
 " spacebar as leader
 let mapleader = " "
 
-" change indentation width
+" org mode
+map <Leader>cc :OrgCheckBoxToggle<cr>
+map <Leader>cu :OrgCheckBoxUpdate<cr>
+map <Leader>cn :OrgCheckBoxNewBelow<cr>
+map <Leader>cp :OrgCheckBoxNewAbove<cr>
+map <Leader>co :OrgHyperlinkFollow<cr>
+
+" change indentation width (theres probably a better way to do this...)
 map <Leader>t2 :set shiftwidth=2<cr>:set tabstop=2<cr>:set softtabstop=2<cr>
 map <Leader>t4 :set shiftwidth=4<cr>:set tabstop=4<cr>:set softtabstop=4<cr>
-
-map <Leader>; A;<esc>
-
-" language specific (these tend to change)
-map <Leader>t :!npm test<cr>
-map <Leader>l :!lein
 
 " get rid of highlighted search terms
 map <Leader>sc :noh<cr>
 
 " run the current file, read in the output to the end of the file, comment it
-" out, and visually select all the output. kinda gross, but it's helpful
+" out, and visually select all the output. kinda gross, but it works
 map <Leader>r Go:r !./%'[VGogcgvk
+
+map <Leader>e mz:%!node -p<cr>
 
 " window manipulation with leader + w in addition to C-w
 map <Leader>wh <C-w>h
@@ -228,23 +246,32 @@ map <Leader>ws <C-w>s
 map <Leader>wo :only<cr>
 map <Leader>wc <C-w>c
 map <Leader>w= <C-w>=
+map <Leader>wt :tabnew<cr>
 
-map <Leader>or cor
-map <Leader>ow cow
-map <Leader>on con
+map <Leader>vn :vnew<cr>
+
+" close the autocomplete preview window
+map <Leader>pc :pclose<cr>
+
+" open a markdown link
+map <Leader>o f(yi(:!open -a Google\ Chrome 0
 
 map <Leader>ff :e
 map <Leader>fs :w<cr>
 map <Leader>fe :e ~/.config/nvim/init.vim<cr>
 map <Leader>fp :e ~/.config/nvim/UltiSnips<cr>
 map <Leader>fb :e ~/.bashrc<cr>
+map <Leader>fa :e ~/.aliases<cr>
+map <Leader>ft :set ft=
 
 map <Leader>te :term<cr>
 map <Leader>gs :Gstatus<cr>
+map <Leader>gb :Gblame<cr>
 
 map <Leader>bp :bp<cr>
 map <Leader>bn :bn<cr>
 map <Leader>bl :CtrlPBuffer<cr>
+map <Leader>ls :CtrlPBuffer<cr>
 
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
@@ -252,15 +279,16 @@ map <Leader>2 :set background=dark<cr>
 map <Leader>;; gcc
 map <Leader>; gc
 
-map <Leader>wq :wq<cr>
+map <Leader>wq :x<cr>
 
 map <Leader><Leader> :call SyntaxAttr()<cr>
 
 " Control Mappings
 """"""""""""""""""
 
-" emacs has nothing on me!
-vmap <C-x><C-e> :!clisp -q -norc<cr>
+" " emacs has nothing on me!
+" vmap <C-x><C-e> :!lumo -<cr>
+" nmap <C-x><C-e> vip:!lumo -<cr>
 
 " moving between windows, tiling wm-like effect
 nmap <C-h> <C-w>h<C-w>\|
@@ -276,6 +304,13 @@ imap <C-b> <left>
 imap <C-k> <C-o>D
 imap <C-l> <C-o>zz
 imap <C-d> <C-o>dl
+imap <C-s> <C-o>/
+
+" when entering commands too
+cmap <C-f> <right>
+cmap <C-b> <left>
+cmap <C-e> <end>
+cmap <C-a> <home>
 
 " use supertab for completion so we can override c-p + c-n
 " or just fall back to the c-x prefix
@@ -285,6 +320,10 @@ inoremap <C-n> <down>
 " Other Mappings
 """"""""""""""""
 
+" turn current line into markdown h1 (H) or h2 (h)
+nnoremap mh yypVr-
+nnoremap mH yypVr=
+
 inoremap jk <esc>
 
 " die typos
@@ -292,10 +331,6 @@ inoremap jk <esc>
 :command Wq wq
 :command W w
 :command Q q
-
-" filter entire buffer or visual selection through external command
-nnoremap ge :%!
-vnoremap ge :!
 
 " what to do with <tab> in normal and visual mode?
 nnoremap <tab> za
@@ -313,9 +348,9 @@ xnoremap ` '
 nnoremap ` '
 nnoremap ' `
 
-" Move visual selection up and down
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+" " Move visual selection up and down
+" vnoremap J :m '>+1<CR>gv=gv
+" vnoremap K :m '<-2<CR>gv=gv
 
 " move visual selection vertically (this is kinda buggy)
 vnoremap H dhPgvhoho
@@ -335,15 +370,13 @@ map Q @q
 " |                       Miscellaneous                          |
 " +--------------------------------------------------------------+
 
-colorscheme lucius
-
 " make comments italic in *all* languages
 hi Comment cterm=italic
 
 " status line
 set statusline=%h%r%w%F%m\ (%y)%=%c,\ %l/%L\ %p%%\
 
-let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html', 'php', 'sql']
+let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html', 'php', 'sql', 'java']
 
 " neovim specifics
 if has('nvim')
@@ -375,38 +408,45 @@ augroup highlight_follows_focus
 augroup END
 
 " close autocompletion preview window automatically
-" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+" ocaml stuff
+"""""""""""""
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" " https://github.com/ocaml/merlin/wiki/vim-from-scratch
+" " execute "helptags " . substitute(system('opam config var share'),'\n$','','''') .  "/merlin/vim/doc"
 
-let s:opam_configuration = {}
+" " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+" let s:opam_share_dir = system("opam config var share")
+" let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
 
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+" let s:opam_configuration = {}
 
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+" function! OpamConfOcpIndent()
+"   execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+" endfunction
+" let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
 
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+" function! OpamConfOcpIndex()
+"   execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+" endfunction
+" let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
 
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line
+" function! OpamConfMerlin()
+"   let l:dir = s:opam_share_dir . "/merlin/vim"
+"   execute "set rtp+=" . l:dir
+" endfunction
+" let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+" let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+" let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+" let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+" for tool in s:opam_packages
+"   " Respect package order (merlin should be after ocp-index)
+"   if count(s:opam_available_tools, tool) > 0
+"     call s:opam_configuration[tool]()
+"   endif
+" endfor
+" " ## end of OPAM user-setup addition for vim / base ## keep this line

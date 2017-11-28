@@ -22,10 +22,16 @@ export EDITOR=nvim
 export VISUAL=nvim
 export GOPATH=$HOME/go
 export FZF_DEFAULT_OPTS='--reverse'
-
 # unlimited history
 export HISTSIZE=
 export HISTFILESIZE=
+# Seems this is necessary for java9, specifically running spring applications.
+# This module used to be included by default, but no longer is. See
+# https://stackoverflow.com/questions/12525288/is-there-a-way-to-pass-jvm-args-via-command-line-to-maven
+# and http://maven.apache.org/configure.html
+# basically this is an extra option maven passes to `java`
+# export MAVEN_OPTS='--add-modules java.xml.bind'
+
 
 # readline
 shopt -s autocd
@@ -74,7 +80,7 @@ __prompt_command() {
     if [[ -n $VIRTUAL_ENV ]]; then
         PS1="$PS1($(basename $VIRTUAL_ENV)) "
     fi
-    PS1="$PS1${cyan}\u${reset} at ${green}\h"
+    PS1="$PS1${cyan}\u${reset}@${green}\h"
     PS1="$PS1 ${blue}\w"
     PS1="$PS1 ${yellow}\`parse_git_branch\`"
     PS1="$PS1${reset}\n"
