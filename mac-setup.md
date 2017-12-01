@@ -150,6 +150,9 @@ if [[ ! -f $HOME/.ssh/id_rsa ]] ; then
     # ssh-keygen -trsa -b2048 -C "$NAME@codeup" -f $HOME/.ssh/id_rsa -N '' # non-interactive
     ssh-keygen
 fi
+
+read -p 'Press enter to open the ssh key settings on GitHub'
+open https://github.com/settings/keys
 ```
 
 ## Global `.gitignore`
