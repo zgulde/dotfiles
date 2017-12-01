@@ -33,6 +33,14 @@ read -p 'Press enter to open the docker mac download page'
 open https://www.docker.com/docker-mac
 ```
 
+- [Touch Switcher -- switch applications from touchbar](https://hazeover.com/touchswitcher.html)
+
+**Chrome Extensions**
+
+- [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
+- [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb)
+- [Markdown Here](https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa)
+
 ## OS Settings
 
 - Require password immediately on sleep or screen saver -- Settings -> Security + Privacy -> General
@@ -124,6 +132,8 @@ The first time neovim runs, you'll need to do a `:PlugInstall`
     Really I just use [this one](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Atom.itermcolors)
 
     Tweak fonts (14pt monaco) + line spacing (1.3)
+
+1. `cmd + ctrl + f` to full screen (Preferences -> Keys)
 
 1. Send f12 for Ctrl+; (see tmux.config comment for f12)
 
