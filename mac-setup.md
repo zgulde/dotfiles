@@ -80,6 +80,10 @@ brew install moreutils # vipe, among others
 
 # scripting languages
 brew install node ruby python3 pipenv
+
+# vagrant w/ ansible for php development
+brew install ansible
+brew cask install vagrant virtualbox
 ```
 
 ```
