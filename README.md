@@ -5,9 +5,15 @@ handful of places.
 
 [Detailed Mac Setup](mac-setup.md)
 
-The command below will clone this repo link up all of my dotfiles to where they
-need to be. Use at your own risk.
+**Mac Setup Script**
 
 ```
-curl https://raw.githubusercontent.com/zgulde/dotfiles/master/setup.sh | bash
+curl https://raw.githubusercontent.com/zgulde/dotfiles/master/setup-mac.sh > setup.sh
+chmod +x setup.sh
+
+# See available options
+./setup.sh
+
+# install everything (use at your own risk)
+./setup.sh all
 ```
