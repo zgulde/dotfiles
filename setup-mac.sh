@@ -126,9 +126,9 @@ nvim_setup() {
 	log 'Enabling italics for tmux + iterm'
 	mkdir -p ~/.terminfo
 	cat <<-. > ~/.terminfo/xterm-256color.terminfo
-	xterm-256color|xterm with 256 colors and italic,
-	sitm=\E[3m, ritm=\E[23m,
-	use=xterm-256color,
+		xterm-256color|xterm with 256 colors and italic,
+		sitm=\E[3m, ritm=\E[23m,
+		use=xterm-256color,
 	.
 	tic -x ~/.terminfo/xterm-256color.terminfo
 	log 'Installing NeoVim Plugins'
@@ -141,8 +141,8 @@ java() {
 	brew tap caskroom/versions
 	brew cask install java8
 	brew install maven tomcat
-	# if we can, automatically tell maven to use the java 8 jdk, otherwise display a
-	# message
+	# if we can, automatically tell maven to use the java 8 jdk, otherwise
+	# display a message
 	java8_install=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
 	if [[ -d $java8_install ]] ; then
 		echo "JAVA_HOME=$java8_install" >> ~/.mavenrc
