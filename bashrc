@@ -22,9 +22,9 @@ export EDITOR=nvim
 export VISUAL=nvim
 export GOPATH=$HOME/go
 export FZF_DEFAULT_OPTS='--reverse'
-# unlimited history
 export HISTSIZE=
 export HISTFILESIZE=
+export HISTIGNORE='ls:clear:ll:la:ltr:latr:exit'
 # Seems this is necessary for java9, specifically running spring applications.
 # This module used to be included by default, but no longer is. See
 # https://stackoverflow.com/questions/12525288/is-there-a-way-to-pass-jvm-args-via-command-line-to-maven
