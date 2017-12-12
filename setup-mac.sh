@@ -12,18 +12,30 @@ log() {
 	echo "-->| $@ |<--"
 }
 
+logdo() {
+	log "$@"
+	eval "$@"
+}
+
 general_software() {
 	heading 'General Software'
-	read -p 'Press enter to open the Chrome download page'
+
+	read -p 'Google Chrome'
 	open https://www.google.com/chrome/browser/desktop/index.html
-	read -p 'Press enter to open the iterm2 download page'
-	open https://www.iterm2.com/downloads.html
-	read -p 'Press enter to open the Spectacle download page'
-	open https://www.spectacleapp.com/
-	read -p 'Press enter to open the docker mac download page'
+	read -p 'Docker'
 	open https://www.docker.com/docker-mac
+	read -p 'iTerm2 -- Better terminal emulator'
+	open https://www.iterm2.com/downloads.html
+	read -p 'Spectable -- Window manager'
+	open https://www.spectacleapp.com/
 	read -p 'Touch Switcher -- switch applications from touchbar'
 	open https://hazeover.com/touchswitcher.html
+	read -p 'Total Spaces 2 -- to get rid of fullscreen transition animations'
+	open https://totalspaces.binaryage.com/
+	read -p 'Contexts -- better window/application switcher'
+	open https://contexts.co/
+	read -p 'Fluid App -- Turn web apps into native ones'
+	open http://fluidapp.com/
 }
 
 chrome_extensions() {
@@ -34,6 +46,15 @@ chrome_extensions() {
 	open https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb
 	read -p 'Markdown Here'
 	open https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa
+	read -p 'Live Reload'
+	open https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
+}
+
+firefox_extensions() {
+	echo https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/
+	echo https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
+	echo https://addons.mozilla.org/en-US/firefox/addon/markdown-here/
+	echo https://addons.mozilla.org/en-US/firefox/addon/livereload/
 }
 
 install_brew() {
@@ -43,21 +64,17 @@ install_brew() {
 }
 
 userland() {
-	heading 'Improving MacOS Userland'
-	log 'brew install git tree openssl tmux'
-	brew install git tree openssl tmux
-	log 'brew install pass jq ripgrep coreutils moreutils'
-	brew install pass jq ripgrep coreutils moreutils
-	log 'brew install node ruby python3 pipenv'
-	brew install node ruby python3 pipenv
-	log 'brew cask install vagrant virtualbox'
-	brew cask install vagrant virtualbox
-	log 'brew install ansible'
-	brew install ansible
-	log 'pip3 install virtualenv howdoi'
-	pip3 install virtualenv howdoi
-	log 'npm i -g lumo-cljs tldr serve'
-	npm i -g lumo-cljs tldr serve
+	logdo brew install git tree openssl tmux htop
+	logdo brew install pass jq ripgrep coreutils netcat
+	logdo brew install moreutils --no-parallel
+	logdo brew install parallel cowsay
+	logdo brew install node ruby python3 pipenv leiningen clojure
+	logdo brew install ansible
+	logdo brew cask install vagrant virtualbox
+	logdo brew cask install firefox
+
+	logdo pip3 install virtualenv howdoi
+	logdo npm i -g lumo-cljs tldr serve yarn
 }
 
 iterm_config() {
@@ -101,7 +118,7 @@ ssh_keys() {
 
 global_gitignore() {
 	heading 'Setup global .gitignore'
-	if [[ ! -f ~/.gitignore_global ]]; then
+	if [[ ! -f ~/.gitignore_global ]] ; then
 		echo '.DS_Store' >> ~/.gitignore_global
 		echo '.idea' >> ~/.gitignore_global
 		echo '*.iml' >> ~/.gitignore_global
@@ -119,10 +136,8 @@ dotfiles() {
 
 nvim_setup() {
 	heading 'Editor Config'
-	log 'brew install neovim reattach-to-user-namespace'
-	brew install neovim reattach-to-user-namespace
-	log 'pip3 install neovim'
-	pip3 install neovim
+	logdo brew install neovim reattach-to-user-namespace
+	logdo pip3 install neovim
 	log 'Enabling italics for tmux + iterm'
 	mkdir -p ~/.terminfo
 	cat <<-. > ~/.terminfo/xterm-256color.terminfo
@@ -137,10 +152,10 @@ nvim_setup() {
 
 java() {
 	heading 'Java'
-	brew cask install java
-	brew tap caskroom/versions
-	brew cask install java8
-	brew install maven tomcat
+	logdo brew cask install java
+	logdo brew tap caskroom/versions
+	logdo brew cask install java8
+	logdo brew install maven tomcat
 	# if we can, automatically tell maven to use the java 8 jdk, otherwise
 	# display a message
 	java8_install=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
