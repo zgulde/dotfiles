@@ -1,7 +1,15 @@
 # vim: set ft=sh:
+
 # +-------------------------------------------------------+
 # |              general utility                          |
 # +-------------------------------------------------------+
+
+alias magit='emc -e "(magit-status \"$(pwd)\")"'
+
+alias aliases="grep ^alias ~/.aliases | perl -pe 's/alias //;s/=/\t/' | sort | column -ts$'\t'"
+
+alias downcase="tr '[:upper:]' '[:lower:]'"
+alias upcase="tr '[:lower:]' '[:upper:]'"
 
 alias count='sort | uniq -c | sort -n'
 
@@ -21,6 +29,7 @@ alias jcurl='curl -H"Content-Type: application/json"'
 alias jccurl='curl -b ~/.cookiejar -c ~/.cookiejar -H"Content-Type: application/json"'
 
 alias be='bundle exec'
+alias pe='pipenv'
 
 alias wtf-mysql='mysql -e "show engine innodb status\G" | grep -C10 -i latest'
 
@@ -133,3 +142,5 @@ alias vs='vagrant status'
 alias vh='vagrant halt'
 alias vu='vagrant up'
 alias vssh='vagrant ssh'
+alias today='date +%Y-%m-%d'
+

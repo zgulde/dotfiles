@@ -7,10 +7,11 @@
     ; autocrlf = true
 [alias]
     aa      = add -A
+    bclean  = !git checkout master && git branch --merged | grep -v master | xargs git branch -d
     c       = commit -v
     cv      = commit -v
     ca      = commit --amend
-    cae     = commit --amend --no-edit
+    ce     = commit --amend --no-edit
     co      = checkout
     fo      = fetch origin
     l       = log --oneline --decorate --graph
@@ -21,8 +22,10 @@
     ss      = status -s
     undo    = reset HEAD~
     unstage = reset HEAD
-    wip     = !git add -A && git commit -m "WIP:$@"
+    wip     = !git add -A && git commit -m WIP
 [merge]
-	; conflictstyle = diff3
+	conflictstyle = diff3
 [diff]
 	tool = diff
+[rebase]
+	autosquash = true

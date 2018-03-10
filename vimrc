@@ -17,13 +17,17 @@ set rtp+=/usr/local/opt/fzf
 " use plugged for plugins
 call plug#begin('~/.local/share/nvim/plugged/')
 
-Plug 'https://github.com/wlangstroth/vim-racket'
+" w/ brew
+Plug '/usr/local/opt/fzf'
+
+" Plug 'https://github.com/wlangstroth/vim-racket'
+" Plug 'https://github.com/posva/vim-vue'
 
 " " clojure stuff
-" Plug 'https://github.com/tpope/vim-fireplace'
-" Plug 'https://github.com/clojure-vim/async-clj-omni'
-" let g:deoplete#keyword_patterns = {}
-" let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+Plug 'https://github.com/tpope/vim-fireplace'
+Plug 'https://github.com/clojure-vim/async-clj-omni'
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 " Plug 'https://github.com/tpope/vim-dispatch.git'
 " Plug 'https://github.com/radenling/vim-dispatch-neovim'
@@ -64,13 +68,14 @@ Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'https://github.com/pangloss/vim-javascript'
 
 " editor enhancements
+Plug 'https://github.com/osyo-manga/vim-anzu' " show search status
 Plug 'https://github.com/dahu/vim-fanfingtastic' " make f and t movements multiline
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " async autocompletion
 Plug 'https://github.com/Shougo/neco-syntax' " autocomplete based of file syntax def
 Plug 'https://github.com/SirVer/ultisnips.git' " snippets
 Plug 'https://github.com/editorconfig/editorconfig-vim.git' " respect .editorconfig files
 Plug 'https://github.com/ervandew/supertab.git' " tab all the things!
-Plug 'https://github.com/jiangmiao/auto-pairs.git' " pair ([{}])
+Plug 'https://github.com/zgulde/auto-pairs.git' " pair ([{}])
 Plug 'https://github.com/jpalardy/vim-slime' " send text to another [tmux|vim] [split|pane]
 Plug 'https://github.com/jremmen/vim-ripgrep' " rg integration
 Plug 'https://github.com/junegunn/vim-easy-align.git' " align things
@@ -148,6 +153,12 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
 
+" anzu mapping
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+
 " multi-cursor stuff
 let g:multi_cursor_exit_from_insert_mode=1
 
@@ -162,6 +173,11 @@ let g:jsx_ext_required = 0
 " vim-ripgrep config
 let g:rg_highlight = 1
 
+" turn off autopairs mappings
+let g:AutoPairsShortcutToggle = ''
+let g:AutoPairsShortcutFastWrap = ''
+let g:AutoPairsShortcutJump = ''
+
 au Filetype clojure let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 au Filetype lisp let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
@@ -172,7 +188,8 @@ au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 
 set t_Co=256
 set background=light
-colorscheme unicon
+" colorscheme unicon
+colorscheme lucius
 
 " appearence
 """"""""""""
@@ -257,7 +274,8 @@ map <Leader>sc :noh<cr>
 " out, and visually select all the output. kinda gross, but it works
 map <Leader>r Go:r !./%'[VGogcgvk
 
-map <Leader>e mz:%!node -p<cr>
+map <Leader>e :!./app<cr>
+map <Leader>m :make<cr>
 
 " window manipulation with leader + w in addition to C-w
 map <Leader>wh <C-w>h
@@ -294,9 +312,11 @@ map <Leader>te :term<cr>
 map <Leader>gs :Gstatus<cr>
 map <Leader>gb :Gblame<cr>
 
+map <Leader>ac <Plug>(anzu-clear-search-status)
+
 map <Leader>bp :bp<cr>
 map <Leader>bn :bn<cr>
-map <Leader>bl :CtrlPBuffer<cr>
+map <Leader>bs :CtrlPBuffer<cr>
 
 map <Leader>lt :!lein test<cr>
 
@@ -308,6 +328,8 @@ map <Leader>; gc
 
 map <Leader>wq :x<cr>
 map <Leader>pi :PlugInstall<cr>
+
+map <Leader>fj -
 
 map <Leader><Leader> :call SyntaxAttr()<cr>
 
@@ -325,14 +347,24 @@ nmap <C-k> <C-w>k<C-w>_
 nmap <C-l> <C-w>l<C-w>\|
 
 " emacsish
-imap <C-e> <C-o>$
-imap <C-a> <C-o>0
-imap <C-f> <right>
-imap <C-b> <left>
-imap <C-k> <C-o>D
-imap <C-l> <C-o>zz
-imap <C-d> <C-o>dl
-imap <C-s> <C-o>/
+imap <c-e> <C-o>$
+imap <c-a> <C-o>0
+imap <c-f> <right>
+imap <c-b> <left>
+imap <c-k> <C-o>D
+imap <c-l> <C-o>zz
+imap <c-d> <C-o>dl
+imap <c-s> <C-o>/
+imap <c-/> <c-o>u
+imap <c-g> <esc>
+
+imap <m-a> <c-o>(
+imap <m-e> <c-o>)
+imap <m-f> <esc>ea
+imap <m-b> <c-o>b
+imap <m-d> <c-o>de
+imap <m-q> <c-o>gwip
+imap <m-bs> <c-o>db
 
 " when entering commands too
 cmap <C-f> <right>
@@ -373,11 +405,11 @@ xnoremap ^ 0
 nnoremap ^ 0
 nnoremap 0 ^
 
-" better marks
-xnoremap ' `
-xnoremap ` '
-nnoremap ` '
-nnoremap ' `
+" " better marks
+" xnoremap ' `
+" xnoremap ` '
+" nnoremap ` '
+" nnoremap ' `
 
 " " Move visual selection up and down
 " vnoremap J :m '>+1<CR>gv=gv
@@ -408,7 +440,7 @@ let g:is_bash = 1
 hi Comment cterm=italic
 
 " status line
-set statusline=%h%r%w%F%m\ (%y)%=%c,\ %l/%L\ %p%%\
+set statusline=%{anzu#search_status()}\ %h%r%w%F%m\ (%y)%=%c,\ %l/%L\ %p%%\
 
 let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html', 'php', 'sql', 'java']
 

@@ -75,7 +75,7 @@ __prompt_command() {
     # if [[ $last_exit_code -ne 0 ]]; then
     #     PS1="$PS1 ${red}${last_exit_code}${reset}"
     # fi
-    # PS1="$PS1 > ${reset}"
+    # PS1="$PS1 $ ${reset}"
 
     # for some reason virtualenv doesn't like my prompt
     if [[ -n $VIRTUAL_ENV ]]; then
@@ -99,3 +99,5 @@ eval "$(myserver bash-completion)"
 # source /Users/zach/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -1,30 +1,38 @@
 # vim: set ft=sh:
 
-function emoji {
+# custom ll
+list-long() {
+	local cols='##PERMS### LINKS OWNER GROUP SIZE MONTH DAY HH:MM NAME'
+	(echo $cols
+	ls -lh | sed 1d | awk "{print \$0}; NR % 10 == 0 {print \"$cols\"}"
+	) | column -t
+}
+
+# look at all the emoji
+emoji() {
 	if [[ -z $1 ]] ; then
 		cut -f1 < ~/misc/emoji-list.txt
 	fi
 }
 
-# stolen from https://github.com/alexch/dotfiles/blob/master/functions.sh
-function whats-on-port {
-  lsof -i TCP:$1
+# figure out what is running on a given port
+whats-on-port() {
+	# stolen from https://github.com/alexch/dotfiles/blob/master/functions.sh
+	lsof -i TCP:$1
 }
 
-function note {
-    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] $@" >> ~/codeup/notes.md
-}
-
-function phpman {
+# look something up in the php manual
+phpman() {
     open "http://php.net/manual-lookup.php?pattern=$1&scope=quickref"
 }
 
 # google (duckduckgo) something
-function g {
+g() {
     ruby -r cgi -e '`open http://duckduckgo.com/?q=#{CGI.escape(ARGV.join(" "))}`' "$@"
 }
 
-function vl {
+# interaction with codeup vagrant-lamp box
+vl() {
     if [[ $# -eq 0 ]]; then
         cd ~/vagrant-lamp
     else
@@ -32,7 +40,8 @@ function vl {
     fi
 }
 
-function warpspeed() {
+# interaction with warpspeed vagrant box
+warpspeed() {
     if [[ $# -eq 0 ]]; then
         cd ~/Sites
     else
@@ -40,7 +49,8 @@ function warpspeed() {
     fi
 }
 
-function homestead() {
+# interaction w/ vagrant homestead box
+homestead() {
     if [[ $# -eq 0 ]]; then
         cd ~/Code
     elif [[ $1 == "cfg" ]]; then
@@ -58,13 +68,14 @@ get-status() {
         egrep -o '\b\d{3}\b'
 }
 
-function mcd {
+# create and switch to a directory
+mcd() {
     mkdir -p "$@"
     cd "$@"
 }
 
 # cowsay with a random cow
-function randcowsay {
+randcowsay() {
     NUMOFCOWS=`cowsay -l | tail -n +2 | wc -w`
     WHICHCOW=$((RANDOM%$NUMOFCOWS+1))
     THISCOW=`cowsay -l | tail -n +2 | sed -e 's/\ /\'$'\n/g' | sed $WHICHCOW'q;d'`
@@ -72,9 +83,8 @@ function randcowsay {
     cowsay -f $THISCOW $1
 }
 
-# sends an email from my mailgun domain
-#   $ sendEmail <to> <subject> <body> [from='Don't Reply']
-function sendEmail {
+# sends an email from my mailgun domain - sendEmail <to> <subject> <body> [from='Don't Reply']
+sendEmail() {
 
 	if [ "$1" == "help" ]
 	then
@@ -106,7 +116,8 @@ function sendEmail {
 }
 
 # parse_git_branch and parse_git_dirty adapted from http://ezprompt.net/
-# get current branch in git repo
+
+# get current branch in git repo (for PS1)
 function parse_git_branch() {
 	local branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
 	if [ ! "${branch}" == "" ] ; then
@@ -117,7 +128,7 @@ function parse_git_branch() {
 	fi
 }
 
-# get current status of git repo
+# get current status of git repo (for git PS1)
 function parse_git_dirty {
 	status=`git status 2>&1 | tee`
 	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
@@ -152,7 +163,7 @@ function parse_git_dirty {
 	fi
 }
 
-# just show first letter of the branch name and the symbols for modification
+# show first letter of the branch name and the symbols for modification (for PS1)
 function minimal_git_status() {
     BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | head -c 1`
 	if [ ! "${BRANCH}" == "" ]
@@ -164,39 +175,37 @@ function minimal_git_status() {
 	fi
 }
 
-function rgrep() {
+# recursivley grep all files in this directory, case insensitive, show linenums
+rgrep() {
     grep -iRn $1 ./
 }
-alias grepr='rgrep'
 
 # function g() {
 #     g++ $1 && ./a.out
 # }
 
-function docker-cleanup() {
+# docker rm any 'Exited' containers
+docker-cleanup() {
     for id in $(docker ps -a | grep 'Exited' | awk '{print $1}') ; do
         docker rm $id
     done
 }
 
-function docker-kill-all() {
+# docker kill everything that's running (docker ps -q)
+docker-kill-all() {
     for id in $(docker ps -q) ; do
         docker kill $id
     done
 }
 
-function docker-image-cleanup() {
+# docker rmi any images that match <none>
+docker-image-cleanup() {
     for imgid in $(docker images | grep \<none\> | awk '{print $3}') ; do
         docker rmi $imgid
     done
 }
 
-push-all(){
-    for remote in $(git remote -v | awk '{print $1}' | uniq) ; do
-        git push $remote "$@"
-    done
-}
-
+# recursively find all the .git directories in the pwd and show their statuses
 git-all-status(){
     current_dir="$(pwd)"
     for dir in $(find . -name '.git')
@@ -208,17 +217,12 @@ git-all-status(){
     done
 }
 
-# render a .dot file and open it
+# render a .dot file and immediately open it
 graphv() {
-    dot -Tpng -O $1; open $1.png
+    dot -Tsvg -O $1; open -a 'Google Chrome' $1.svg
 }
 
-vagrant-run() {
-	vagrant up
-	read -p "$(pwd): Vagrant box running..."
-	vagrant halt
-}
-
+# open the documentation web page for various things
 docs() {
 	local url
 	case $1 in
@@ -240,6 +244,9 @@ docs() {
 		jq)
 			open https://stedolan.github.io/jq/manual/
 			;;
+		emoji)
+			open https://unicode.org/Public/emoji/11.0/emoji-data.txt
+			;;
 		*)
 			cat <<-.
 				sb | spring | springboot
@@ -248,11 +255,13 @@ docs() {
 				bs3 | bootstrap3
 				thy | thyme | thymeleaf
 				jq
+				emoji
 			.
 			;;
 	esac
 }
 
+# log an entry with a timestamp to ~/Dropbox/log.txt
 lg() {
 	if [[ $# -eq 0 ]] ; then
 		cat <<-.
@@ -261,4 +270,23 @@ lg() {
 		return 1
 	fi
 	echo -e "$(date +%Y-%m-%d\ %H:%M:%S)\t$@" >> ~/Dropbox/log.txt
+}
+
+# put my email signature (in markdown) on the clipboard
+sig() {
+	pbcopy <<-.
+	\--
+	Zach Gulde
+	Curriculum Developer @ [Codeup](https://codeup.com)
+	.
+}
+
+# show the help for custom functions
+chelp() {
+	perl -0777 -ne 'while(m/#\s*(.*?)\n([a-zA-Z-_]+)\(\)\s*{\n/g) { print "\033[35m$2\033[0m\t$1\n" }' ~/.bash_functions  | column -c$(tput cols) -ts$'\t' | sort
+}
+
+# print only the most recently modified file
+ls-latest() {
+	ls -1tr $1 | tail -n 1
 }
