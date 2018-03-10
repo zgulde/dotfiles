@@ -22,7 +22,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export GOPATH=$HOME/go
 export FZF_DEFAULT_OPTS='--reverse'
-# unlimited history
 export HISTSIZE=
 export HISTFILESIZE=
 export HISTIGNORE='ls:clear:ll:la:ltr:latr:exit'
