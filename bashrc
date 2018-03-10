@@ -6,7 +6,7 @@ PATH=/bin
 PATH=/sbin:$PATH
 PATH=/usr/bin:$PATH
 PATH=/usr/sbin:$PATH
-PATH=/usr/local/bin:$PATH
+PATH=/usr/local/bin:$PATH # put homebrew before the mac stuff
 PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 PATH=$HOME/scripts:$PATH
 PATH=$HOME/bin:$PATH
@@ -25,6 +25,7 @@ export FZF_DEFAULT_OPTS='--reverse'
 # unlimited history
 export HISTSIZE=
 export HISTFILESIZE=
+export HISTIGNORE='ls:clear:ll:la:ltr:latr:exit'
 # Seems this is necessary for java9, specifically running spring applications.
 # This module used to be included by default, but no longer is. See
 # https://stackoverflow.com/questions/12525288/is-there-a-way-to-pass-jvm-args-via-command-line-to-maven
@@ -46,12 +47,14 @@ bind "set completion-query-items 50"
 # if we're on macos...
 if [[ $(uname -s) == "Darwin" ]]; then
     # pass tab completion
-    source /usr/local/Cellar/pass/1.6.5_1/etc/bash_completion.d/password-store
+    source /usr/local/Cellar/pass/1.7.1/etc/bash_completion.d/pass
     # taskwarrior tab completion
-    source /usr/local/Cellar/task/2.5.1/etc/bash_completion.d/task.sh
-    complete -o nospace -F _task t
-    complete -o nospace -F _task tw
+    # source /usr/local/Cellar/task/2.5.1/etc/bash_completion.d/task.sh
+    # complete -o nospace -F _task t
+    # complete -o nospace -F _task tw
 fi
+
+eval "$(pandoc --bash-completion)"
 
 reset='\[\e[0m\]'
 red='\[\e[0;31m\]'
@@ -65,7 +68,6 @@ PROMPT_COMMAND=__prompt_command
 
 __prompt_command() {
     local last_exit_code=$?
-    pwd > $HOME/.cwd
     PS1=
 
     # # small prompt
@@ -80,20 +82,21 @@ __prompt_command() {
     if [[ -n $VIRTUAL_ENV ]]; then
         PS1="$PS1($(basename $VIRTUAL_ENV)) "
     fi
-    PS1="$PS1${cyan}\u${reset}@${green}\h"
-    PS1="$PS1 ${blue}\w"
-    PS1="$PS1 ${yellow}\`parse_git_branch\`"
+    PS1="$PS1[${cyan}\u${reset}@${green}\h${reset}]"
+    PS1="$PS1(${blue}\w${reset})"
+    PS1="$PS1${yellow}\`parse_git_branch\`"
     PS1="$PS1${reset}\n"
     if [[ $last_exit_code -ne 0 ]]; then
         PS1="$PS1 ${red}$last_exit_code"
     fi
-    PS1="$PS1${reset} > "
+    PS1="$PS1${reset} % "
 
 }
 
-# pick up where we left off
-[[ -f $HOME/.cwd ]] && cd "$(< $HOME/.cwd)"
+eval "$(myserver bash-completion)"
 
 # OPAM configuration
-eval `opam config env`
-source /Users/zach/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# eval `opam config env`
+# source /Users/zach/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

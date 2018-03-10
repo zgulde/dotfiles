@@ -1,3 +1,7 @@
+" (do (use 'figwheel-sidecar.repl-api)
+"     (start-figwheel!)
+"     (cljs-repl))
+
 set nocompatible
 
 syntax on
@@ -13,6 +17,21 @@ set rtp+=/usr/local/opt/fzf
 " use plugged for plugins
 call plug#begin('~/.local/share/nvim/plugged/')
 
+Plug 'https://github.com/wlangstroth/vim-racket'
+
+" " clojure stuff
+" Plug 'https://github.com/tpope/vim-fireplace'
+" Plug 'https://github.com/clojure-vim/async-clj-omni'
+" let g:deoplete#keyword_patterns = {}
+" let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+" Plug 'https://github.com/tpope/vim-dispatch.git'
+" Plug 'https://github.com/radenling/vim-dispatch-neovim'
+" Plug 'https://github.com/tpope/vim-salve'
+
+" Plug 'https://github.com/jebberjeb/clojure-socketrepl.nvim'
+" let g:disable_socket_repl_mappings = 1
+
 " " languages I'm not using (frequently) or just playing around with
 " Plug 'https://github.com/kchmck/vim-coffee-script'
 " Plug 'https://github.com/rust-lang/rust.vim'
@@ -22,58 +41,57 @@ call plug#begin('~/.local/share/nvim/plugged/')
 " Plug 'https://github.com/dag/vim-fish.git'
 " Plug 'https://github.com/leafgarland/typescript-vim.git'
 " Plug 'https://github.com/wlangstroth/vim-racket.git'
-" Plug 'https://github.com/tpope/vim-fireplace'          " clojure integration
-" Plug 'https://github.com/jceb/vim-orgmode.git'
 " Plug 'https://github.com/vim-scripts/utl.vim.git' " use to open links in vim-org
 " Plug 'https://github.com/mhartington/nvim-typescript.git', { 'do': ':UpdateRemotePlugins' }
 " Plug 'https://github.com/leafgarland/typescript-vim'
 
-Plug 'https://github.com/nelstrom/vim-markdown-folding'
-Plug 'https://github.com/ryanss/vim-hackernews.git'
+" Plug 'https://github.com/nelstrom/vim-markdown-folding'
+" Plug 'https://github.com/ryanss/vim-hackernews.git'
 " Plug 'https://github.com/neovim/node-host'
 
 " language enhancements
 Plug 'https://github.com/mzlogin/vim-markdown-toc.git' " generate markdown toc
+Plug 'https://github.com/jceb/vim-orgmode.git'
 Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/salomvary/vim-eslint-compiler'
 Plug 'https://github.com/zchee/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'https://github.com/ternjs/tern_for_vim'
 Plug 'https://github.com/tpope/vim-endwise.git' " for bash + ruby blocks
-
 " language syntax
 Plug 'https://github.com/jwalton512/vim-blade.git'
 Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'https://github.com/pangloss/vim-javascript'
 
 " editor enhancements
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'https://github.com/Shougo/neco-syntax'
-Plug 'https://github.com/SirVer/ultisnips.git'
-Plug 'https://github.com/editorconfig/editorconfig-vim.git'
-Plug 'https://github.com/ervandew/supertab.git'
-Plug 'https://github.com/jiangmiao/auto-pairs.git'
-Plug 'https://github.com/jpalardy/vim-slime'
-Plug 'https://github.com/jremmen/vim-ripgrep'
-Plug 'https://github.com/junegunn/vim-easy-align.git'
+Plug 'https://github.com/dahu/vim-fanfingtastic' " make f and t movements multiline
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " async autocompletion
+Plug 'https://github.com/Shougo/neco-syntax' " autocomplete based of file syntax def
+Plug 'https://github.com/SirVer/ultisnips.git' " snippets
+Plug 'https://github.com/editorconfig/editorconfig-vim.git' " respect .editorconfig files
+Plug 'https://github.com/ervandew/supertab.git' " tab all the things!
+Plug 'https://github.com/jiangmiao/auto-pairs.git' " pair ([{}])
+Plug 'https://github.com/jpalardy/vim-slime' " send text to another [tmux|vim] [split|pane]
+Plug 'https://github.com/jremmen/vim-ripgrep' " rg integration
+Plug 'https://github.com/junegunn/vim-easy-align.git' " align things
+Plug 'https://github.com/tommcdo/vim-lion.git'        " align things
 Plug 'https://github.com/kana/vim-textobj-user.git'
-Plug 'https://github.com/kien/ctrlp.vim.git'
-Plug 'https://github.com/machakann/vim-highlightedyank.git'
-Plug 'https://github.com/terryma/vim-multiple-cursors.git'
-Plug 'https://github.com/tommcdo/vim-exchange.git'
-Plug 'https://github.com/tommcdo/vim-lion.git'
-Plug 'https://github.com/tpope/vim-commentary.git'
-Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/tpope/vim-repeat'
-Plug 'https://github.com/tpope/vim-speeddating'
-Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/tpope/vim-unimpaired'
-Plug 'https://github.com/tpope/vim-vinegar.git'
-Plug 'https://github.com/vim-scripts/SyntaxAttr.vim'
-Plug 'https://github.com/wesQ3/vim-windowswap.git'
+Plug 'https://github.com/kien/ctrlp.vim.git' " project files search
+Plug 'https://github.com/machakann/vim-highlightedyank.git' " visually indicate what was yanked (neovim)
+Plug 'https://github.com/tommcdo/vim-exchange.git' " exchange regions of text
+Plug 'https://github.com/tpope/vim-commentary.git' " comment toggling
+Plug 'https://github.com/tpope/vim-fugitive.git' " git integration
+Plug 'https://github.com/tpope/vim-repeat' " make . better
+Plug 'https://github.com/tpope/vim-speeddating' " ctrl-a, ctrl-x but for dates (and more)
+Plug 'https://github.com/tpope/vim-surround.git' " surround things
+Plug 'https://github.com/tpope/vim-unimpaired' " handy mappings
+Plug 'https://github.com/tpope/vim-vinegar.git' " -, file browsing
+Plug 'https://github.com/vim-scripts/SyntaxAttr.vim' " see what syntax/colorscheme rule is being applied
+Plug 'https://github.com/wesQ3/vim-windowswap.git' " swap splits
 
 " colorscheme
 Plug 'https://github.com/jonathanfilip/vim-lucius.git'
+Plug 'https://github.com/andbar-ru/vim-unicon'
 
 call plug#end()
 
@@ -93,6 +111,7 @@ let g:lion_squeeze_spaces = 1
 
 " auto completion
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 
 " deoplete-tern + tern_for_vim compatibility
 let g:tern#command = ["tern"]
@@ -134,7 +153,7 @@ let g:multi_cursor_exit_from_insert_mode=1
 
 " ctrlp
 let g:ctrlp_custom_ignore = {
-    \ 'dir':'node_modules\|vendor\|\.git\|build\|coverage\|env\|__pycache__'
+    \ 'dir':'node_modules\|vendor\|\.git\|build\|coverage\|env\|__pycache__\|target\|out'
     \}
 
 " enable jsx syntax package without the .jsx file extension
@@ -143,12 +162,17 @@ let g:jsx_ext_required = 0
 " vim-ripgrep config
 let g:rg_highlight = 1
 
+au Filetype clojure let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
+au Filetype lisp let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
+au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
+
 " +--------------------------------------------------------------+
 " |                       Editor Settings                        |
 " +--------------------------------------------------------------+
 
-set background=dark
-colorscheme lucius
+set t_Co=256
+set background=light
+colorscheme unicon
 
 " appearence
 """"""""""""
@@ -156,11 +180,10 @@ set ruler
 set cmdheight=1
 set colorcolumn=80,100,120,160
 set cursorline " highlight the current line
-set foldmethod=indent
-set foldlevel=20
+set foldmethod=manual
+" set foldlevel=20
 set pumheight=10 "max height for completion menu
 set inccommand=split " live preview substitutions
-set t_Co=256
 
 " vim gui stuff
 if has('gui')
@@ -253,8 +276,11 @@ map <Leader>vn :vnew<cr>
 " close the autocomplete preview window
 map <Leader>pc :pclose<cr>
 
+" copy the file to the clipboard
+map <Leader>y mzgg"*yG'z
+
 " open a markdown link
-map <Leader>o f(yi(:!open -a Google\ Chrome 0
+map <Leader>o f(yi(:!open 0
 
 map <Leader>ff :e
 map <Leader>fs :w<cr>
@@ -271,7 +297,8 @@ map <Leader>gb :Gblame<cr>
 map <Leader>bp :bp<cr>
 map <Leader>bn :bn<cr>
 map <Leader>bl :CtrlPBuffer<cr>
-map <Leader>ls :CtrlPBuffer<cr>
+
+map <Leader>lt :!lein test<cr>
 
 map <Leader>1 :set background=light<cr>
 map <Leader>2 :set background=dark<cr>
@@ -280,6 +307,7 @@ map <Leader>;; gcc
 map <Leader>; gc
 
 map <Leader>wq :x<cr>
+map <Leader>pi :PlugInstall<cr>
 
 map <Leader><Leader> :call SyntaxAttr()<cr>
 
@@ -333,7 +361,10 @@ inoremap jk <esc>
 :command Q q
 
 " what to do with <tab> in normal and visual mode?
+" nnoremap <tab> gt
+" nnoremap <s-tab> gT
 nnoremap <tab> za
+nnoremap <s-tab> zf
 vnoremap <tab> %
 
 " better navigation to beggining of line
@@ -369,6 +400,9 @@ map Q @q
 " +--------------------------------------------------------------+
 " |                       Miscellaneous                          |
 " +--------------------------------------------------------------+
+
+" tell vim anything with a .sh extension is bash, specifically (as opposed to another shell)
+let g:is_bash = 1
 
 " make comments italic in *all* languages
 hi Comment cterm=italic
@@ -450,3 +484,8 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "   endif
 " endfor
 " " ## end of OPAM user-setup addition for vim / base ## keep this line
+
+
+autocmd FileType clojure setlocal shiftwidth=2
+autocmd FileType clojure setlocal tabstop=2
+autocmd FileType clojure setlocal softtabstop=2

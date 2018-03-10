@@ -1,2 +1,2 @@
 setlocal wrap
-setlocal spell
+" setlocal spell

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TODO 
+# TODO
 #   - ssh keygen
 #   - make this work for a non-debian linux, i.e. use a package manager other
 #     than apt
@@ -30,11 +30,11 @@ heading(){
 }
 
 install(){
-    if [[ $(uname -s) == 'Linux' ]]; then 
+    if [[ $(uname -s) == 'Linux' ]]; then
         sudo apt install -y "$@"
     elif [[ "$(uname -s)" == 'Darwin' ]]; then
         brew install "$@"
-    else 
+    else
         echo 'I have no idea what platform im on!!!'
         exit
     fi

@@ -1,5 +1,11 @@
 # vim: set ft=sh:
 
+function emoji {
+	if [[ -z $1 ]] ; then
+		cut -f1 < ~/misc/emoji-list.txt
+	fi
+}
+
 # stolen from https://github.com/alexch/dotfiles/blob/master/functions.sh
 function whats-on-port {
   lsof -i TCP:$1
@@ -15,7 +21,7 @@ function phpman {
 
 # google (duckduckgo) something
 function g {
-    ruby -r cgi -e '`open http://duckduckgo.com/?q=#{CGI.escape(ARGV.join(" "))}`' $@
+    ruby -r cgi -e '`open http://duckduckgo.com/?q=#{CGI.escape(ARGV.join(" "))}`' "$@"
 }
 
 function vl {
@@ -202,14 +208,57 @@ git-all-status(){
     done
 }
 
-# start nginx with the cwd as the webroot
-server() {
-    port=8888
-    echo "Starting server on localhost:$port..."
-    docker run -it --rm -p $port:80 -v $(pwd)/:/usr/share/nginx/html nginx
-}
-
 # render a .dot file and open it
 graphv() {
     dot -Tpng -O $1; open $1.png
+}
+
+vagrant-run() {
+	vagrant up
+	read -p "$(pwd): Vagrant box running..."
+	vagrant halt
+}
+
+docs() {
+	local url
+	case $1 in
+		sb|spring|springboot)
+			open https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
+			;;
+		ss|spring-security)
+			open https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/
+			;;
+		bs|bs4|bootstrap)
+			open http://getbootstrap.com/docs/4.0/components/alerts/
+			;;
+		bs3|bootstrap3)
+			open https://getbootstrap.com/docs/3.3/
+			;;
+		thy|thyme|thymeleaf)
+			open http://www.thymeleaf.org/documentation.html
+			;;
+		jq)
+			open https://stedolan.github.io/jq/manual/
+			;;
+		*)
+			cat <<-.
+				sb | spring | springboot
+				ss | spring-security
+				bs | bs4 | bootstrap
+				bs3 | bootstrap3
+				thy | thyme | thymeleaf
+				jq
+			.
+			;;
+	esac
+}
+
+lg() {
+	if [[ $# -eq 0 ]] ; then
+		cat <<-.
+		lg -- log events to ~/Dropbox/log.txt
+		.
+		return 1
+	fi
+	echo -e "$(date +%Y-%m-%d\ %H:%M:%S)\t$@" >> ~/Dropbox/log.txt
 }

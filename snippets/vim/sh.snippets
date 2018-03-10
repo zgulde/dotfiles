@@ -1,0 +1,20 @@
+snippet pa "parse cli args"
+while [[ $# -gt 0 ]] ; do
+    arg=\$1 ; shift
+    case $arg in
+        $0
+        *) echo "Unknown argument: $arg" ; exit 1;;
+    esac
+done
+endsnippet
+
+snippet arg "one cli arg case"
+-$1|--$2) $3=\$1 ; shift;;
+--$2=*) $3=${arg#*=};;$0
+endsnippet
+
+snippet cat "cat a big message things"
+cat <<-.
+$0${VISUAL}
+.
+endsnippet

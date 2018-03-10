@@ -36,14 +36,20 @@ snippet f "function"
 function($1) {$0}
 endsnippet
 
-snippet fn "arrow function"
-() => {$0}
+snippet fn "arrow function" i
+($1) => {$0}
 endsnippet
 
 snippet it "test it"
-it('$1', () => {
+it('$1', function() {
   $0
-})
+});
+endsnippet
+
+snippet desc "test describe"
+describe('$1', function() {
+  $0
+});
 endsnippet
 
 snippet g "eslint globals"
@@ -95,4 +101,8 @@ endsnippet
 
 snippet ir "import react"
 import React from 'react'
+endsnippet
+
+snippet irc "import react + component"
+import React, { Component } from 'react'
 endsnippet

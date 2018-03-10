@@ -2,15 +2,15 @@
     name = Zach Gulde
     email = zachgulde@gmail.com
 [core]
-    editor = nvim
-    ; editor = subl -nw
-    excludesfile = /Users/zach/.gitignore_global
+	editor = nvim
+    excludesfile = /Users/zach/.gitignore
     ; autocrlf = true
 [alias]
     aa      = add -A
     c       = commit -v
     cv      = commit -v
     ca      = commit --amend
+    cae     = commit --amend --no-edit
     co      = checkout
     fo      = fetch origin
     l       = log --oneline --decorate --graph
@@ -21,8 +21,8 @@
     ss      = status -s
     undo    = reset HEAD~
     unstage = reset HEAD
-    wip     = !git add -A && git commit -m WIP
+    wip     = !git add -A && git commit -m "WIP:$@"
 [merge]
-	conflictstyle = diff3
+	; conflictstyle = diff3
 [diff]
 	tool = diff

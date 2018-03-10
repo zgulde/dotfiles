@@ -1,6 +1,15 @@
+# vim: set ft=sh:
 # +-------------------------------------------------------+
 # |              general utility                          |
 # +-------------------------------------------------------+
+
+alias count='sort | uniq -c | sort -n'
+
+alias chx='chmod +x'
+
+alias fvim='vim $(fzf)'
+
+alias datets='date +%Y-%m-%d\ %H:%M:%S'
 
 alias py=python
 
@@ -13,7 +22,7 @@ alias jccurl='curl -b ~/.cookiejar -c ~/.cookiejar -H"Content-Type: application/
 
 alias be='bundle exec'
 
-alias wtf-mysql='mysql -u root -pcodeup -e "show engine innodb status\G" | grep -C10 -i latest'
+alias wtf-mysql='mysql -e "show engine innodb status\G" | grep -C10 -i latest'
 
 alias emc=emacsclient
 
@@ -46,6 +55,8 @@ alias pbjson='pbpaste | python -m json.tool | pbcopy'
 
 # open a finder here
 alias f='open -a Finder ./'
+
+alias react-app-plus='yarn add redux react-redux redux-thunk enzyme enzyme-adapter-react-16'
 
 # +-------------------------------------------------------+
 # |              preferable implementation                |
