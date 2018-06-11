@@ -20,17 +20,29 @@ All code blocks are intended to be copy/paste able.
 ## General Software
 
 ```
-read -p 'Press enter to open the Chrome download page'
+read -p 'Google Chrome'
 open https://www.google.com/chrome/browser/desktop/index.html
 
-read -p 'Press enter to open the iterm2 download page'
+read -p 'Docker'
+open https://www.docker.com/docker-mac
+
+read -p 'iTerm2 -- Better terminal emulator'
 open https://www.iterm2.com/downloads.html
 
-read -p 'Press enter to open the Spectacle download page'
+read -p 'Spectable -- Window manager'
 open https://www.spectacleapp.com/
 
-read -p 'Press enter to open the docker mac download page'
-open https://www.docker.com/docker-mac
+read -p 'Touch Switcher -- switch applications from touchbar'
+open https://hazeover.com/touchswitcher.html
+
+read -p 'Total Spaces 2 -- to get rid of fullscreen transition animations'
+open https://totalspaces.binaryage.com/
+
+read -p 'Contexts -- better window/application switcher'
+open https://contexts.co/
+
+read -p 'Fluid App -- Turn web apps into native ones'
+open http://fluidapp.com/
 ```
 
 - [Touch Switcher -- switch applications from touchbar](https://hazeover.com/touchswitcher.html)
@@ -41,6 +53,17 @@ open https://www.docker.com/docker-mac
 - [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb)
 - [Markdown Here](https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa)
 - [Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+
+```
+read -p 'uBlock Origin'
+open https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm
+read -p 'Vimium'
+open https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb
+read -p 'Markdown Here'
+open https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa
+read -p 'Live Reload'
+open https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
+```
 
 ## OS Settings
 
@@ -69,32 +92,35 @@ brew update
 ## Improve MacOS Userland
 
 ```
-# general utility
-brew install git tree openssl tmux
-
-brew install pass      # password manager
-brew install jq        # command line json processor
-brew install ripgrep   # better grep, like ag or ack
-brew install coreutils # newer gnu coreutils, not the outdated ones that come with macos
-brew install moreutils # vipe, among others
-
-# scripting languages
-brew install node ruby python3 pipenv
-
-# vagrant w/ ansible for php development
+brew install ansible git tree openssl tmux htop
+brew install pass jq ripgrep coreutils netcat
+brew install moreutils --no-parallel
+brew install parallel cowsay
+brew install node ruby python3 pipenv leiningen clojure
 brew install ansible
 brew cask install vagrant virtualbox
-```
+brew cask install firefox
 
-```
-# package manager specific stuff
 pip3 install virtualenv howdoi
-
-npm i -g lumo-cljs tldr serve
+npm i -g lumo-cljs tldr serve yarn
 ```
 
 ```
-# use a modern version of bash
+pass      # password manager
+jq        # command line json processor
+ripgrep   # better grep, like ag or ack
+coreutils # newer gnu coreutils, not the outdated ones that come with macos
+moreutils # vipe, among others
+
+node ruby python3 pipenv # scripting languages
+
+brew casks -- vagrant virtualbox # vagrant w/ ansible for php development
+```
+
+use a modern version of bash, not the one that comes w/ MacOS (which is a major
+version behind)
+
+```
 brew install bash
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells >/dev/null
 chsh -s /usr/local/bin/bash
