@@ -17,11 +17,10 @@ set rtp+=/usr/local/opt/fzf
 " use plugged for plugins
 call plug#begin('~/.local/share/nvim/plugged/')
 
-" w/ brew
+" assuming fzf was installed w/ brew
 Plug '/usr/local/opt/fzf'
 
-" Plug 'https://github.com/wlangstroth/vim-racket'
-" Plug 'https://github.com/posva/vim-vue'
+Plug 'https://github.com/nikvdp/ejs-syntax'
 
 " " clojure stuff
 Plug 'https://github.com/tpope/vim-fireplace'
@@ -37,6 +36,8 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 " let g:disable_socket_repl_mappings = 1
 
 " " languages I'm not using (frequently) or just playing around with
+" Plug 'https://github.com/wlangstroth/vim-racket'
+" Plug 'https://github.com/posva/vim-vue'
 " Plug 'https://github.com/kchmck/vim-coffee-script'
 " Plug 'https://github.com/rust-lang/rust.vim'
 " Plug 'https://github.com/ElmCast/elm-vim'
@@ -54,20 +55,19 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 " Plug 'https://github.com/neovim/node-host'
 
 " language enhancements
-Plug 'https://github.com/mzlogin/vim-markdown-toc.git' " generate markdown toc
 Plug 'https://github.com/jceb/vim-orgmode.git'
 Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/salomvary/vim-eslint-compiler'
 Plug 'https://github.com/zchee/deoplete-jedi'
-Plug 'carlitux/deoplete-ternjs'
-Plug 'https://github.com/ternjs/tern_for_vim'
 Plug 'https://github.com/tpope/vim-endwise.git' " for bash + ruby blocks
-" language syntax
 Plug 'https://github.com/jwalton512/vim-blade.git'
 Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'https://github.com/ternjs/tern_for_vim'
+Plug 'carlitux/deoplete-ternjs'
 
 " editor enhancements
+Plug 'https://github.com/mzlogin/vim-markdown-toc.git' " generate markdown toc
 Plug 'https://github.com/osyo-manga/vim-anzu' " show search status
 Plug 'https://github.com/dahu/vim-fanfingtastic' " make f and t movements multiline
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " async autocompletion
@@ -95,6 +95,7 @@ Plug 'https://github.com/vim-scripts/SyntaxAttr.vim' " see what syntax/colorsche
 Plug 'https://github.com/wesQ3/vim-windowswap.git' " swap splits
 
 " colorscheme
+Plug 'https://github.com/flazz/vim-colorschemes/' " a whole bunch of them
 Plug 'https://github.com/jonathanfilip/vim-lucius.git'
 Plug 'https://github.com/andbar-ru/vim-unicon'
 
@@ -104,15 +105,11 @@ call plug#end()
 " |                       Plugin Config                          |
 " +--------------------------------------------------------------+
 
-let g:jedi#completions_enabled = 0
-
-" universal text linking
-" open urls
-let g:utl_cfg_hdl_scm_http_system = "silent !open '%u'"
-" let g:utl_cfg_hdl_scm_http_system = "!echo '%u'"
-
 " remove extra spaces when aligning
 let g:lion_squeeze_spaces = 1
+
+" let deoplete handle this
+let g:jedi#completions_enabled = 0
 
 " auto completion
 let g:deoplete#enable_at_startup = 1
@@ -173,11 +170,7 @@ let g:jsx_ext_required = 0
 " vim-ripgrep config
 let g:rg_highlight = 1
 
-" turn off autopairs mappings
-let g:AutoPairsShortcutToggle = ''
-let g:AutoPairsShortcutFastWrap = ''
-let g:AutoPairsShortcutJump = ''
-
+" don't try and autopair ' when writing lisp
 au Filetype clojure let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 au Filetype lisp let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
@@ -188,25 +181,24 @@ au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 
 set t_Co=256
 set background=light
-" colorscheme unicon
 colorscheme lucius
+" colorscheme unicon
 
 " appearence
 """"""""""""
 set ruler
 set cmdheight=1
-set colorcolumn=80,100,120,160
-set cursorline " highlight the current line
-set foldmethod=manual
-" set foldlevel=20
-set pumheight=10 "max height for completion menu
-set inccommand=split " live preview substitutions
+set colorcolumn=80,100,120
+set cursorline         " highlight the current line
+set foldmethod=manual  " create folds manually with zf{motion}
+set pumheight=10       " max height for completion menu
+set inccommand=nosplit " live preview substitutions
+
+set listchars+=space:. " explicitly show space characters when showing whitespace (:set list)
 
 " vim gui stuff
 if has('gui')
-    set guioptions-=L " get rid of scrollbars
-    set guioptions-=r
-    set guioptions-=e " get rid of gui tabs
+    set guioptions-=L guioptions-=r guioptions-=e " get rid of gui nonsense
     set guifont=Monaco:h14
 endif
 
@@ -214,35 +206,25 @@ endif
 """"""""""
 
 " search
-set hlsearch   " highlight search matches
-set incsearch  " show matches as they are found
-set ignorecase " case insensitive search
-set smartcase  " unless there is a capital letter
+set hlsearch incsearch " highlight search matches as they are found
+set ignorecase smartcase " case insensitive search unless search contains a capital letter
 
 " indentation
 set expandtab " translate tabs to spaces
-set smarttab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set smartindent
-set breakindent " so word wrap won't screw up formatting
+set smarttab tabstop=4 shiftwidth=4 softtabstop=4
+set autoindent smartindent breakindent
 
 set nowrap " no word wrap
 set textwidth=80
 
-set splitbelow    " more natural splits
-set splitright    " more natural splits
-set noequalalways " don't resize windows when I split
+" more natural splits
+set splitbelow splitright noequalalways
 
 set omnifunc=syntaxcomplete#Complete
 
-set wildmenu
-set wildmode=list:longest,full
-set wildignore+=*.swp,*.zip
-set path=.,/usr/include,,**     " searching through files in current directory
+set wildmenu wildmode=list:longest,full wildignore+=*.swp,*.zip
 set completeopt=menuone,preview " tab cycles completions
+set path=.,/usr/include,,**     " searching through files in current directory
 
 set backupdir=/Users/zach/.local/share/nvim/swap " don't clutter my working directory with swp files
 
@@ -317,6 +299,7 @@ map <Leader>ac <Plug>(anzu-clear-search-status)
 map <Leader>bp :bp<cr>
 map <Leader>bn :bn<cr>
 map <Leader>bs :CtrlPBuffer<cr>
+map <Leader>bb :CtrlPBuffer<cr>
 
 map <Leader>lt :!lein test<cr>
 
@@ -364,7 +347,10 @@ imap <m-f> <esc>ea
 imap <m-b> <c-o>b
 imap <m-d> <c-o>de
 imap <m-q> <c-o>gwip
-imap <m-bs> <c-o>db
+imap <m-bs> <c-o>vbd
+imap <m-u> <c-o>gUe<c-o>e<right>
+imap <m-l> <c-o>gue<c-o>e<right>
+imap <m-c> <esc>lgUllgueea
 
 " when entering commands too
 cmap <C-f> <right>
@@ -440,7 +426,7 @@ let g:is_bash = 1
 hi Comment cterm=italic
 
 " status line
-set statusline=%{anzu#search_status()}\ %h%r%w%F%m\ (%y)%=%c,\ %l/%L\ %p%%\
+set statusline=<%{anzu#search_status()}>\ %h%r%w%F%m\ (%y)%=\ %c,\ %l/%L\ %p%%\
 
 let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'html', 'php', 'sql', 'java']
 

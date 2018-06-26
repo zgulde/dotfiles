@@ -64,7 +64,7 @@ install_brew() {
 }
 
 userland() {
-	logdo brew install git tree openssl tmux htop
+	logdo brew install git tree openssl tmux htop bash
 	logdo brew install pass jq ripgrep coreutils netcat
 	logdo brew install moreutils --no-parallel
 	logdo brew install parallel cowsay

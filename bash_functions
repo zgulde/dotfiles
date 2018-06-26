@@ -290,3 +290,10 @@ chelp() {
 ls-latest() {
 	ls -1tr $1 | tail -n 1
 }
+
+# wait until a url successfully responds to a ping, then run a command
+pingthen() {
+	local url=$1
+	shift
+	ping -o $url && eval "$@"
+}

@@ -18,6 +18,7 @@ alias chx='chmod +x'
 alias fvim='vim $(fzf)'
 
 alias datets='date +%Y-%m-%d\ %H:%M:%S'
+alias timestamp='date +%Y-%m-%d_%H:%M:%S'
 
 alias py=python
 

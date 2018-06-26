@@ -101,3 +101,4 @@ eval "$(myserver bash-completion)"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)

@@ -10,10 +10,14 @@ endsnippet
 
 snippet arg "one cli arg case"
 -$1|--$2) $3=\$1 ; shift;;
---$2=*) $3=${arg#*=};;$0
+--$2=*) ${3:$2}=${arg#*=};;$0
 endsnippet
 
-snippet cat "cat a big message things"
+snippet barg "a boolean cli arg"
+-$1|--$2) ${3:$2}=yes ; shift;;
+endsnippet
+
+snippet cat "cat a big message"
 cat <<-.
 $0${VISUAL}
 .
