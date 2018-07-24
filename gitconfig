@@ -21,6 +21,7 @@
     s       = status
     ss      = status -s
     undo    = reset HEAD~
+    redo    = commit -c ORIG_HEAD
     unstage = reset HEAD
     wip     = !git add -A && git commit -m WIP
 [merge]

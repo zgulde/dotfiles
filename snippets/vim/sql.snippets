@@ -1,0 +1,22 @@
+snippet nn "not null"
+NOT NULL$0
+endsnippet
+
+snippet vc "varchar column"
+$1 VARCHAR($2) ${3:NOT NULL},$0
+endsnippet
+
+snippet txt "text column"
+$1 TEXT ${2:NOT NULL},$0
+endsnippet
+
+snippet pk "primary key id"
+$1id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,$0
+endsnippet
+snippet id "primary key id"
+$1id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,$0
+endsnippet
+
+snippet fk "foreign key"
+FOREIGN KEY ($1_id) REFERENCES $1s(${2:id}) ON DELETE ${3:SET NULL}$0
+endsnippet

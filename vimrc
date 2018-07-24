@@ -55,6 +55,8 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 " Plug 'https://github.com/neovim/node-host'
 
 " language enhancements
+Plug 'https://github.com/sebastianmarkow/deoplete-rust'
+Plug 'https://github.com/zchee/deoplete-go', { 'do': 'make' }
 Plug 'https://github.com/jceb/vim-orgmode.git'
 Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/salomvary/vim-eslint-compiler'
@@ -105,6 +107,9 @@ call plug#end()
 " |                       Plugin Config                          |
 " +--------------------------------------------------------------+
 
+let g:deoplete#sources#rust#racer_binary='/Users/zach/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/Users/zach/opt/rust/src'
+
 " remove extra spaces when aligning
 let g:lion_squeeze_spaces = 1
 
@@ -144,7 +149,7 @@ let g:slime_target = "tmux" " use tmux split
 " let g:slime_target = "vimterminal" " use native vim terminal
 " let g:slime_target = "neovim" " use neovim terminal
 let g:slime_paste_file = "$HOME/.slime_paste"
-" let g:slime_python_ipython = 1
+let g:slime_python_ipython = 1
 
 " alignment plugin
 nmap ga <Plug>(EasyAlign)
@@ -256,7 +261,7 @@ map <Leader>sc :noh<cr>
 " out, and visually select all the output. kinda gross, but it works
 map <Leader>r Go:r !./%'[VGogcgvk
 
-map <Leader>e :!./app<cr>
+map <Leader>e :!bash %
 map <Leader>m :make<cr>
 
 " window manipulation with leader + w in addition to C-w
@@ -294,6 +299,17 @@ map <Leader>te :term<cr>
 map <Leader>gs :Gstatus<cr>
 map <Leader>gb :Gblame<cr>
 
+map <Leader>gob :!go build<cr>
+map <Leader>goi :!go install<cr>
+map <Leader>gor :!go run %
+map <Leader>gof :!go fmt<cr>
+
+map <Leader>ca :!cargo
+map <Leader>car :!cargo run<cr>
+map <Leader>cab :!cargo build<cr>
+map <Leader>cac :!cargo check<cr>
+
+
 map <Leader>ac <Plug>(anzu-clear-search-status)
 
 map <Leader>bp :bp<cr>
@@ -311,6 +327,7 @@ map <Leader>; gc
 
 map <Leader>wq :x<cr>
 map <Leader>pi :PlugInstall<cr>
+map <Leader>pp "*p
 
 map <Leader>fj -
 
@@ -340,6 +357,7 @@ imap <c-d> <C-o>dl
 imap <c-s> <C-o>/
 imap <c-/> <c-o>u
 imap <c-g> <esc>
+imap <c-y> <c-r>*
 
 imap <m-a> <c-o>(
 imap <m-e> <c-o>)
@@ -350,7 +368,7 @@ imap <m-q> <c-o>gwip
 imap <m-bs> <c-o>vbd
 imap <m-u> <c-o>gUe<c-o>e<right>
 imap <m-l> <c-o>gue<c-o>e<right>
-imap <m-c> <esc>lgUllgueea
+imap <m-c> <esc>lgUllguewi
 
 " when entering commands too
 cmap <C-f> <right>

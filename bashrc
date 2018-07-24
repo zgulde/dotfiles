@@ -2,22 +2,7 @@ source ~/.env
 source ~/.aliases
 source ~/.bash_functions
 
-PATH=/bin
-PATH=/sbin:$PATH
-PATH=/usr/bin:$PATH
-PATH=/usr/sbin:$PATH
-PATH=/usr/local/bin:$PATH # put homebrew before the mac stuff
-PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-PATH=$HOME/scripts:$PATH
-PATH=$HOME/bin:$PATH
-PATH=$HOME/opt/bin:$PATH
-PATH=node_modules/.bin:$PATH
-PATH=$HOME/.cargo/bin:$PATH
-PATH=$HOME/.opam/system/bin:$PATH
-
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
-export PATH
+export ANSIBLE_NOCOWS=1
 export EDITOR=nvim
 export VISUAL=nvim
 export GOPATH=$HOME/go
@@ -32,6 +17,23 @@ export HISTIGNORE='ls:clear:ll:la:ltr:latr:exit'
 # basically this is an extra option maven passes to `java`
 # export MAVEN_OPTS='--add-modules java.xml.bind'
 
+PATH=/bin
+PATH=/sbin:$PATH
+PATH=/usr/bin:$PATH
+PATH=/usr/sbin:$PATH
+PATH=/usr/local/bin:$PATH # put homebrew before the mac stuff
+PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+PATH=$HOME/scripts:$PATH
+PATH=$HOME/bin:$PATH
+PATH=$HOME/opt/bin:$PATH
+PATH=node_modules/.bin:$PATH
+PATH=$GOPATH/bin:$PATH
+PATH=$HOME/.cargo/bin:$PATH
+# PATH=$HOME/.opam/system/bin:$PATH
+
+export PATH
+
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # readline
 shopt -s autocd
@@ -46,14 +48,19 @@ bind "set completion-query-items 50"
 # if we're on macos...
 if [[ $(uname -s) == "Darwin" ]]; then
     # pass tab completion
-    source /usr/local/Cellar/pass/1.7.1/etc/bash_completion.d/pass
+    source /usr/local/etc/bash_completion.d/pass
+    source /usr/local/etc/bash_completion.d/git-completion.bash
+
     # taskwarrior tab completion
     # source /usr/local/Cellar/task/2.5.1/etc/bash_completion.d/task.sh
     # complete -o nospace -F _task t
     # complete -o nospace -F _task tw
 fi
 
+complete -C /Users/zach/go/src/github.com/posener/complete/gocomplete/gocomplete go
 eval "$(pandoc --bash-completion)"
+eval "$(myserver bash-completion)"
+eval "$(heather-server bash-completion)"
 
 reset='\[\e[0m\]'
 red='\[\e[0;31m\]'
@@ -92,8 +99,6 @@ __prompt_command() {
 
 }
 
-eval "$(myserver bash-completion)"
-
 # OPAM configuration
 # eval `opam config env`
 # source /Users/zach/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
@@ -102,3 +107,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+

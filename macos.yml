@@ -1,0 +1,147 @@
+#!/usr/bin/env ansible-playbook
+# vim: set ft=yaml:
+---
+# TODO: change shell to newer bash installed w/ homebrew /usr/local/bin/bash
+- name: Install MacOS Software
+  hosts: 127.0.0.1
+  tasks:
+    - name: Install Homebrew Packages
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - ansible
+        - bash
+        - cloc
+        - clojure
+        - coreutils
+        - cowsay
+        - emacs
+        - git
+        - graphviz
+        - gtypist
+        - htop
+        - hugo
+        - imagemagick
+        - ispell
+        - jq
+        - leiningen
+        - moreutils
+        - neovim
+        - netcat
+        - node
+        - openssl
+        - pandoc
+        - parallel
+        - pass
+        - pipenv
+        - python3
+        - reattach-to-user-namespace
+        - rename
+        - ripgrep
+        - rlwrap
+        - ruby
+        - shellcheck
+        - socat
+        - tldr
+        - tmux
+        - tree
+        - wget
+        - yarn
+        - yq
+    - name: Install Homebrew Casks
+      homebrew_cask:
+       name: "{{ item }}"
+       state: installed
+      with_items:
+        - google-chrome
+        - firefox
+        - haskell-platform
+        - java
+        - java8
+        - vagrant
+        - virtualbox
+    - name: Setup MacOS Defaults
+      shell: "{{ item }}"
+      with_items:
+        # Battery Display
+        - defaults write com.apple.menuextra.battery ShowPercent -string \"YES\"
+        - defaults write com.apple.menuextra.battery ShowTime -string \"NO\"
+        # Disable auto-correct
+        - defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+        # Screenshot Location and Format
+        - defaults write com.apple.screencapture location -string \"$HOME/Desktop\"
+        - defaults write com.apple.screencapture type -string \"png\"
+        # Show all files in the Finder
+        - defaults write com.apple.finder AppleShowAllFiles -bool true
+        - defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+        - defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+        # Use list view in all Finder windows by default
+        # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+        - defaults write com.apple.finder FXPreferredViewStyle -string \"Nlsv\"
+        # Autohide the dock without a delay
+        - defaults write com.apple.dock autohide -bool true
+        - defaults write com.apple.dock autohide-delay -float 0
+        # Stop iTunes from responding to the keyboard media keys
+        - launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+        # Require password immediately after sleep or screen saver begins
+        - defaults write com.apple.screensaver askForPassword -int 1
+        - defaults write com.apple.screensaver askForPasswordDelay -int 0
+        # Allow finder to be quit
+        - defaults write com.apple.finder QuitMenuItem -bool true
+        # Set highlight color to light purple
+        - "defaults write NSGlobalDomain AppleHighlightColor -string '0.968627 0.831373 1.000000'"
+        # increase key repeat rate
+        - defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+        - defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+    - name: Install Pip Packages
+      pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - virtualenv
+        - howdoi
+        - neovim
+        - livereload
+    - name: Install Npm Packages
+      npm:
+        name: "{{ item }}"
+        global: yes
+        state: present
+      with_items:
+        - lumo-cljs
+        - serve
+        - yarn
+        - tldr
+    - name: Install Gems
+      gem:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - pry
+        - lolcat
+    - name: Clone Dotfiles Repo
+      git:
+        clone: yes
+        update: yes
+        dest: "{{ lookup('env', 'HOME') }}/dotfiles"
+    - name: Install Dotfiles
+      file:
+        state: link
+        src: "{{ lookup('env', 'HOME') }}/dotfiles/{{ item[0] }}"
+        dest: "{{ lookup('env', 'HOME') }}/{{ item[1] }}"
+        with_items:
+          - [bashrc, .bashrc]
+          - [bash_profile, .bash_profile]
+          - [aliases, .aliases]
+          - [bash_functions, .bash_functions]
+          - [gitconfig, .gitconfig]
+          - [tmux.conf, .tmux.conf]
+          - [editorconfig, .editorconfig]
+          - [vimrc, .config/nvim/init.vim]
+          - [snippets/vim, .config/nvim/UltiSnips]
+          - [after, .config/nvim/after]
+    - name: Install Plugged (Neovim Plugin Manager)
+      shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    - name: Install Editor Plugins
+      shell: nvim -c PlugInstall -c q -c q
