@@ -3,6 +3,10 @@
   hosts: localhost
   become: true
   tasks:
+    - name: Install LinuxBrew
+      shell: >
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+      creates: /home/linuxbrew/.linuxbrew
     - name: Apt Repositories
       apt_repository:
         repo: 'ppa:neovim-ppa/stable'
@@ -14,9 +18,12 @@
         - htop
         - tree
         - neovim
-    - name: Ripgrep
+    - name: Ripgrep and Pandoc (from debs)
       apt:
-        deb: https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
+        deb: "{{ item }}"
+      loop:
+        - https://github.com/jgm/pandoc/releases/download/2.2.2.1/pandoc-2.2.2.1-1-amd64.deb
+        - https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
     - name: Install Pip Packages
       pip:
         name: "{{ item }}"
@@ -25,6 +32,12 @@
         - virtualenv
         - howdoi
         - neovim
+
+    # - name: Install Rust
+    # - name: Node.js
+    #   get_url:
+    #     url: https://deb.nodesource.com/setup_10.x
+    #     dest: /tmp
     # - name: Install Npm Packages
     #   npm:
     #     name: "{{ item }}"
@@ -43,33 +56,3 @@
     #   with_items:
     #     - pry
     #     - lolcat
-    - name: Dotfiles Repo Is Present
-      git:
-        repo: https://github.com/zgulde/dotfiles
-        clone: yes
-        update: yes
-        dest: "{{ lookup('env', 'HOME') }}/dotfiles"
-    - name: Dotfiles Are Installed
-      file:
-        state: link
-        src: "{{ lookup('env', 'HOME') }}/dotfiles/{{ item[0] }}"
-        dest: "{{ lookup('env', 'HOME') }}/{{ item[1] }}"
-        with_items:
-          - [bashrc, .bashrc]
-          - [bash_profile, .bash_profile]
-          - [aliases, .aliases]
-          - [bash_functions, .bash_functions]
-          - [gitconfig, .gitconfig]
-          - [tmux.conf, .tmux.conf]
-          - [editorconfig, .editorconfig]
-          - [vimrc, .config/nvim/init.vim]
-          - [snippets/vim, .config/nvim/UltiSnips]
-          - [after, .config/nvim/after]
-    - name: ~/.env file
-      file:
-        state: touch
-        path: "{{ lookup('env', 'HOME') }}/.env"
-    - name: Plugged (Neovim Plugin Manager)
-      shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    - name: Editor Plugins
-      shell: nvim -c PlugInstall -c q -c q

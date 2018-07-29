@@ -1,0 +1,15 @@
+---
+- name: Brew Packages
+  homebrew:
+    name: "{{ item }}"
+  loop:
+    - htop
+    - tree
+    - ripgrep
+    - pandoc
+    - jq
+    - graphviz
+    - pass
+    - python3
+    - ruby
+

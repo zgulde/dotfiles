@@ -165,6 +165,17 @@ nmap # <Plug>(anzu-sharp-with-echo)
 let g:multi_cursor_exit_from_insert_mode=1
 
 " ctrlp
+let g:ctrlp_regexp = 1
+" https://github.com/kien/ctrlp.vim/issues/282
+let g:ctrlp_abbrev = {
+            \ 'abbrevs': [
+            \ {
+            \ 'pattern': ' ',
+            \ 'expanded': '.*',
+            \ 'mode': 'pfrz',
+            \ }
+            \]
+            \}
 let g:ctrlp_custom_ignore = {
     \ 'dir':'node_modules\|vendor\|\.git\|build\|coverage\|env\|__pycache__\|target\|out'
     \}
@@ -235,6 +246,7 @@ set backupdir=/home/zach/.local/share/nvim/swap " don't clutter my working direc
 
 " set hidden
 set confirm " prompt to save changes before leaving a modified buffer
+set title " tell vim to set the terminal title
 
 " +--------------------------------------------------------------+
 " |                       Key Mappings                           |
@@ -288,7 +300,7 @@ map <Leader>y mzgg"*yG'z
 map <Leader>o f(yi(:!open 0
 
 map <Leader>ff :e
-map <Leader>fs :w<cr>
+map <Leader>fs :update<cr>
 map <Leader>fe :e ~/.config/nvim/init.vim<cr>
 map <Leader>fp :e ~/.config/nvim/UltiSnips<cr>
 map <Leader>fb :e ~/.bashrc<cr>

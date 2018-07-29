@@ -1,0 +1,8 @@
+---
+- name: Setup A New Machine
+  hosts: 127.0.0.1
+  roles:
+    - Common
+    - Dotfiles
+    - Neovim
+    - SshKeys

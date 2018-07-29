@@ -297,3 +297,7 @@ pingthen() {
 	shift
 	ping -o $url && eval "$@"
 }
+
+termtitle() {
+	echo -ne "\033]0;$@\007"
+}

@@ -1,0 +1,33 @@
+- name: Setup MacOS Defaults
+  shell: "{{ item }}"
+  loop:
+    # Battery Display
+    - defaults write com.apple.menuextra.battery ShowPercent -string \"YES\"
+    - defaults write com.apple.menuextra.battery ShowTime -string \"NO\"
+    # Disable auto-correct
+    - defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+    # Screenshot Location and Format
+    - defaults write com.apple.screencapture location -string \"$HOME/Desktop\"
+    - defaults write com.apple.screencapture type -string \"png\"
+    # Show all files in the Finder
+    - defaults write com.apple.finder AppleShowAllFiles -bool true
+    - defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+    - defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+    # Use list view in all Finder windows by default
+    # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+    - defaults write com.apple.finder FXPreferredViewStyle -string \"Nlsv\"
+    # Autohide the dock without a delay
+    - defaults write com.apple.dock autohide -bool true
+    - defaults write com.apple.dock autohide-delay -float 0
+    # Stop iTunes from responding to the keyboard media keys
+    - launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+    # Require password immediately after sleep or screen saver begins
+    - defaults write com.apple.screensaver askForPassword -int 1
+    - defaults write com.apple.screensaver askForPasswordDelay -int 0
+    # Allow finder to be quit
+    - defaults write com.apple.finder QuitMenuItem -bool true
+    # Set highlight color to light purple
+    - "defaults write NSGlobalDomain AppleHighlightColor -string '0.968627 0.831373 1.000000'"
+    # increase key repeat rate
+    - defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+    - defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)

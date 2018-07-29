@@ -1,0 +1,6 @@
+---
+- name: Ssh Key Pair
+  shell: |
+    ssh-keygen -t rsa -b 4096 -f {{ lookup('env', 'HOME') }}/.ssh/id_rsa
+  args:
+    creates: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"

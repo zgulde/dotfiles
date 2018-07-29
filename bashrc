@@ -21,6 +21,7 @@ PATH=/bin
 PATH=/sbin:$PATH
 PATH=/usr/bin:$PATH
 PATH=/usr/sbin:$PATH
+PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 PATH=$HOME/bin:$PATH
 PATH=$HOME/opt/bin:$PATH
 PATH=node_modules/.bin:$PATH
@@ -39,6 +40,8 @@ bind "set colored-completion-prefix on"
 bind "set colored-stats on"
 bind "set completion-query-items 50"
 bind "set completion-ignore-case On"
+bind '"\C-p": history-search-backward'
+bind '"\C-n": history-search-forward'
 
 # if we're on macos...
 if [[ $(uname -s) == "Darwin" ]]; then

@@ -1,0 +1,28 @@
+---
+- name: Repo Is Present
+  git:
+    repo: https://github.com/zgulde/dotfiles
+    clone: yes
+    update: no
+    dest: "{{ lookup('env', 'HOME') }}/dotfiles"
+- name: Installed
+  file:
+    state: link
+    src: "{{ lookup('env', 'HOME') }}/dotfiles/{{ item[0] }}"
+    dest: "{{ lookup('env', 'HOME') }}/{{ item[1] }}"
+  loop:
+    - [bashrc, .bashrc]
+    - [bash_profile, .bash_profile]
+    - [aliases, .aliases]
+    - [bash_functions, .bash_functions]
+    - [gitconfig, .gitconfig]
+    - [tmux.conf, .tmux.conf]
+    - [editorconfig, .editorconfig]
+    - [vimrc, .config/nvim/init.vim]
+    - [snippets/vim, .config/nvim/UltiSnips]
+    - [after, .config/nvim/after]
+- name: ~/.env file
+  changed_when: false
+  file:
+    state: touch
+    path: "{{ lookup('env', 'HOME') }}/.env"
