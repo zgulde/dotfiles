@@ -1,17 +1,12 @@
 #!/bin/bash
 
+set -x
+
 #######################################################################
 # Clones the dotfiles repo (if not present) and links up config files #
 #######################################################################
 
 DOTFILES="$HOME/dotfiles"
-
-if [[ -d $DOTFILES ]]; then
-	echo "$DOTFILES directory already present! Aborting..."
-	exit 1
-fi
-
-git clone https://github.com/zgulde/dotfiles.git $DOTFILES
 
 ln -s $DOTFILES/emacs $HOME/.emacs
 
@@ -30,7 +25,6 @@ ln -s $DOTFILES/editorconfig $HOME/.editorconfig
 
 # neovim
 mkdir -p $HOME/.config/nvim
-ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 ln -s $DOTFILES/snippets/vim $HOME/.config/nvim/UltiSnips # snippets
 ln -s $DOTFILES/after $HOME/.config/nvim/after # filetype config
 # install vim-plug

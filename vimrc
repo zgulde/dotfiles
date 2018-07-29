@@ -185,7 +185,7 @@ au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 " +--------------------------------------------------------------+
 
 set t_Co=256
-set background=light
+set background=dark
 colorscheme lucius
 " colorscheme unicon
 
@@ -231,7 +231,7 @@ set wildmenu wildmode=list:longest,full wildignore+=*.swp,*.zip
 set completeopt=menuone,preview " tab cycles completions
 set path=.,/usr/include,,**     " searching through files in current directory
 
-set backupdir=/Users/zach/.local/share/nvim/swap " don't clutter my working directory with swp files
+set backupdir=/home/zach/.local/share/nvim/swap " don't clutter my working directory with swp files
 
 " set hidden
 set confirm " prompt to save changes before leaving a modified buffer
@@ -457,7 +457,9 @@ if has('nvim')
     tnoremap jk <C-\><C-n>
 
     " switch cursor shape between normal and insert mode
+    " TODO this is deprecated, see :help guicursor
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 
     " highlight yanks
     let g:highlightedyank_highlight_duration = 400

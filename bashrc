@@ -21,19 +21,13 @@ PATH=/bin
 PATH=/sbin:$PATH
 PATH=/usr/bin:$PATH
 PATH=/usr/sbin:$PATH
-PATH=/usr/local/bin:$PATH # put homebrew before the mac stuff
-PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-PATH=$HOME/scripts:$PATH
 PATH=$HOME/bin:$PATH
 PATH=$HOME/opt/bin:$PATH
 PATH=node_modules/.bin:$PATH
 PATH=$GOPATH/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
-# PATH=$HOME/.opam/system/bin:$PATH
 
 export PATH
-
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # readline
 shopt -s autocd
@@ -44,23 +38,22 @@ bind "set blink-matching-paren on"
 bind "set colored-completion-prefix on"
 bind "set colored-stats on"
 bind "set completion-query-items 50"
+bind "set completion-ignore-case On"
 
 # if we're on macos...
 if [[ $(uname -s) == "Darwin" ]]; then
     # pass tab completion
     source /usr/local/etc/bash_completion.d/pass
     source /usr/local/etc/bash_completion.d/git-completion.bash
-
     # taskwarrior tab completion
     # source /usr/local/Cellar/task/2.5.1/etc/bash_completion.d/task.sh
     # complete -o nospace -F _task t
     # complete -o nospace -F _task tw
 fi
 
-complete -C /Users/zach/go/src/github.com/posener/complete/gocomplete/gocomplete go
-eval "$(pandoc --bash-completion)"
-eval "$(myserver bash-completion)"
-eval "$(heather-server bash-completion)"
+# eval "$(pandoc --bash-completion)"
+# eval "$(myserver bash-completion)"
+# eval "$(heather-server bash-completion)"
 
 reset='\[\e[0m\]'
 red='\[\e[0;31m\]'
@@ -106,5 +99,5 @@ __prompt_command() {
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
