@@ -1,5 +1,5 @@
 ---
-- name: Brew Packages
+- name: HomeBrew Packages
   homebrew:
     name: "{{ item }}"
   loop:

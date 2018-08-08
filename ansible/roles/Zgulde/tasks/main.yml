@@ -1,0 +1,8 @@
+---
+- include_tasks: brew.yml
+- include_tasks: dotfiles.yml
+- include_tasks: neovim.yml
+- include_tasks: sshkeys.yml
+
+- include_tasks: macostweaks.yml
+  when: ansible_distribution == 'MacOS'

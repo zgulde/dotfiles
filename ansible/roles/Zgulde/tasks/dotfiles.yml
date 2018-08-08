@@ -1,11 +1,11 @@
 ---
-- name: Repo Is Present
+- name: Dotfiles Repo Is Present
   git:
     repo: https://github.com/zgulde/dotfiles
     clone: yes
     update: no
     dest: "{{ lookup('env', 'HOME') }}/dotfiles"
-- name: Installed
+- name: Dotfiles Are Installed
   file:
     state: link
     src: "{{ lookup('env', 'HOME') }}/dotfiles/{{ item[0] }}"
@@ -21,7 +21,7 @@
     - [vimrc, .config/nvim/init.vim]
     - [snippets/vim, .config/nvim/UltiSnips]
     - [after, .config/nvim/after]
-- name: ~/.env file
+- name: ~/.env file is present
   changed_when: false
   file:
     state: touch
