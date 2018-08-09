@@ -68,6 +68,8 @@ Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/ternjs/tern_for_vim'
 Plug 'carlitux/deoplete-ternjs'
 
+Plug 'https://github.com/dhruvasagar/vim-table-mode'
+
 " editor enhancements
 Plug 'https://github.com/mzlogin/vim-markdown-toc.git' " generate markdown toc
 Plug 'https://github.com/osyo-manga/vim-anzu' " show search status
@@ -106,6 +108,10 @@ call plug#end()
 " +--------------------------------------------------------------+
 " |                       Plugin Config                          |
 " +--------------------------------------------------------------+
+
+" let g:table_mode_corner='|'
+let g:table_mode_corner='+'
+let g:table_mode_corner_corner='+'
 
 let g:deoplete#sources#rust#racer_binary='/Users/zach/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/Users/zach/opt/rust/src'
@@ -391,10 +397,10 @@ nnoremap mH yypVr=
 inoremap jk <esc>
 
 " die typos
-:command WQ wq
-:command Wq wq
-:command W w
-:command Q q
+:command! WQ wq
+:command! Wq wq
+:command! W w
+:command! Q q
 
 " what to do with <tab> in normal and visual mode?
 " nnoremap <tab> gt

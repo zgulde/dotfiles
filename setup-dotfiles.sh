@@ -37,6 +37,5 @@ ln -s $DOTFILES/after $HOME/.config/nvim/after # filetype config
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-
 mkdir -p $HOME/.emacs.d
 ln -s $DOTFILES/snippets/emacs $HOME/.emacs.d/snippets

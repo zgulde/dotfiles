@@ -57,10 +57,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
     # complete -o nospace -F _task tw
 fi
 
-complete -C /Users/zach/go/src/github.com/posener/complete/gocomplete/gocomplete go
 eval "$(pandoc --bash-completion)"
-eval "$(myserver bash-completion)"
-eval "$(heather-server bash-completion)"
+# eval "$(myserver bash-completion)"
+# eval "$(heather-server bash-completion)"
 
 reset='\[\e[0m\]'
 red='\[\e[0;31m\]'
