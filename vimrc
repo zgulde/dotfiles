@@ -17,6 +17,8 @@ set rtp+=/usr/local/opt/fzf
 " use plugged for plugins
 call plug#begin('~/.local/share/nvim/plugged/')
 
+Plug 'https://github.com/mg979/vim-visual-multi'
+
 " assuming fzf was installed w/ brew
 Plug '/usr/local/opt/fzf'
 
@@ -56,7 +58,7 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 " language enhancements
 Plug 'https://github.com/sebastianmarkow/deoplete-rust'
-Plug 'https://github.com/zchee/deoplete-go', { 'do': 'make' }
+" Plug 'https://github.com/zchee/deoplete-go', { 'do': 'make' }
 Plug 'https://github.com/jceb/vim-orgmode.git'
 Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/salomvary/vim-eslint-compiler'
@@ -99,7 +101,7 @@ Plug 'https://github.com/vim-scripts/SyntaxAttr.vim' " see what syntax/colorsche
 Plug 'https://github.com/wesQ3/vim-windowswap.git' " swap splits
 
 " colorscheme
-Plug 'https://github.com/flazz/vim-colorschemes/' " a whole bunch of them
+" Plug 'https://github.com/flazz/vim-colorschemes/' " a whole bunch of them
 Plug 'https://github.com/jonathanfilip/vim-lucius.git'
 Plug 'https://github.com/andbar-ru/vim-unicon'
 
@@ -191,7 +193,7 @@ au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 " +--------------------------------------------------------------+
 
 set t_Co=256
-set background=light
+set background=dark
 colorscheme lucius
 " colorscheme unicon
 
@@ -237,7 +239,7 @@ set wildmenu wildmode=list:longest,full wildignore+=*.swp,*.zip
 set completeopt=menuone,preview " tab cycles completions
 set path=.,/usr/include,,**     " searching through files in current directory
 
-set backupdir=/Users/zach/.local/share/nvim/swap " don't clutter my working directory with swp files
+set backupdir=~/.local/share/nvim/swap " don't clutter my working directory with swp files
 
 " set hidden
 set confirm " prompt to save changes before leaving a modified buffer
@@ -286,6 +288,7 @@ map <Leader>vn :vnew<cr>
 
 " close the autocomplete preview window
 map <Leader>pc :pclose<cr>
+map <Leader>pl :%!php -l<cr>
 
 " copy the file to the clipboard
 map <Leader>y mzgg"*yG'z
@@ -403,11 +406,11 @@ inoremap jk <esc>
 :command! Q q
 
 " what to do with <tab> in normal and visual mode?
-" nnoremap <tab> gt
-" nnoremap <s-tab> gT
-nnoremap <tab> za
-nnoremap <s-tab> zf
-vnoremap <tab> %
+nnoremap <tab> gt
+nnoremap <s-tab> gT
+" nnoremap <tab> za
+" nnoremap <s-tab> zf
+" vnoremap <tab> %
 
 " better navigation to beggining of line
 xnoremap 0 ^
