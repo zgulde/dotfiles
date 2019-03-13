@@ -10,6 +10,7 @@ export FZF_DEFAULT_OPTS='--reverse'
 export HISTSIZE=
 export HISTFILESIZE=
 export HISTIGNORE='ls:clear:ll:la:ltr:latr:exit'
+
 # Seems this is necessary for java9, specifically running spring applications.
 # This module used to be included by default, but no longer is. See
 # https://stackoverflow.com/questions/12525288/is-there-a-way-to-pass-jvm-args-via-command-line-to-maven
@@ -29,27 +30,31 @@ PATH=$HOME/opt/bin:$PATH
 PATH=node_modules/.bin:$PATH
 PATH=$GOPATH/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
+PATH=$HOME/.composer/vendor/bin:$PATH
+PATH=/usr/local/anaconda3/bin:$PATH
 # PATH=$HOME/.opam/system/bin:$PATH
+# we want the `pandoc` from /usr/local/bin, not the one from anaconda, but we do
+# want everything else from anaconda
+alias pandoc=/usr/local/bin/pandoc
 
 export PATH
 
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+MANPATH="/usr/local/share/man:$MANPATH"
 
-# readline
 shopt -s autocd
-bind "TAB:menu-complete"
-bind "set show-all-if-ambiguous on"
-bind "set menu-complete-display-prefix on"
-bind "set blink-matching-paren on"
-bind "set colored-completion-prefix on"
-bind "set colored-stats on"
-bind "set completion-query-items 50"
+shopt -s dirspell
+shopt -s direxpand
+shopt -s histappend
+# shopt -o notify
 
 # if we're on macos...
 if [[ $(uname -s) == "Darwin" ]]; then
     # pass tab completion
     source /usr/local/etc/bash_completion.d/pass
     source /usr/local/etc/bash_completion.d/git-completion.bash
+
+    # complete -C /Users/zach/go/src/github.com/posener/complete/gocomplete/gocomplete go
 
     # taskwarrior tab completion
     # source /usr/local/Cellar/task/2.5.1/etc/bash_completion.d/task.sh
@@ -94,16 +99,25 @@ __prompt_command() {
     if [[ $last_exit_code -ne 0 ]]; then
         PS1="$PS1 ${red}$last_exit_code"
     fi
-    PS1="$PS1${reset} % "
+    PS1="$PS1${reset} λ "
 
 }
 
-# OPAM configuration
-# eval `opam config env`
-# source /Users/zach/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+bind "TAB:menu-complete"
+bind "set show-all-if-ambiguous on"
+bind "set menu-complete-display-prefix on"
+bind "set blink-matching-paren on"
+bind "set colored-completion-prefix on"
+bind "set colored-stats on"
+bind "set completion-query-items 50"
+bind "set completion-ignore-case on"
+
+bind '"\C-xp": print-last-kbd-macro'
+bind '"\C-p": history-search-backward'
+bind '"\C-n": history-search-forward'
+bind '"\ea": "\C-e >/dev/null 2>&1 &"'
+
+# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 

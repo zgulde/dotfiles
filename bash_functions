@@ -1,5 +1,20 @@
 # vim: set ft=sh:
 
+pd() {
+    local filename="$(date +%Y-%m-%d_%H:%M:%S)-ipython.log"
+	ipython3 --logfile=$filename -i -c "
+import pandas as pd
+import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import seaborn as sns
+import itertools as it
+from pydataset import data
+%matplotlib qt
+mpl.rcParams['figure.figsize'] = [10, 8]
+"
+}
+
 # custom ll
 list-long() {
 	local cols='##PERMS### LINKS OWNER GROUP SIZE MONTH DAY HH:MM NAME'
@@ -10,8 +25,10 @@ list-long() {
 
 # look at all the emoji
 emoji() {
-	if [[ -z $1 ]] ; then
-		cut -f1 < ~/misc/emoji-list.txt
+	if [[ -n $1 ]] ; then
+		grep -i $1 ~/misc/emoji-list.txt
+	else
+		cat ~/misc/emoji-list.txt
 	fi
 }
 
@@ -120,9 +137,10 @@ sendEmail() {
 # get current branch in git repo (for PS1)
 function parse_git_branch() {
 	local branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	local commit_msg=`git log -n1 --pretty='%s' 2>/dev/null`
 	if [ ! "${branch}" == "" ] ; then
 		local status=`parse_git_dirty`
-		echo "<${branch}>${status}"
+		echo "<${branch}:${commit_msg}>${status}"
 	else
 		echo ""
 	fi

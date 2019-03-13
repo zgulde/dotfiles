@@ -1,9 +1,4 @@
-" (do (use 'figwheel-sidecar.repl-api)
-"     (start-figwheel!)
-"     (cljs-repl))
-
 set nocompatible
-
 syntax on
 filetype plugin indent on
 
@@ -17,61 +12,42 @@ set rtp+=/usr/local/opt/fzf
 " use plugged for plugins
 call plug#begin('~/.local/share/nvim/plugged/')
 
-Plug 'https://github.com/mg979/vim-visual-multi'
-
 " assuming fzf was installed w/ brew
 Plug '/usr/local/opt/fzf'
 
-Plug 'https://github.com/nikvdp/ejs-syntax'
 
-" " clojure stuff
-Plug 'https://github.com/tpope/vim-fireplace'
-Plug 'https://github.com/clojure-vim/async-clj-omni'
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
-
-" Plug 'https://github.com/tpope/vim-dispatch.git'
-" Plug 'https://github.com/radenling/vim-dispatch-neovim'
-" Plug 'https://github.com/tpope/vim-salve'
-
-" Plug 'https://github.com/jebberjeb/clojure-socketrepl.nvim'
-" let g:disable_socket_repl_mappings = 1
-
-" " languages I'm not using (frequently) or just playing around with
+" " languages I'm not using frequently
+" Plug 'https://github.com/jebberjeb/clojure-socketrepl.nvim' let g:disable_socket_repl_mappings = 1
 " Plug 'https://github.com/wlangstroth/vim-racket'
 " Plug 'https://github.com/posva/vim-vue'
 " Plug 'https://github.com/kchmck/vim-coffee-script'
-" Plug 'https://github.com/rust-lang/rust.vim'
 " Plug 'https://github.com/ElmCast/elm-vim'
 " Plug 'https://github.com/elixir-editors/vim-elixir'
 " Plug 'https://github.com/Glench/Vim-Jinja2-Syntax.git'
 " Plug 'https://github.com/dag/vim-fish.git'
 " Plug 'https://github.com/leafgarland/typescript-vim.git'
 " Plug 'https://github.com/wlangstroth/vim-racket.git'
-" Plug 'https://github.com/vim-scripts/utl.vim.git' " use to open links in vim-org
 " Plug 'https://github.com/mhartington/nvim-typescript.git', { 'do': ':UpdateRemotePlugins' }
 " Plug 'https://github.com/leafgarland/typescript-vim'
-
-" Plug 'https://github.com/nelstrom/vim-markdown-folding'
-" Plug 'https://github.com/ryanss/vim-hackernews.git'
-" Plug 'https://github.com/neovim/node-host'
+" Plug 'https://github.com/tpope/vim-fireplace' " clojure
+" Plug 'https://github.com/clojure-vim/async-clj-omni' " clojure
+" Plug 'https://github.com/rust-lang/rust.vim'
+" Plug 'https://github.com/sebastianmarkow/deoplete-rust'
+" Plug 'https://github.com/zchee/deoplete-go', { 'do': 'make' }
+" Plug 'https://github.com/jceb/vim-orgmode.git'
+" Plug 'https://github.com/jwalton512/vim-blade.git'
+" Plug 'https://github.com/mxw/vim-jsx.git'
+" Plug 'https://github.com/pangloss/vim-javascript'
+" Plug 'https://github.com/ternjs/tern_for_vim'
+" Plug 'carlitux/deoplete-ternjs'
 
 " language enhancements
-Plug 'https://github.com/sebastianmarkow/deoplete-rust'
-" Plug 'https://github.com/zchee/deoplete-go', { 'do': 'make' }
-Plug 'https://github.com/jceb/vim-orgmode.git'
 Plug 'https://github.com/mattn/emmet-vim.git'
-Plug 'https://github.com/salomvary/vim-eslint-compiler'
 Plug 'https://github.com/zchee/deoplete-jedi'
 Plug 'https://github.com/tpope/vim-endwise.git' " for bash + ruby blocks
-Plug 'https://github.com/jwalton512/vim-blade.git'
-Plug 'https://github.com/mxw/vim-jsx.git'
-Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/ternjs/tern_for_vim'
-Plug 'carlitux/deoplete-ternjs'
 
-Plug 'https://github.com/dhruvasagar/vim-table-mode'
-
+" Plug 'https://github.com/terryma/vim-multiple-cursors'
+" Plug 'https://github.com/mg979/vim-visual-multi'
 " editor enhancements
 Plug 'https://github.com/mzlogin/vim-markdown-toc.git' " generate markdown toc
 Plug 'https://github.com/osyo-manga/vim-anzu' " show search status
@@ -86,7 +62,7 @@ Plug 'https://github.com/jpalardy/vim-slime' " send text to another [tmux|vim] [
 Plug 'https://github.com/jremmen/vim-ripgrep' " rg integration
 Plug 'https://github.com/junegunn/vim-easy-align.git' " align things
 Plug 'https://github.com/tommcdo/vim-lion.git'        " align things
-Plug 'https://github.com/kana/vim-textobj-user.git'
+Plug 'https://github.com/kana/vim-textobj-user.git' "
 Plug 'https://github.com/kien/ctrlp.vim.git' " project files search
 Plug 'https://github.com/machakann/vim-highlightedyank.git' " visually indicate what was yanked (neovim)
 Plug 'https://github.com/tommcdo/vim-exchange.git' " exchange regions of text
@@ -101,7 +77,7 @@ Plug 'https://github.com/vim-scripts/SyntaxAttr.vim' " see what syntax/colorsche
 Plug 'https://github.com/wesQ3/vim-windowswap.git' " swap splits
 
 " colorscheme
-" Plug 'https://github.com/flazz/vim-colorschemes/' " a whole bunch of them
+Plug 'https://github.com/flazz/vim-colorschemes/' " a whole bunch of them
 Plug 'https://github.com/jonathanfilip/vim-lucius.git'
 Plug 'https://github.com/andbar-ru/vim-unicon'
 
@@ -111,27 +87,26 @@ call plug#end()
 " |                       Plugin Config                          |
 " +--------------------------------------------------------------+
 
-" let g:table_mode_corner='|'
-let g:table_mode_corner='+'
-let g:table_mode_corner_corner='+'
-
-let g:deoplete#sources#rust#racer_binary='/Users/zach/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/Users/zach/opt/rust/src'
+" let g:deoplete#sources#rust#racer_binary='/Users/zach/.cargo/bin/racer'
+" let g:deoplete#sources#rust#rust_source_path='/Users/zach/opt/rust/src'
+"
+" " deoplete-tern + tern_for_vim compatibility
+" let g:tern#command = ["tern"]
+" let g:tern#arguments = ["--persistent"]
 
 " remove extra spaces when aligning
 let g:lion_squeeze_spaces = 1
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
 " let deoplete handle this
 let g:jedi#completions_enabled = 0
+let g:deoplete#sources#jedi#python_path = '/usr/local/anaconda3/bin/python'
+" deoplete for clojure
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
-" auto completion
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
-
-" deoplete-tern + tern_for_vim compatibility
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-
+" Super Tab
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " UltiSnips
@@ -173,9 +148,25 @@ nmap # <Plug>(anzu-sharp-with-echo)
 let g:multi_cursor_exit_from_insert_mode=1
 
 " ctrlp
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
 let g:ctrlp_custom_ignore = {
     \ 'dir':'node_modules\|vendor\|\.git\|build\|coverage\|env\|__pycache__\|target\|out'
     \}
+" Allow spaces to be wildcards when searching, see https://github.com/kien/ctrlp.vim/issues/282
+let g:ctrlp_regexp = 1
+let g:ctrlp_abbrev = {
+            \ 'abbrevs': [
+            \ {
+            \ 'pattern': ' ',
+            \ 'expanded': '.*',
+            \ 'mode': 'pfrz',
+            \ }
+            \]
+            \}
 
 " enable jsx syntax package without the .jsx file extension
 let g:jsx_ext_required = 0
@@ -187,15 +178,20 @@ let g:rg_highlight = 1
 au Filetype clojure let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 au Filetype lisp let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
+au Filetype scheme let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
+au Filetype markdown let b:AutoPairs = {'`': '`', '"': '"', '{': '}', '''': '''', '(': ')', '[': ']', '*': '*'}
+
+" when writing r markdown, use '# ' as the comments, not '> '
+autocmd FileType rmd setlocal commentstring=#\ %s
 
 " +--------------------------------------------------------------+
 " |                       Editor Settings                        |
 " +--------------------------------------------------------------+
 
+" color scheme
 set t_Co=256
-set background=dark
-colorscheme lucius
-" colorscheme unicon
+set background=light
+colorscheme unicon
 
 " appearence
 """"""""""""
@@ -206,7 +202,6 @@ set cursorline         " highlight the current line
 set foldmethod=manual  " create folds manually with zf{motion}
 set pumheight=10       " max height for completion menu
 set inccommand=nosplit " live preview substitutions
-
 set listchars+=space:. " explicitly show space characters when showing whitespace (:set list)
 
 " vim gui stuff
@@ -237,11 +232,11 @@ set omnifunc=syntaxcomplete#Complete
 
 set wildmenu wildmode=list:longest,full wildignore+=*.swp,*.zip
 set completeopt=menuone,preview " tab cycles completions
-set path=.,/usr/include,,**     " searching through files in current directory
+set path=.,/usr/include,,** " searching through files in current directory
 
-set backupdir=~/.local/share/nvim/swap " don't clutter my working directory with swp files
+set backupdir=/Users/zach/.local/share/nvim/swap " don't clutter my working directory with swp files
 
-" set hidden
+set hidden " switch buffers even with unsaved work
 set confirm " prompt to save changes before leaving a modified buffer
 
 " +--------------------------------------------------------------+
@@ -250,6 +245,10 @@ set confirm " prompt to save changes before leaving a modified buffer
 
 " spacebar as leader
 let mapleader = " "
+
+" multiple cursors
+nnoremap <silent> <Leader>mr :MultipleCursorsFind
+vnoremap <silent> <Leader>mr :MultipleCursorsFind
 
 " org mode
 map <Leader>cc :OrgCheckBoxToggle<cr>
@@ -269,8 +268,8 @@ map <Leader>sc :noh<cr>
 " out, and visually select all the output. kinda gross, but it works
 map <Leader>r Go:r !./%'[VGogcgvk
 
-map <Leader>e :!bash %
-map <Leader>m :make<cr>
+map <Leader>e :!python3 %
+map <Leader>m :!make
 
 " window manipulation with leader + w in addition to C-w
 map <Leader>wh <C-w>h
@@ -283,12 +282,12 @@ map <Leader>wo :only<cr>
 map <Leader>wc <C-w>c
 map <Leader>w= <C-w>=
 map <Leader>wt :tabnew<cr>
+map <Leader>wT <C-w>T
 
 map <Leader>vn :vnew<cr>
 
 " close the autocomplete preview window
 map <Leader>pc :pclose<cr>
-map <Leader>pl :%!php -l<cr>
 
 " copy the file to the clipboard
 map <Leader>y mzgg"*yG'z
@@ -296,17 +295,22 @@ map <Leader>y mzgg"*yG'z
 " open a markdown link
 map <Leader>o f(yi(:!open 0
 
+" duplicate line and comment out
+map <Leader>d yypkgccj
+
+" files
 map <Leader>ff :e
-map <Leader>fs :w<cr>
+map <Leader>fs :up<cr>
 map <Leader>fe :e ~/.config/nvim/init.vim<cr>
 map <Leader>fp :e ~/.config/nvim/UltiSnips<cr>
 map <Leader>fb :e ~/.bashrc<cr>
 map <Leader>fa :e ~/.aliases<cr>
 map <Leader>ft :set ft=
 
-map <Leader>te :term<cr>
+map <Leader>te :term<cr>A
 map <Leader>gs :Gstatus<cr>
 map <Leader>gb :Gblame<cr>
+map <Leader>gl :!git log --oneline --decorate --graph -n 10<cr>
 
 map <Leader>gob :!go build<cr>
 map <Leader>goi :!go install<cr>
@@ -317,7 +321,6 @@ map <Leader>ca :!cargo
 map <Leader>car :!cargo run<cr>
 map <Leader>cab :!cargo build<cr>
 map <Leader>cac :!cargo check<cr>
-
 
 map <Leader>ac <Plug>(anzu-clear-search-status)
 
@@ -335,6 +338,7 @@ map <Leader>;; gcc
 map <Leader>; gc
 
 map <Leader>wq :x<cr>
+
 map <Leader>pi :PlugInstall<cr>
 map <Leader>pp "*p
 
@@ -355,7 +359,7 @@ nmap <C-j> <C-w>j<C-w>_
 nmap <C-k> <C-w>k<C-w>_
 nmap <C-l> <C-w>l<C-w>\|
 
-" emacsish
+" emacs / readline style keybindings in insert mode
 imap <c-e> <C-o>$
 imap <c-a> <C-o>0
 imap <c-f> <right>
@@ -367,6 +371,7 @@ imap <c-s> <C-o>/
 imap <c-/> <c-o>u
 imap <c-g> <esc>
 imap <c-y> <c-r>*
+imap <c-r> <c-o>?
 
 imap <m-a> <c-o>(
 imap <m-e> <c-o>)
@@ -377,7 +382,7 @@ imap <m-q> <c-o>gwip
 imap <m-bs> <c-o>vbd
 imap <m-u> <c-o>gUe<c-o>e<right>
 imap <m-l> <c-o>gue<c-o>e<right>
-imap <m-c> <esc>lgUllguewi
+imap <m-c> <esc>lgUllguewa
 
 " when entering commands too
 cmap <C-f> <right>
@@ -387,17 +392,17 @@ cmap <C-a> <home>
 
 " use supertab for completion so we can override c-p + c-n
 " or just fall back to the c-x prefix
-inoremap <C-p> <up>
-inoremap <C-n> <down>
+imap <C-p> <up>
+imap <C-n> <down>
 
 " Other Mappings
 """"""""""""""""
 
+inoremap jk <esc>
+
 " turn current line into markdown h1 (H) or h2 (h)
 nnoremap mh yypVr-
 nnoremap mH yypVr=
-
-inoremap jk <esc>
 
 " die typos
 :command! WQ wq
@@ -406,31 +411,13 @@ inoremap jk <esc>
 :command! Q q
 
 " what to do with <tab> in normal and visual mode?
+" tab to switch between tabs
 nnoremap <tab> gt
 nnoremap <s-tab> gT
+nnoremap <c-tab> gT
 " nnoremap <tab> za
 " nnoremap <s-tab> zf
 " vnoremap <tab> %
-
-" better navigation to beggining of line
-xnoremap 0 ^
-xnoremap ^ 0
-nnoremap ^ 0
-nnoremap 0 ^
-
-" " better marks
-" xnoremap ' `
-" xnoremap ` '
-" nnoremap ` '
-" nnoremap ' `
-
-" " Move visual selection up and down
-" vnoremap J :m '>+1<CR>gv=gv
-" vnoremap K :m '<-2<CR>gv=gv
-
-" move visual selection vertically (this is kinda buggy)
-vnoremap H dhPgvhoho
-vnoremap L dpgvlolo
 
 " Don't cancel visual selection when changing indent
 xnoremap <  <gv
@@ -445,6 +432,9 @@ map Q @q
 " +--------------------------------------------------------------+
 " |                       Miscellaneous                          |
 " +--------------------------------------------------------------+
+
+" .txt files should be treated as restructured text
+autocmd BufRead,BufNewFile *.txt set filetype=rst
 
 " tell vim anything with a .sh extension is bash, specifically (as opposed to another shell)
 let g:is_bash = 1
@@ -473,6 +463,58 @@ if has('nvim')
     hi HighlightedyankRegion cterm=reverse gui=reverse
 endif
 
+" +--------------------------------------------------------------+
+" |                        Abbreviations                         |
+" +--------------------------------------------------------------+
+
+" There's probably a more elegant way to do this, but I don't really want to
+" learn a bunch of vimscript...
+let g:my_abbreviations_on = 0
+function! MyAbbreviate()
+    if g:my_abbreviations_on == 1
+        una ift
+        una ld
+        una ge
+        una le
+        una neq
+        una omg
+        una ep
+        una cap
+        una cup
+        una es
+        una ra
+        una la
+        una La
+        una Ra
+        una lra
+        una Lra
+        una iff
+        let g:my_abbreviations_on = 0
+        echo 'Abbreviations Off'
+    else
+        ab ift ∞
+        ab ld λ
+        ab ge ≥
+        ab le ≤
+        ab neq ≠
+        ab omg Ω
+        ab ep ε
+        ab cup ∪
+        ab cap ∩
+        ab es ∅
+        ab ra →
+        ab la ←
+        ab La ⇐
+        ab Ra ⇒
+        ab lra ↔︎
+        ab Lra ⇔
+        ab iff ⇔
+        let g:my_abbreviations_on = 1
+        echo 'Abbreviations On'
+    endif
+endfunction
+map <Leader>ab :call MyAbbreviate()<cr>
+imap <c-x>a <c-o>:call MyAbbreviate()<cr>
 
 " +--------------------------------------------------------------+
 " |                        Autocommands                          |
@@ -482,54 +524,47 @@ endif
 " https://www.reddit.com/r/vim/comments/4aab93/weekly_vim_tips_and_tricks_thread_1/
 augroup highlight_follows_focus
   autocmd!
-  autocmd WinEnter * set cursorline
-  autocmd WinLeave * set nocursorline
+  autocmd! WinEnter * set cursorline
+  autocmd! WinLeave * set nocursorline
 augroup END
 
 " close autocompletion preview window automatically
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+autocmd! CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd! InsertLeave * if pumvisible() == 0|pclose|endif
 
-" ocaml stuff
-"""""""""""""
-" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-" execute "set rtp+=" . g:opamshare . "/merlin/vim"
-" " https://github.com/ocaml/merlin/wiki/vim-from-scratch
-" " execute "helptags " . substitute(system('opam config var share'),'\n$','','''') .  "/merlin/vim/doc"
+" https://stackoverflow.com/questions/1534835/how-do-i-close-all-buffers-that-arent-shown-in-a-window-in-vim
+function! Wipeout()
+  " list of *all* buffer numbers
+  let l:buffers = range(1, bufnr('$'))
 
-" " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-" let s:opam_share_dir = system("opam config var share")
-" let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+  " what tab page are we in?
+  let l:currentTab = tabpagenr()
+  try
+    " go through all tab pages
+    let l:tab = 0
+    while l:tab < tabpagenr('$')
+      let l:tab += 1
 
-" let s:opam_configuration = {}
+      " go through all windows
+      let l:win = 0
+      while l:win < winnr('$')
+        let l:win += 1
+        " whatever buffer is in this window in this tab, remove it from
+        " l:buffers list
+        let l:thisbuf = winbufnr(l:win)
+        call remove(l:buffers, index(l:buffers, l:thisbuf))
+      endwhile
+    endwhile
 
-" function! OpamConfOcpIndent()
-"   execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-" endfunction
-" let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-" function! OpamConfOcpIndex()
-"   execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-" endfunction
-" let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-" function! OpamConfMerlin()
-"   let l:dir = s:opam_share_dir . "/merlin/vim"
-"   execute "set rtp+=" . l:dir
-" endfunction
-" let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-" let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-" let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-" let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-" for tool in s:opam_packages
-"   " Respect package order (merlin should be after ocp-index)
-"   if count(s:opam_available_tools, tool) > 0
-"     call s:opam_configuration[tool]()
-"   endif
-" endfor
-" " ## end of OPAM user-setup addition for vim / base ## keep this line
-
+    " if there are any buffers left, delete them
+    if len(l:buffers)
+      execute 'bwipeout' join(l:buffers)
+    endif
+  finally
+    " go back to our original tab page
+    execute 'tabnext' l:currentTab
+  endtry
+endfunction
 
 autocmd FileType clojure setlocal shiftwidth=2
 autocmd FileType clojure setlocal tabstop=2

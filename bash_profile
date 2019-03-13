@@ -1,2 +1,5 @@
-[[ -f $HOME/.bashrc ]] && source $HOME/.bashrc
+
+if [[ -n $TMUX ]] ; then
+    [[ -f $HOME/.bashrc ]] && source $HOME/.bashrc
+fi
 

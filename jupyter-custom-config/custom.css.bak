@@ -1,0 +1,63 @@
+/* Custom Styles */
+
+@import url('//fonts.googleapis.com/css?family=Crimson+Text');
+@import url('//fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('//fonts.googleapis.com/css?family=Indie+Flower');
+@import url('//fonts.googleapis.com/css?family=Lora');
+@import url('//fonts.googleapis.com/css?family=Open+Sans');
+@import url('//fonts.googleapis.com/css?family=Montserrat');
+@import url('//fonts.googleapis.com/css?family=Merriweather');
+
+h1, h2 { font-family: 'Gloria Hallelujah'; }
+h3, h4, h5, h6, .cm-header { font-family: 'Montserrat'; }
+body { font-family: 'Lora'; }
+
+.rendered_html h1, .rendered_html h2, .rendered_html h3,
+.rendered_html h4, .rendered_html h5, .rendered_html h6 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* body { font-family: 'Open Sans', sans-serif; } */
+/* body { font-family: 'Crimson Text'; } */
+div#notebook { font-size: 16px; }
+table.dataframe { font-size: 14px; }
+
+ol, ul { margin: 0.25em 0 !important; }
+
+.CodeMirror pre, div.output pre {
+    font-size: 14px;
+    font-family: Monaco;
+    /* font-family: 'Operator Mono'; */
+    /* font-family: 'Ubuntu Mono'; */
+}
+/* .CodeMirror pre, div.output pre { font-family: 'Operator Mono'; } */
+/* .CodeMirror pre, div.output pre { font-family: 'Ubuntu Mono'; } */
+
+/* allow "scroll past end" */
+#notebook-container {
+    padding-bottom: 95vh;
+}
+
+/* hide the menubar */
+#menubar-container {
+    display: none;
+}
+
+.underline { text-decoration: underline; }
+
+p { margin-bottom: 1em; }
+
+/*This file contains any manual css for this page that needs to override the global styles.
+This is only required when different pages style the same element differently. This is just
+a hack to deal with our current css styles and no new styling should be added in this file.*/
+
+#ipython-main-app {
+    position: relative;
+}
+#jupyter-main-app {
+    position: relative;
+}
+

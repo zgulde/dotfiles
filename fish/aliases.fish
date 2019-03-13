@@ -7,6 +7,8 @@ alias rm 'rm -iv'
 alias mv='mv -iv'
 alias cp='cp -iv'
 
+alias vim=nvim
+
 alias mkdir='mkdir -p'
 
 # git stuff

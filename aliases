@@ -4,6 +4,11 @@
 # |              general utility                          |
 # +-------------------------------------------------------+
 
+alias mypy='MYPYPATH=/usr/local/anaconda3/lib/python3.6/site-packages/ mypy'
+
+alias fopen='open `fzf`'
+alias r='R --no-restore'
+
 alias uvim='vim -u NONE'
 
 alias ap=ansible-playbook
@@ -39,6 +44,7 @@ alias pe='pipenv'
 alias wtf-mysql='mysql -e "show engine innodb status\G" | grep -C10 -i latest'
 
 alias emc=emacsclient
+alias emt='emacsclient -t'
 
 alias t=task
 alias tw=task
@@ -80,6 +86,7 @@ alias react-app-plus='yarn add redux react-redux redux-thunk enzyme enzyme-adapt
 alias ansible-playbook='ANSIBLE_NOCOWS=1 ansible-playbook'
 
 alias vim='nvim'
+alias cat='bat --theme GitHub'
 
 alias df='df -h'
 alias scheme="rlwrap -r -c -f /Users/zach/scheme.txt scheme"

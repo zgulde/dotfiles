@@ -1,8 +1,10 @@
 [user]
     name = Zach Gulde
-    email = zachgulde@gmail.com
+	email = zachgulde@gmail.com
 [core]
+	; editor = code -r -w
 	editor = nvim
+    ; editor = emacsclient -c
     excludesfile = /Users/zach/.gitignore
     ; autocrlf = true
 [alias]
@@ -16,6 +18,7 @@
     fo      = fetch origin
     l       = log --oneline --decorate --graph
 	lg      = log --oneline --graph --decorate
+    last    = log -n 1
     pom     = pull origin master
     rbi     = rebase -i
     s       = status

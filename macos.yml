@@ -1,7 +1,16 @@
 #!/usr/bin/env ansible-playbook
 # vim: set ft=yaml:
 ---
-# TODO: change shell to newer bash installed w/ homebrew /usr/local/bin/bash
+# TODO:
+# - change shell to newer bash installed w/ homebrew /usr/local/bin/bash
+# - chrome extensions
+# - set default browser?
+# - iterm config
+# - fonts
+# - password manager
+# - ssh keys
+# - terminfo
+# - os settings
 - name: Install MacOS Software
   hosts: 127.0.0.1
   tasks:
@@ -17,6 +26,7 @@
         - coreutils
         - cowsay
         - emacs
+        - fswatch
         - git
         - graphviz
         - gtypist
@@ -145,3 +155,10 @@
       shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     - name: Install Editor Plugins
       shell: nvim -c PlugInstall -c q -c q
+    - name: Open Browser To Install More Software
+      shell: open {{ item }}
+      loop:
+        - https://www.docker.com/docker-mac
+        - https://www.iterm2.com/downloads.html
+        - https://www.spectacleapp.com/
+        - https://totalspaces.binaryage.com/
