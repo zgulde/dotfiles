@@ -1,34 +1,35 @@
 [user]
-    name = Zach Gulde
+	name = Zach Gulde
 	email = zachgulde@gmail.com
 [core]
-	; editor = code -r -w
 	editor = nvim
-    ; editor = emacsclient -c
-    excludesfile = /Users/zach/.gitignore
-    ; autocrlf = true
+	; editor = code -r -w
+	; editor = emacsclient -c
+	excludesfile = /Users/zach/.gitignore
+	; autocrlf = true
 [alias]
-    aa      = add -A
-    bclean  = !git checkout master && git branch --merged | grep -v master | xargs git branch -d
-    c       = commit -v
-    cv      = commit -v
-    ca      = commit --amend
-    ce     = commit --amend --no-edit
-    co      = checkout
-    fo      = fetch origin
-    l       = log --oneline --decorate --graph
-	lg      = log --oneline --graph --decorate
-    last    = log -n 1
-    pom     = pull origin master
-    rbi     = rebase -i
-    s       = status
-    ss      = status -s
-    undo    = reset HEAD~
-    redo    = commit -c ORIG_HEAD
-    unstage = reset HEAD
-    wip     = !git add -A && git commit -m WIP
+	aa	    = add -A
+	bclean  = !git checkout master && git branch --merged | grep -v master | xargs git branch -d
+	cv	    = commit -v
+	ca	    = commit --amend
+	ce	    = commit --amend --no-edit
+	co	    = checkout
+    ; deep-clean = "!rm -rf `git status --porcelain | grep ?? | cut -d\  -f 2`"
+	fo	    = fetch origin
+	lg = log --oneline --decorate --graph
+	pom	    = pull origin master
+	rbi = rebase -i origin/master
+	s	    = status
+	ss	    = status -s
+	undo	= reset HEAD~
+	redo	= commit -c ORIG_HEAD
+	unstage = reset HEAD
+	wip	    = "!f(){ git add -A && git commit -m \"WIP $@\"; };f"
+	rom     = rebase origin/master
+	tree = log --oneline --decorate --graph --pretty='%Cgreen%an%Creset %Cblue(%cr)%Creset <%Cred%h%Creset>%d%n%s%n%n%b'
+    recommit = commit -C ORIG_HEAD
 [merge]
-	conflictstyle = diff3
+	; conflictstyle = diff3
 [diff]
 	tool = diff
 [rebase]

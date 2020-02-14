@@ -1,18 +1,36 @@
 # vim: set ft=sh:
 
+# daysd and daysi adapted from https://github.com/sorhus/random/blob/master/bash/functions
+#
+# Get the list of dates between $1 and $2 (exclusive)
+#
+# e.g.   $ daysd 2016-01-01 2016-01-03
+#        > 2016-01-01 2016-01-02
+#
+function daysd {
+  unset result
+  current=$1
+  end=$2
+  i=0
+  while [[ "$current" < "$end" ]] ; do
+	result[$(( i++ ))]=$current
+    current=$(date +%Y-%m-%d -d "$current + 1 day")
+  done
+  echo ${result[*]}
+}
+#
+# Get a list of $2 dates starting at $1
+#
+# e.g.   $ daysi 2016-01-01 2
+#        > 2016-01-01 2016-01-02
+#
+function daysi {
+  daysd $1 "$(date +%Y-%m-%d -d "$1 + $2 day")"
+}
+
 pd() {
     local filename="$(date +%Y-%m-%d_%H:%M:%S)-ipython.log"
-	ipython3 --logfile=$filename -i -c "
-import pandas as pd
-import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import seaborn as sns
-import itertools as it
-from pydataset import data
-%matplotlib qt
-mpl.rcParams['figure.figsize'] = [10, 8]
-"
+	ipython3 --logfile=$filename -i -c 'from zgulde.ds_imports import *'
 }
 
 # custom ll
@@ -184,8 +202,7 @@ function parse_git_dirty {
 # show first letter of the branch name and the symbols for modification (for PS1)
 function minimal_git_status() {
     BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | head -c 1`
-	if [ ! "${BRANCH}" == "" ]
-	then
+	if [ ! "${BRANCH}" == "" ] ; then
 		STAT=`parse_git_dirty`
 		echo "${BRANCH}${STAT}"
 	else
@@ -314,4 +331,19 @@ pingthen() {
 	local url=$1
 	shift
 	ping -o $url && eval "$@"
+}
+
+make_help() {
+\cat <<'.'
+help: ## Show this help message
+	@grep -E '^[a-zA-Z._-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[34m%s\033[0m\t%s\n", $$1, $$2}' | column -ts$$'\t'
+.
+}
+
+fpass() {
+	pass $1 $(fd . ~/.password-store | rg '^.*\.password-store/(.+)\.gpg$' --replace '$1' | fzf)
+}
+
+docker-ip() {
+	docker inspect --format '{{ .NetworkSettings.IPAddress }}' $1
 }

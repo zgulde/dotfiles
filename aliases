@@ -4,6 +4,18 @@
 # |              general utility                          |
 # +-------------------------------------------------------+
 
+alias graph-easy='/usr/local/opt/perl/bin/graph-easy --from graphviz'
+
+alias pd='ipython3 --logfile=ipython`date +%Y%m%d%H%M%S`.log.py -i -c "from zgulde.ds_imports import *"'
+
+alias gt='for file in *;do git log -n 1 --pretty="$file   %aI     %an     %h      %s" -- $file ; done'
+
+alias ds='cd ~/codeup/curriculum/data-science'
+
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+
+alias siri-says='say -v Samantha'
+
 alias mypy='MYPYPATH=/usr/local/anaconda3/lib/python3.6/site-packages/ mypy'
 
 alias fopen='open `fzf`'
@@ -27,7 +39,7 @@ alias chx='chmod +x'
 alias fvim='vim $(fzf)'
 
 alias datets='date +%Y-%m-%d\ %H:%M:%S'
-alias timestamp='date +%Y-%m-%d_%H:%M:%S'
+alias timestamp='date +%Y%m%d%H%M%S'
 
 alias py=python
 
@@ -56,11 +68,11 @@ alias pyserver='python -m SimpleHTTPServer'
 alias :q=exit
 alias :e=vim
 
-alias .='cd ..'
-alias ..='cd ../..'
-alias ...='cd ../../..'
-alias ....='cd ../../../..'
-alias .....='cd ../../../../..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 
 # typos
 alias gti=git
@@ -72,9 +84,10 @@ alias ehf='sudo nvim /etc/hosts'
 alias pbgrep='pbpaste | egrep'
 alias pbvim='pbpaste | vipe | pbcopy'
 alias pbjson='pbpaste | python -m json.tool | pbcopy'
+alias pbclear='echo | pbcopy'
 
 # open a finder here
-alias f='open -a Finder ./'
+# alias f='open -a Finder ./'
 
 alias react-app-plus='yarn add redux react-redux redux-thunk enzyme enzyme-adapter-react-16'
 
@@ -125,8 +138,8 @@ alias lsd='la | lolcat'
 alias gs='git status'
 alias gl="git log --graph --pretty='%Cgreen%an%Creset %Cblue(%cr)%Creset <%Cred%h%Creset>%d%n%s%n%n%b'"
 alias gls="git log --graph --pretty='%s %Cblue%cr%Creset <%Cred%h%Creset>%d'"
-alias gd='git diff'
-alias gdc='git diff --cached'
+alias gd='git diff --color-words'
+alias gdc='git diff --color-words --cached'
 alias gdp='git diff HEAD^ HEAD' # show the difference with the previous commit
 alias ga='git add'
 alias gaa='git add -A'

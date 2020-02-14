@@ -21,7 +21,8 @@ Plug '/usr/local/opt/fzf'
 " Plug 'https://github.com/wlangstroth/vim-racket'
 " Plug 'https://github.com/posva/vim-vue'
 " Plug 'https://github.com/kchmck/vim-coffee-script'
-" Plug 'https://github.com/ElmCast/elm-vim'
+Plug 'https://github.com/ElmCast/elm-vim'
+let g:elm_setup_keybindings = 0
 " Plug 'https://github.com/elixir-editors/vim-elixir'
 " Plug 'https://github.com/Glench/Vim-Jinja2-Syntax.git'
 " Plug 'https://github.com/dag/vim-fish.git'
@@ -36,7 +37,7 @@ Plug '/usr/local/opt/fzf'
 " Plug 'https://github.com/zchee/deoplete-go', { 'do': 'make' }
 " Plug 'https://github.com/jceb/vim-orgmode.git'
 " Plug 'https://github.com/jwalton512/vim-blade.git'
-" Plug 'https://github.com/mxw/vim-jsx.git'
+Plug 'https://github.com/mxw/vim-jsx.git'
 " Plug 'https://github.com/pangloss/vim-javascript'
 " Plug 'https://github.com/ternjs/tern_for_vim'
 " Plug 'carlitux/deoplete-ternjs'
@@ -101,7 +102,7 @@ let g:lion_squeeze_spaces = 1
 let g:deoplete#enable_at_startup = 1
 " let deoplete handle this
 let g:jedi#completions_enabled = 0
-let g:deoplete#sources#jedi#python_path = '/usr/local/anaconda3/bin/python'
+let g:deoplete#sources#jedi#python_path = '/Users/zach/anaconda3/bin/python'
 " deoplete for clojure
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
@@ -188,6 +189,8 @@ autocmd FileType rmd setlocal commentstring=#\ %s
 " |                       Editor Settings                        |
 " +--------------------------------------------------------------+
 
+set undofile
+
 " color scheme
 set t_Co=256
 set background=light
@@ -247,8 +250,8 @@ set confirm " prompt to save changes before leaving a modified buffer
 let mapleader = " "
 
 " multiple cursors
-nnoremap <silent> <Leader>mr :MultipleCursorsFind
-vnoremap <silent> <Leader>mr :MultipleCursorsFind
+" nnoremap <silent> <Leader>mr :MultipleCursorsFind
+" vnoremap <silent> <Leader>mr :MultipleCursorsFind
 
 " org mode
 map <Leader>cc :OrgCheckBoxToggle<cr>
@@ -268,8 +271,8 @@ map <Leader>sc :noh<cr>
 " out, and visually select all the output. kinda gross, but it works
 map <Leader>r Go:r !./%'[VGogcgvk
 
-map <Leader>e :!python3 %
-map <Leader>m :!make
+map <Leader>e :!./%<cr>
+map <Leader>m :!make<cr>
 
 " window manipulation with leader + w in addition to C-w
 map <Leader>wh <C-w>h
@@ -306,6 +309,7 @@ map <Leader>fp :e ~/.config/nvim/UltiSnips<cr>
 map <Leader>fb :e ~/.bashrc<cr>
 map <Leader>fa :e ~/.aliases<cr>
 map <Leader>ft :set ft=
+map <Leader>ftm :set ft=markdown<cr>
 
 map <Leader>te :term<cr>A
 map <Leader>gs :Gstatus<cr>
@@ -463,6 +467,17 @@ if has('nvim')
     hi HighlightedyankRegion cterm=reverse gui=reverse
 endif
 
+""" OCaml """
+
+" " Append this to your .vimrc to add merlin to vim's runtime-path:
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" " Also run the following line in vim to index the documentation:
+
+set rtp+=/Users/zach/.opam/default/share/merlin/vim
+
+" :execute "helptags " . g:opamshare . "/merlin/vim/doc"
+
 " +--------------------------------------------------------------+
 " |                        Abbreviations                         |
 " +--------------------------------------------------------------+
@@ -489,6 +504,7 @@ function! MyAbbreviate()
         una lra
         una Lra
         una iff
+        una in
         let g:my_abbreviations_on = 0
         echo 'Abbreviations Off'
     else
@@ -509,6 +525,7 @@ function! MyAbbreviate()
         ab lra ↔︎
         ab Lra ⇔
         ab iff ⇔
+        ab in ∈
         let g:my_abbreviations_on = 1
         echo 'Abbreviations On'
     endif
@@ -532,40 +549,14 @@ augroup END
 autocmd! CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd! InsertLeave * if pumvisible() == 0|pclose|endif
 
-" https://stackoverflow.com/questions/1534835/how-do-i-close-all-buffers-that-arent-shown-in-a-window-in-vim
-function! Wipeout()
-  " list of *all* buffer numbers
-  let l:buffers = range(1, bufnr('$'))
-
-  " what tab page are we in?
-  let l:currentTab = tabpagenr()
-  try
-    " go through all tab pages
-    let l:tab = 0
-    while l:tab < tabpagenr('$')
-      let l:tab += 1
-
-      " go through all windows
-      let l:win = 0
-      while l:win < winnr('$')
-        let l:win += 1
-        " whatever buffer is in this window in this tab, remove it from
-        " l:buffers list
-        let l:thisbuf = winbufnr(l:win)
-        call remove(l:buffers, index(l:buffers, l:thisbuf))
-      endwhile
-    endwhile
-
-    " if there are any buffers left, delete them
-    if len(l:buffers)
-      execute 'bwipeout' join(l:buffers)
-    endif
-  finally
-    " go back to our original tab page
-    execute 'tabnext' l:currentTab
-  endtry
-endfunction
-
 autocmd FileType clojure setlocal shiftwidth=2
 autocmd FileType clojure setlocal tabstop=2
 autocmd FileType clojure setlocal softtabstop=2
+
+autocmd BufWritePost *.py !black -q %
+autocmd BufWritePost *.py e %
+
+au Filetype php set commentstring=//%s
+
+" autocmd BufWritePost *.md !pandoc --from markdown --to markdown % | sponge %
+" autocmd BufWritePost *.md e %

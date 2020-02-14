@@ -1,7 +1,14 @@
+# DEBUG=1
+if [[ $DEBUG -eq 1 ]] ; then dbg=echo; else dbg=: ; fi
+
+$dbg Sourcing .env
 source ~/.env
+$dbg Sourcing aliases
 source ~/.aliases
+$dbg Sourcing bash_functions
 source ~/.bash_functions
 
+$dbg Setting environment variables
 export ANSIBLE_NOCOWS=1
 export EDITOR=nvim
 export VISUAL=nvim
@@ -10,6 +17,7 @@ export FZF_DEFAULT_OPTS='--reverse'
 export HISTSIZE=
 export HISTFILESIZE=
 export HISTIGNORE='ls:clear:ll:la:ltr:latr:exit'
+export DOKKU_HOST=zachs.site
 
 # Seems this is necessary for java9, specifically running spring applications.
 # This module used to be included by default, but no longer is. See
@@ -18,6 +26,10 @@ export HISTIGNORE='ls:clear:ll:la:ltr:latr:exit'
 # basically this is an extra option maven passes to `java`
 # export MAVEN_OPTS='--add-modules java.xml.bind'
 
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+# export JAVA_HOME=$(/usr/libexec/java_home)
+
+$dbg Setting up PATH
 PATH=/bin
 PATH=/sbin:$PATH
 PATH=/usr/bin:$PATH
@@ -32,12 +44,15 @@ PATH=$GOPATH/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
 PATH=$HOME/.composer/vendor/bin:$PATH
 PATH=/usr/local/anaconda3/bin:$PATH
+# PATH=$HOME/anaconda3/bin:$PATH
 # PATH=$HOME/.opam/system/bin:$PATH
+# PATH=$JAVA_HOME/bin:$PATH
+
+export PATH
+
 # we want the `pandoc` from /usr/local/bin, not the one from anaconda, but we do
 # want everything else from anaconda
 alias pandoc=/usr/local/bin/pandoc
-
-export PATH
 
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 MANPATH="/usr/local/share/man:$MANPATH"
@@ -62,9 +77,14 @@ if [[ $(uname -s) == "Darwin" ]]; then
     # complete -o nospace -F _task tw
 fi
 
+$dbg Pandoc bash-completion
 eval "$(pandoc --bash-completion)"
-# eval "$(myserver bash-completion)"
-# eval "$(heather-server bash-completion)"
+$dbg cods myserver bash-completion
+eval "$(myserver bash-completion)"
+
+# eval "$(conda shell.bash hook)"
+
+$dbg PROMPT_COMMAND setup
 
 reset='\[\e[0m\]'
 red='\[\e[0;31m\]'
@@ -77,6 +97,7 @@ cyan='\[\e[0;36m\]'
 PROMPT_COMMAND=__prompt_command
 
 __prompt_command() {
+    history -a
     local last_exit_code=$?
     PS1=
 
@@ -103,8 +124,21 @@ __prompt_command() {
 
 }
 
+__minimal_prompt_command() {
+    local last_exit_code=$?
+    PS1=
+
+    PS1="[${blue}\u${reset}@${green}\h${reset}:${yellow}\W${reset}] $ "
+    if [[ $last_exit_code -ne 0 ]]; then
+        PS1="${red}${last_exit_code}${reset} $PS1"
+    fi
+
+}
+alias mp='PROMPT_COMMAND=__minimal_prompt_command'
+
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+$dbg Readline bindings
 bind "TAB:menu-complete"
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
@@ -119,5 +153,11 @@ bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
 bind '"\ea": "\C-e >/dev/null 2>&1 &"'
 
-# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+# Conda env setup -- this makes starting a new terminal take too long, so we'll
+# wrap it in a function
+function conda-env() {
+    eval "$(conda shell.bash hook)"
+}
 
+# tab completion for Makefile targets
+complete -W "\`test -f Makefile && grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
